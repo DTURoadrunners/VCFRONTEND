@@ -6,3 +6,14 @@
     padding: 5px; /* firefox bug fix */
     width: auto;
   }
+
+  #avatar{
+    padding: 0px;
+  }
+
+  #avatar>img{
+    height: 40px;
+    padding: 5px; /* firefox bug fix */
+    width: auto;
+  }
+

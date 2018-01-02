@@ -6,6 +6,9 @@ export class Category{
     name: string;
    
 
+    constructor(id: number){
+    
+    }
 
 }
 
