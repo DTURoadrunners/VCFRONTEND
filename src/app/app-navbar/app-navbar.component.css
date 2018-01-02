@@ -1,0 +1,8 @@
+.navbar-brand {
+    padding: 0px; /* firefox bug fix */
+  }
+  .navbar-brand>img {
+    height: 60px;
+    padding: 5px; /* firefox bug fix */
+    width: auto;
+  }

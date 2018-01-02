@@ -1,0 +1,12 @@
+<ul >
+  <li *ngFor="let category of categories">
+    
+    <span class="badge">{{category.id}}</span> {{category.name}} 
+
+  
+  <ul>
+    <li *ngFor="let item of category.componentTypes" ></li>
+    <span>{{item}}</span>
+  </ul>
+</li>
+</ul>
