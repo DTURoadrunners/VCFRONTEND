@@ -26,17 +26,29 @@
 {
     z-index: 2;
 }
-.form-signin input[type="text"]
+.form-signin
 {
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.form-signin input[type="password"]
-{
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+
+.form-top {
+  margin-bottom: -1px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.form-middle {
+  margin-bottom: -1px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.form-bottom {
+  margin-bottom: 10px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 .account-wall
 {

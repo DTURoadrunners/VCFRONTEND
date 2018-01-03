@@ -17,6 +17,7 @@ import { LoginComponent } from './public/login/login.component';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './public/register/register.component';
+import { CnAuthService } from './service/cn-auth.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { RegisterComponent } from './public/register/register.component';
     AppRoutingModule
   ],
   exports: [BsDropdownModule],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, CnAuthService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }

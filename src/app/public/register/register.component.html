@@ -1,23 +1,49 @@
 <div class="row register">
-    <div class="col-md-4 offset-md-4">
-        <h1 class="text-center register-title">Verify DTU login</h1>
-        <div class="account-wall">
-            <img class="profile-img" src="assets/dtu_logo.png"
-                alt="">
-            <form class="form-signin"  [formGroup]="formregister" (ngSubmit)="onSubmit()">
-            <input type="text" class="form-control" placeholder="Username" formControlName="userName" required autofocus>
-            <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
-            
-            
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
-                Verify 
-            </button>
-
-
-          
-            
-            </form>
-        </div>
-       
+  <div class="col-md-4 offset-md-4">
+    <div *ngIf="cnVerified;then changePassword else verify">
     </div>
+  </div>
+</div>
+
+<ng-template #verify>
+  <h1 class="text-center register-title">Verify DTU Login</h1>
+  <div class="account-wall">
+    <img class="profile-img" src="assets/dtu_logo.png"
+         alt="">
+    <form class="form-signin" [formGroup]="CNForm" (ngSubmit)="onVerifyCN()">
+      <input type="text" class="form-control" placeholder="Username" formControlName="username" required autofocus>
+      <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Verify
+      </button>
+    </form>
+  </div>
+
+</ng-template>
+
+<ng-template #changePassword>
+  <h1 class="text-center register-title">Choose New Password</h1>
+  <div class="account-wall">
+    <img class="profile-img" src="assets/dtu_logo.png"
+         alt="">
+    <form class="form-signin" [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
+      <input type="text" class="form-control form-top" value="s154174" readonly />
+      <input type="text" class="form-control form-middle" value="s154174@student.dtu.dk" readonly />
+      <input type="text" class="form-control form-bottom" value="diploming." readonly />
+      <input type="password" class="form-control form-top" placeholder="New Password" formControlName="newPassword" required autofocus>
+      <input type="password" class="form-control form-bottom" placeholder="Repeat Password" formControlName="repeatNewPassword" required>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</ng-template>
+
+<div class="row">
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type"><span [innerHtml]="alert.msg"></span></alert>
+
+  </div>
 </div>

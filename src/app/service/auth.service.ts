@@ -44,5 +44,11 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
   
-
+  registerAccount(userName: String, password: String): boolean {
+    if (userName !== '' && password != '') {
+      this.router.navigate(['/login']);
+      return true;
+    }
+    return false;
+  }
 }
