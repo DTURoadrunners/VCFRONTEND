@@ -12,4 +12,7 @@ export class ComponentsComponent implements OnInit {
   ngOnInit() {
   }
 
+  log(event: boolean) {
+    console.log(`Accordion has been ${event ? 'opened' : 'closed'}`);
+  }
 }
