@@ -17,6 +17,7 @@ import { LoginComponent } from './public/login/login.component';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './public/register/register.component';
+import { MyprojectsComponent } from './project/myprojects/myprojects.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { RegisterComponent } from './public/register/register.component';
     ProjectLogComponent,
     LinkComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MyprojectsComponent
   ],
   imports: [
     ReactiveFormsModule, 
