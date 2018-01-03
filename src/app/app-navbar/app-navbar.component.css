@@ -17,3 +17,6 @@
     width: auto;
   }
 
+.mainnav{
+  z-index: 1001;
+}

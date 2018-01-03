@@ -1,0 +1,31 @@
+ .media-photo {
+    width: 35px;
+    margin-right: 5px;
+  }
+  
+´.media-body {
+    display: block;
+    /* Had to use this style to force the div to expand (wasn't necessary with my bootstrap version 3.3.6) */
+  }
+  
+.media-meta {
+    font-size: 12px;
+    color: #999;
+  }
+  
+ .media .title {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0;
+  }
+  
+.media .title span {
+      font-size: 0.8em;
+      margin-right: 20px;
+    }
+  
+ .media .summary {
+    font-size: 14px;
+  }
+  
