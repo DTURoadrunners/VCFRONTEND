@@ -19,7 +19,12 @@ import { LoginComponent } from './public/login/login.component';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './public/register/register.component';
+
 import { OverviewComponent } from './componentype/overview/overview.component';
+
+import { MyprojectsComponent } from './project/myprojects/myprojects.component';
+import { AboutComponent } from './public/about/about.component';
+
 
 
 @NgModule({
@@ -30,7 +35,10 @@ import { OverviewComponent } from './componentype/overview/overview.component';
     LinkComponent,
     LoginComponent,
     RegisterComponent,
-    OverviewComponent
+    OverviewComponent,
+    MyprojectsComponent,
+    AboutComponent
+
   ],
   imports: [
     ReactiveFormsModule, 
