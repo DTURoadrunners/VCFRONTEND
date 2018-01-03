@@ -1,35 +1,38 @@
-<div class="row login">
-    <div class="col-md-4 offset-md-4">
-        <h1 class="text-center login-title">Sign in to use the application</h1>
-        <div class="account-wall">
-            <img class="profile-img" src="assets/dtu_logo.png"
-                alt="">
-            <form class="form-signin"  [formGroup]="form" (ngSubmit)="onSubmit()">
-            <input type="text" class="form-control" placeholder="Username" formControlName="userName" required autofocus>
-            <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
-            
-            
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
-                Login 
-            </button>
+<div class="container">
+
+    <div class="row login">
+        <div class="col-md-4 offset-md-4">
+            <h1 class="text-center login-title">Sign in to use the application</h1>
+            <div class="account-wall">
+                <img class="profile-img" src="assets/dtu_logo.png"
+                    alt="">
+                <form class="form-signin"  [formGroup]="form" (ngSubmit)="onSubmit()">
+                <input type="text" class="form-control" placeholder="Username" formControlName="userName" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
+                
+                
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Login 
+                </button>
 
 
-            <label class="checkbox pull-left">
-                <input type="checkbox" value="remember-me">
-                Remember me
-            </label>
-            <a href="#" class="pull-right need-help">Forgot password </a><span class="clearfix"></span>
-            </form>
+                <label class="checkbox pull-left">
+                    <input type="checkbox" value="remember-me">
+                    Remember me
+                </label>
+                <a href="#" class="pull-right need-help">Forgot password </a><span class="clearfix"></span>
+                </form>
+            </div>
+            <a href="#" class="text-center new-account" routerLink="/register" >Create an account </a>
         </div>
-        <a href="#" class="text-center new-account" routerLink="/register" >Create an account </a>
     </div>
-</div>
-<div class="col-1">
-        <a routerLink="/about" class="btn btn-primary" id="aboutbtn">About</a>
-    </div>
-<div class="row">
-    <div *ngFor="let alert of alerts">
-        <alert [type]="alert.type"><span [innerHtml]="alert.msg"></span></alert>
-     
+    <div class="col-1">
+            <a routerLink="/about" class="btn btn-primary" id="aboutbtn">About</a>
+        </div>
+    <div class="row">
+        <div *ngFor="let alert of alerts">
+            <alert [type]="alert.type"><span [innerHtml]="alert.msg"></span></alert>
+        
+        </div>
     </div>
 </div>
