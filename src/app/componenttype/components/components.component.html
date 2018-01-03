@@ -1,7 +1,39 @@
 <div>
-  <accordion> <!--Make dynamic with ngFor for each component-->
-    <accordion-group heading="ComponentID: 32">
-
+  <h4 class="text-muted">Components:</h4>
+  <accordion>
+    <!--Make dynamic with ngFor for each component-->
+    <accordion-group heading="ComponentID: {{id}}">
+      <p>
+        Status: {{status}}
+      </p>
+      <p>
+        Comment: {{comment}}
+      </p>
+      <button type="button" class="btn btn-info">Component Log</button>
+      <br>
+      <span class="text-muted">Creation date: {{timestamp}}</span>
+    </accordion-group>
+    <accordion-group heading="ComponentID: {{id}}">
+      <p>
+        Status: {{status}}
+      </p>
+      <p>
+        Comment: {{comment}}
+      </p>
+      <button type="button" class="btn btn-info">Component Log</button>
+      <br>
+      <span class="text-muted">Creation date: {{timestamp}}</span>
+    </accordion-group>
+    <accordion-group heading="ComponentID: {{id}}">
+      <p>
+        Status: {{status}}
+      </p>
+      <p>
+        Comment: {{comment}}
+      </p>
+      <button type="button" class="btn btn-info">Component Log</button>
+      <br>
+      <span class="text-muted">Creation date: {{timestamp}}</span>
     </accordion-group>
   </accordion>
 </div>
@@ -13,4 +45,3 @@
   timestamp
   componentLog
     -->
-
