@@ -8,6 +8,7 @@ import { LoginComponent } from './public/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './public/register/register.component';
 import { MyprojectsComponent } from './project/myprojects/myprojects.component';
+import { AboutComponent } from './public/about/about.component';
 
 // define the routes here
 // canActivate: [AuthGuard] is used to protect page, can only be activated if the user is authenticated
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'link', component: LinkComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component : RegisterComponent },
-  { path: 'myprojects', component : MyprojectsComponent}
+  { path: 'myprojects', component : MyprojectsComponent},
+  { path: 'about', component : AboutComponent}
 ];
 
 @NgModule({
