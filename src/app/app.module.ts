@@ -21,10 +21,14 @@ import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './public/register/register.component';
 import { CnAuthService } from './service/cn-auth.service';
 
-import { OverviewComponent } from './componentype/overview/overview.component';
+import { OverviewComponent } from './componenttype/overview/overview.component';
 
 import { MyprojectsComponent } from './project/myprojects/myprojects.component';
 import { AboutComponent } from './public/about/about.component';
+import { TabNavigatorComponent } from './componenttype/tab-navigator/tab-navigator.component';
+import { DocumentsComponent } from './componenttype/documents/documents.component';
+import { LogComponent } from './componenttype/log/log.component';
+import { ComponentsComponent } from './componenttype/components/components.component';
 
 
 
@@ -38,7 +42,11 @@ import { AboutComponent } from './public/about/about.component';
     RegisterComponent,
     OverviewComponent,
     MyprojectsComponent,
-    AboutComponent
+    AboutComponent,
+    TabNavigatorComponent,
+    DocumentsComponent,
+    LogComponent,
+    ComponentsComponent
 
   ],
   imports: [
