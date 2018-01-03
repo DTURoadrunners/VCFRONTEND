@@ -16,6 +16,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './public/login/login.component';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { RegisterComponent } from './public/register/register.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AuthGuard } from './auth/auth.guard';
     AppNavbarComponent,
     ProjectLogComponent,
     LinkComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     ReactiveFormsModule, 
