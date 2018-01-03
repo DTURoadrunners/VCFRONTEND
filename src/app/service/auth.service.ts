@@ -29,7 +29,7 @@ export class AuthService {
   login(userName: String, password: String): boolean{
     if ((userName !== '' && password!= '' ) && (userName ==='admin' && password === 'pw123')) { 
       this.loggedIn.next(true);
-      this.router.navigate(['/projectLog']); //TODO homepage
+      this.router.navigate(['/myprojects']); //TODO homepage
       return true;
     } 
     return false;

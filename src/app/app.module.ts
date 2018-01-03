@@ -5,9 +5,11 @@ import { NgModule } from '@angular/core';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // load bootstrap dropdown
 import { CollapseModule } from 'ngx-bootstrap/collapse'; // load bootstrap collapse
 import { AlertModule } from 'ngx-bootstrap/alert'; // load bootstrap alert
+import { TabsModule } from 'ngx-bootstrap/tabs'; // load bootstrap tabs
+import { ButtonsModule } from 'ngx-bootstrap/buttons'; // load bootstrap buttons
 
 
-import { ReactiveFormsModule } from '@angular/forms'; // load to work with angularForms
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // load to work with angularForms
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { ProjectLogComponent } from './log/project-log/project-log.component';
@@ -19,6 +21,12 @@ import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './public/register/register.component';
 import { CnAuthService } from './service/cn-auth.service';
 
+import { OverviewComponent } from './componentype/overview/overview.component';
+
+import { MyprojectsComponent } from './project/myprojects/myprojects.component';
+import { AboutComponent } from './public/about/about.component';
+
+
 
 @NgModule({
   declarations: [
@@ -27,14 +35,21 @@ import { CnAuthService } from './service/cn-auth.service';
     ProjectLogComponent,
     LinkComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OverviewComponent,
+    MyprojectsComponent,
+    AboutComponent
+
   ],
   imports: [
     ReactiveFormsModule, 
+    FormsModule,
     BrowserModule,
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     AlertModule.forRoot(),
+    TabsModule.forRoot(),
+    ButtonsModule.forRoot(),
     AppRoutingModule
   ],
   exports: [BsDropdownModule],
