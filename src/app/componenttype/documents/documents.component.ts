@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DOCUMENTS } from '../../mock/mock-documents'; 
+
+
 
 @Component({
   selector: 'app-documents',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentsComponent implements OnInit {
 
-  constructor() { }
+  
+
+  mydocuments = DOCUMENTS;
+
+  constructor() { 
+  }
 
   ngOnInit() {
   }

@@ -32,7 +32,7 @@
       <li class="dropdown" dropdown> <!-- {1} -->
         <a class="nav-link" dropdownToggle role="button" id="avatar"> <img class="rounded-circle" src="/assets/avatar.jpg" alt="">John Doe <i class="fa fa-caret-down" aria-hidden="true"></i> </a>
         <ul *dropdownMenu class="dropdown-menu" role="menu">
-          <li role="menuitem"><a class="dropdown-item" href="#">My Profile</a></li>
+          <li role="menuitem"><a class="dropdown-item" routerLink="/profile" >My Profile</a></li>
           <li role="menuitem"><a class="dropdown-item" href="#">My Projects</a></li>
           <li class="divider dropdown-divider"></li>
           <li role="menuitem"><a class="dropdown-item" (click)="onLogout()" >Logout</a>

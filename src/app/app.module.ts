@@ -29,6 +29,8 @@ import { TabNavigatorComponent } from './componenttype/tab-navigator/tab-navigat
 import { DocumentsComponent } from './componenttype/documents/documents.component';
 import { LogComponent } from './componenttype/log/log.component';
 import { ComponentsComponent } from './componenttype/components/components.component';
+import { MyprofileComponent } from './profile/myprofile/myprofile.component';
+import { DocumenttableComponent } from './componenttype/documents/documenttable/documenttable.component';
 
 
 
@@ -46,7 +48,9 @@ import { ComponentsComponent } from './componenttype/components/components.compo
     TabNavigatorComponent,
     DocumentsComponent,
     LogComponent,
-    ComponentsComponent
+    ComponentsComponent,
+    MyprofileComponent,
+    DocumenttableComponent
 
   ],
   imports: [
