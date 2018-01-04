@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { PROJECTS } from "./../../mock/mock-projects";
 
 @Component({
   selector: 'app-myprojects',
@@ -7,6 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./myprojects.component.css']
 })
 export class MyprojectsComponent implements OnInit {
+  projects = PROJECTS;
 
   constructor(private router: Router) { }
 
