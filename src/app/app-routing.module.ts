@@ -11,6 +11,7 @@ import { OverviewComponent } from './componenttype/overview/overview.component';
 import { MyprojectsComponent } from './project/myprojects/myprojects.component';
 import { AboutComponent } from './public/about/about.component';
 import { TabNavigatorComponent } from './componenttype/tab-navigator/tab-navigator.component';
+import { ProjectTabNavigatorComponent } from './project/project-tab-navigator/project-tab-navigator.component';
 
 // define the routes here
 // canActivate: [AuthGuard] is used to protect page, can only be activated if the user is authenticated
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'componentype/overview', component: TabNavigatorComponent },
   { path: 'myprojects', component : MyprojectsComponent},
-  { path: 'about', component : AboutComponent}
+  { path: 'about', component : AboutComponent},
+  { path: 'project', component : ProjectTabNavigatorComponent}
 
 ];
 

@@ -29,6 +29,11 @@ import { TabNavigatorComponent } from './componenttype/tab-navigator/tab-navigat
 import { DocumentsComponent } from './componenttype/documents/documents.component';
 import { LogComponent } from './componenttype/log/log.component';
 import { ComponentsComponent } from './componenttype/components/components.component';
+import { ProjectTabNavigatorComponent } from './project/project-tab-navigator/project-tab-navigator.component';
+import { ProjectOverviewComponent } from './project/project-overview/project-overview.component';
+import { ProjectComponentsComponent } from './project/project-components/project-components.component';
+import { ProjectMemberlistComponent } from './project/project-memberlist/project-memberlist.component';
+import { ProjectsLogComponent } from './project/projects-log/projects-log.component';
 
 
 
@@ -46,7 +51,13 @@ import { ComponentsComponent } from './componenttype/components/components.compo
     TabNavigatorComponent,
     DocumentsComponent,
     LogComponent,
-    ComponentsComponent
+    ComponentsComponent,
+    ProjectTabNavigatorComponent,
+    ProjectOverviewComponent,
+    ProjectComponentsComponent,
+    ProjectMemberlistComponent,
+    ProjectsLogComponent,
+
 
   ],
   imports: [
