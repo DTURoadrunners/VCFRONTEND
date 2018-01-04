@@ -1,0 +1,156 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-sm-3 col-md-2 d-none d-sm-block navbar-light bg-light sidebar">
+
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <button (click)=selectOverview() type="button" class="btn btn-light btn-sm btn-block" [class.btn-outline-secondary]="overview == true"><i class="fa fa-object-group" aria-hidden="true"></i>  Overview</button>
+        </li>
+
+        <li class="nav-item">
+            <button (click)=selectMemberlist() type="button" class="btn btn-light btn-sm btn-block" [class.btn-outline-secondary]="documents == true"><i class="fa fa-id-card " aria-hidden="true"></i> Memberlist</button>
+        </li>
+  
+        <li class="nav-item">
+          <button (click)=selectComponents() type="button" class="btn  btn-light btn-sm btn-block" [class.btn-outline-secondary]="components == true"><i class="fa fa-file-text" aria-hidden="true"></i>  Components</button>
+        </li>
+
+        <li class="nav-item">
+          <button (click)=selectLog() type="button" class="btn btn-light btn-sm btn-block" [class.btn-outline-secondary]="log == true"><i class="fa fa-area-chart" aria-hidden="true"></i> Log</button>
+        </li>
+
+      </ul>
+
+    </nav>
+
+    <main role="main" class="col-sm-6 ml-sm-auto col-md-10 pt-3">
+      <h2 class="text-muted">Lorem Ipsum</h2> <!--TODO: get componenttype name-->
+
+      <section class="row" *ngIf="overview">
+          <app-project-overview></app-project-overview>  
+      </section> 
+      
+      <section class="row" *ngIf="memberlist">
+          <app-project-memberlist></app-project-memberlist>
+        </section>
+
+      <section *ngIf="components">
+        <app-project-components></app-project-components>
+      </section>
+
+      <section class="row" *ngIf="log">
+          <app-projects-log></app-projects-log>
+      </section>
+  
+      
+    </main>
+
+    <!--Recent Activity-->
+    <nav class="col-sm-3 col-md-2 d-none d-sm-block recentlog" *ngIf="!log">
+      <div class="table-container">
+        <h5>Recent activity</h5>
+        <table class="table table-filter">
+          <tbody>
+
+            <!-- row 1 -->
+
+            <tr>
+              <td>
+                <div class="media">
+                  <a href="#" class="pull-left">
+                    <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
+                  </a>
+                  <div class="media-body">
+                    <span class="media-meta pull-right">2 hours ago</span>
+                    <h4 class="title text-info">
+                      Daniel Plaetner-Cancela
+                      <br>
+                      <span class="badge badge-success">Created</span>
+                    </h4>
+                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+
+            <!-- end row 1 -->
+            <!-- row 2 -->
+
+            <tr>
+              <td>
+                <div class="media">
+                  <a href="#" class="pull-left">
+                    <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
+                  </a>
+                  <div class="media-body">
+                    <span class="media-meta pull-right">15 hours ago</span>
+                    <h4 class="title text-info">
+                      Thomas Bech
+                      <br>
+                      <span class="badge badge-danger">Delete</span>
+                    </h4>
+                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+
+            <!-- end row 2 -->
+            <!-- row 3 -->
+
+            <tr>
+              <td>
+                <div class="media">
+                  <a href="#" class="pull-left">
+                    <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
+                  </a>
+                  <div class="media-body">
+                    <span class="media-meta pull-right">5 days ago</span>
+                    <h4 class="title text-info">
+                      Sebastian Hjorth
+                      <br>
+                      <span class="badge badge-info">Rollback</span>
+                    </h4>
+                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+
+            <!-- end row 3 -->
+            <!-- row 4 -->
+
+            <tr>
+              <td>
+                <div class="media">
+                  <a href="#" class="pull-left">
+                    <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
+                  </a>
+                  <div class="media-body">
+                    <span class="media-meta pull-right">10 days ago</span>
+                    <h4 class="title text-info">
+                      Rasmus Olsen
+                      <br>
+                      <span class="badge badge-success">Created</span>
+                    </h4>
+                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+
+            <!-- end row 4 -->
+
+
+          </tbody>
+        </table>
+      </div>
+    </nav>
+
+  </div>
+</div>
+

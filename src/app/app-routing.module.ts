@@ -11,6 +11,7 @@ import { OverviewComponent } from './componenttype/overview/overview.component';
 import { MyprojectsComponent } from './project/myprojects/myprojects.component';
 import { AboutComponent } from './public/about/about.component';
 import { TabNavigatorComponent } from './componenttype/tab-navigator/tab-navigator.component';
+import { ProjectTabNavigatorComponent } from './project/project-tab-navigator/project-tab-navigator.component';
 import { MyprofileComponent } from './profile/myprofile/myprofile.component';
 
 // define the routes here
@@ -24,8 +25,8 @@ const routes: Routes = [
   { path: 'componentype/overview', component: TabNavigatorComponent },
   { path: 'myprojects', component : MyprojectsComponent },
   { path: 'about', component : AboutComponent },
-  { path: 'profile', component: MyprofileComponent }
-
+  { path: 'profile', component: MyprofileComponent },
+  { path: 'project', component : ProjectTabNavigatorComponent }
 ];
 
 @NgModule({
