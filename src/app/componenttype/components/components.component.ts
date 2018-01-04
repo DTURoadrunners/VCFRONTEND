@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { COMPONENTS } from './../../mock/mock-components'
 
 @Component({
   selector: 'app-components',
@@ -7,12 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComponentsComponent implements OnInit {
 
+  components = COMPONENTS;
+
   constructor() { }
 
   ngOnInit() {
   }
-
-  log(event: boolean) {
-    console.log(`Accordion has been ${event ? 'opened' : 'closed'}`);
-  }
+  
 }
