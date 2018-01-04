@@ -2,10 +2,6 @@
   <div class="row">
     <nav class="col-sm-3 col-md-2 d-none d-sm-block navbar-light bg-light sidebar">
 
-
-
-
-
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
           <button (click)=selectOverview() type="button" class="btn btn-light btn-sm btn-block" [class.btn-outline-secondary]="overview == true"><i class="fa fa-file-text" aria-hidden="true"></i>  Overview</button>
@@ -35,7 +31,7 @@
         </app-overview>
       </section>
 
-      <section class="row" *ngIf="components">
+      <section *ngIf="components">
         <app-components></app-components>
       </section>
 
