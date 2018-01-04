@@ -23,7 +23,7 @@
 
     </nav>
 
-    <main role="main" class="col-sm-6 ml-sm-auto col-md-10 pt-3">
+    <main role="main" class="ml-sm-auto col-md-10 pt-3">
       <h2 class="text-muted">Lorem Ipsum</h2> <!--TODO: get componenttype name-->
 
       <section class="row" *ngIf="overview">
@@ -35,11 +35,11 @@
         <app-components></app-components>
       </section>
 
-      <section class="row" *ngIf="documents">
+      <section *ngIf="documents">
         <app-documents></app-documents>
       </section>
 
-      <section class="row" *ngIf="log">
+      <section  *ngIf="log">
         <app-log></app-log>
       </section>
 

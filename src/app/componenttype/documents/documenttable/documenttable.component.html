@@ -1,0 +1,42 @@
+
+<!--
+<tr *ngFor="let document of documents">
+    <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
+    <td>
+        <span style="margin-left:0px"></span>
+        <i *ngIf="document.isFolder" class="fa fa-chevron-down text-muted" aria-hidden="true"></i>
+        <i *ngIf="document.isFolder"  class="fa fa-folder-open" aria-hidden="true"></i> 
+        <i *ngIf="!document.isFolder"  class="fa fa-file" aria-hidden="true"></i> 
+        
+          <span *ngIf="document.isFolder"> {{ document.name }}</span>
+          <a *ngIf="!document.isFolder" href="" class="text-info"> {{ document.name }}</a> 
+        
+        
+       
+      </td>
+      <td>{{ document.date | date: 'mediumDate'}}</td>
+      <td> <span *ngIf="!document.isFolder" >{{document.size}}</span> </td>
+      <td>
+          <span *ngIf="document.isFolder" >Folder</span> 
+          <span *ngIf="!document.isFolder" >File</span> 
+    </td>
+</tr>
+-->
+
+<div *ngFor="let document of documents">
+    <ul class="list-group">
+     <li class="list-group-item ">
+       
+        <i *ngIf="document.isFolder && document.documents" class="fa fa-chevron-down text-muted" aria-hidden="true"></i>
+        <i *ngIf="document.isFolder"  class="fa fa-folder-open" aria-hidden="true"></i> 
+        <i *ngIf="!document.isFolder"  class="fa fa-file" aria-hidden="true"></i> 
+        
+          <span *ngIf="document.isFolder"> {{ document.name }}</span>
+          <a *ngIf="!document.isFolder" href="" class="text-info"> {{ document.name }}</a>
+
+          <span *ngIf="!document.isFolder"  class="pull-right">{{document.size}}</span>
+       <app-documenttable [documents]="document.documents" *ngIf="document.documents"></app-documenttable>
+     </li>
+    </ul>
+  </div>
+
