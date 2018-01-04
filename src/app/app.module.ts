@@ -11,6 +11,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion'; // load accordion lis
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // load to work with angularForms
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';

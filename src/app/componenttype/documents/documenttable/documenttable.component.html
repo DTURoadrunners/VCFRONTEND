@@ -22,56 +22,21 @@
     </td>
 </tr>
 -->
-<!--
+
 <div *ngFor="let document of documents">
-    <ul >
-     <li class="list-group-item">
+    <ul class="list-group">
+     <li class="list-group-item ">
        
-        <i *ngIf="document.isFolder" class="fa fa-chevron-down text-muted" aria-hidden="true"></i>
+        <i *ngIf="document.isFolder && document.documents" class="fa fa-chevron-down text-muted" aria-hidden="true"></i>
         <i *ngIf="document.isFolder"  class="fa fa-folder-open" aria-hidden="true"></i> 
         <i *ngIf="!document.isFolder"  class="fa fa-file" aria-hidden="true"></i> 
         
           <span *ngIf="document.isFolder"> {{ document.name }}</span>
           <a *ngIf="!document.isFolder" href="" class="text-info"> {{ document.name }}</a>
+
+          <span *ngIf="!document.isFolder"  class="pull-right">{{document.size}}</span>
        <app-documenttable [documents]="document.documents" *ngIf="document.documents"></app-documenttable>
      </li>
     </ul>
   </div>
--->
 
- 
-
-      <div class="list-group list-group-root" *ngFor="let document of documents">
-        
-        <a href="#" class="list-group-item">{{ document.name }}</a>
-        <div class="list-group">
-          
-          <a href="#" class="list-group-item">Item 1.1</a>
-          <div class="list-group">
-
-            <a href="#" class="list-group-item">Item 1.1.1</a>
-            <a href="#" class="list-group-item">Item 1.1.2</a>
-            <a href="#" class="list-group-item">Item 1.1.3</a>
-          </div>
-          
-          <a href="#" class="list-group-item">Item 1.2</a>
-          <div class="list-group">
-            <a href="#" class="list-group-item">Item 1.2.1</a>
-            <a href="#" class="list-group-item">Item 1.2.2</a>
-            <a href="#" class="list-group-item">Item 1.2.3</a>
-          </div>
-          
-          <a href="#" class="list-group-item">Item 1.3</a>
-          <div class="list-group">
-            <a href="#" class="list-group-item">Item 1.3.1</a>
-            <a href="#" class="list-group-item">Item 1.3.2</a>
-            <a href="#" class="list-group-item">Item 1.3.3</a>
-          </div>
-          
-        </div>
-        
-      
-    
-      <app-documenttable [documents]="document.documents" *ngIf="document.documents"></app-documenttable>
-        
-      </div>
