@@ -15,6 +15,7 @@ export class ComponentsComponent implements OnInit {
   components = COMPONENTS;
   modalRef: BsModalRef;
   componentForm: FormGroup; //call it with [formGroup]="componentForm" in the HTML
+  selectedComponent: Component;
 
   constructor(
     private fb: FormBuilder,         // inject the formbuilder
@@ -28,7 +29,8 @@ export class ComponentsComponent implements OnInit {
     });
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>, component: Component) {
     this.modalRef = this.modalService.show(template);
+    this.selectedComponent = component;
   }
 }

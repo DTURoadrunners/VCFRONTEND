@@ -1,10 +1,14 @@
 <div class="col-9">
-  <button type="button" class="btn btn-success pull-right" (click)="openModal(newComponent)">New Component</button>
+  <button type="button" class="btn btn-success pull-right" (click)="openModal(newComponent, null)">New Component</button>
   <h4 class="text-muted">Components:</h4>
   <hr>
   <accordion>
-    <!--Make dynamic with ngFor for each component
-    <accordion-group *ngFor="let component of components" heading="Component: {{component.id}}">
+    <!--Make dynamic with ngFor for each component-->
+    <accordion-group heading="Component: {{component.id}}" *ngFor="let component of components">
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default" (click)="openModal(editComponent, component)">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="openModal(deleteComponent, component)">Delete</button>
+      </div>
       <p>
         Status: {{component.status}}
       </p>
@@ -14,21 +18,6 @@
       <br>
       <button type="button" class="btn btn-info">Component Log</button>
       <p class="text-muted pull-right" id="timestamp">Creation date: {{component.timestamp | date:'mediumDate'}}</p>
-    </accordion-group>-->
-    <accordion-group heading="Component: 1">
-      <div class="btn-group pull-right">
-        <button type="button" class="btn btn-default" (click)="openModal(editComponent)">Edit</button>
-        <button type="button" class="btn btn-danger" (click)="openModal(deleteComponent)">Delete</button>
-      </div>
-      <p>
-        Status: Lorem ipsum dolor sit amet
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh quam. Maecenas posuere rhoncus risus vel iaculis. Duis hendrerit eros augue, ac interdum nunc vestibulum in. Nullam tempus blandit augue vestibulum imperdiet. Nullam ac fermentum velit, feugiat tempor tellus. Maecenas dictum, nisl eu eleifend pulvinar, neque sapien convallis mauris, eget vulputate erat ante et ipsum. Nullam bibendum tincidunt ex id dignissim. Donec nec libero in purus ultricies consectetur id eu arcu. 
-      </p>
-      <br>
-      <button type="button" class="btn btn-info">Component Log</button>
-      <p class="text-muted pull-right" id="timestamp">Creation date: 04/01/2018</p>
     </accordion-group>
   </accordion>
 </div>
@@ -41,11 +30,11 @@
     </button>
   </div>
   <div class="modal-body">
-    <form class="form-control" [formGroup]="newComponentForm" (ngSubmit)="onVerifyCN()">
+    <form class="form-control" [formGroup]="componentForm" (ngSubmit)="onVerifyCN()">
       <label>Status</label>
-      <input type="text" class="form-control" placeholder="Status..." formControlName="status" tooltip="Current status of the component" required autofocus>
+      <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" tooltip="Current status of the component" required autofocus></textarea>
       <label>Comment (Optional)</label>
-      <input type="text" class="form-control" placeholder="Comment..." formControlName="comment" tooltip="Any other comments about the component">
+      <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" tooltip="Any other comments about the component"></textarea>
     </form>
 
     <button class="btn btn-success btn-block" type="submit"> <!--TODO: Create component-->
@@ -56,18 +45,17 @@
 
 <ng-template #editComponent>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Edit Component</h4>
+    <h4 class="modal-title pull-left">Edit Component {{selectedComponent.id}}</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <form class="form-control" [formGroup]="newComponentForm" (ngSubmit)="onVerifyCN()">
-      <!--TODO: Let the value of the input fields be the current component data-->
+    <form class="form-control" [formGroup]="componentForm" (ngSubmit)="onVerifyCN()">
       <label>Status</label>
-      <input type="text" class="form-control" placeholder="Status..." formControlName="status" tooltip="Current status of the component" required>
+      <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" value={{selectedComponent.status}} tooltip="Current status of the component" required></textarea>
       <label>Comment</label>
-      <input type="text" class="form-control" placeholder="Comment..." formControlName="comment" tooltip="Any other comments about the component">
+      <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" value={{selectedComponent.comment}} tooltip="Any other comments about the component"></textarea>
     </form>
 
     <button class="btn btn-success btn-block" type="submit">
@@ -79,7 +67,7 @@
 
 <ng-template #deleteComponent>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Delete Component?</h4>
+    <h4 class="modal-title pull-left">Delete Component {{selectedComponent.id}}?</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
