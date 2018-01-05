@@ -16,7 +16,7 @@ export class MyprojectsComponent implements OnInit {
   }
 
   cardClick() {
-    this.router.navigate(["/componentype/overview"]);
+    this.router.navigate(["/project"]);
   }
 
 }

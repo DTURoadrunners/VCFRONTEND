@@ -8,8 +8,9 @@ import { AlertModule } from 'ngx-bootstrap/alert'; // load bootstrap alert
 import { TabsModule } from 'ngx-bootstrap/tabs'; // load bootstrap tabs
 import { ButtonsModule } from 'ngx-bootstrap/buttons'; // load bootstrap buttons
 import { AccordionModule } from 'ngx-bootstrap/accordion'; // load accordion list (expanding list)
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal'; // load bootstrap modal
+import { TooltipModule } from 'ngx-bootstrap/tooltip'; // load bootstrap tooltop
+import { PaginationModule } from 'ngx-bootstrap/pagination'; // load bootstrap pagination
 
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // load to work with angularForms
@@ -39,6 +40,7 @@ import { ProjectMemberlistComponent } from './project/project-memberlist/project
 import { ProjectsLogComponent } from './project/projects-log/projects-log.component';
 import { MyprofileComponent } from './profile/myprofile/myprofile.component';
 import { DocumenttableComponent } from './componenttype/documents/documenttable/documenttable.component';
+import { PagerService } from './service/pager.service';
 
 
 
@@ -78,10 +80,11 @@ import { DocumenttableComponent } from './componenttype/documents/documenttable/
     AppRoutingModule,
     AccordionModule.forRoot(),
     ModalModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   exports: [BsDropdownModule],
-  providers: [AuthService, AuthGuard, CnAuthService],
+  providers: [AuthService, AuthGuard, CnAuthService, PagerService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
