@@ -1,7 +1,8 @@
 <div class="container">
 
   <div class="row">
-      <button type="button" class="btn btn-primary pull-right">Primary</button>
+      <button type="button" class="btn btn-primary pull-right" (click)="openModal()">Nyt project</button>
+      
   </div>
 
   <div class="clearfix"></div>
@@ -23,12 +24,44 @@
      
       
  </div>
-  </div>
-
-      
-
-
-
-  
+</div>  
 </div>
+
+<ng-template #editProject>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Project {{selectedProject.id}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-control" [formGroup]="projectForm" (ngSubmit)="onVerifyCN()">
+      <label>Description</label>
+      <textarea type="text" class="form-control" placeholder="Description..." formControlName="description" value={{selectedProject.description}} tooltip="Description of the project" required></textarea>
+      <label>Comment</label>
+      <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" value={{selectedProject.comment}} tooltip="Any other comments about the project"></textarea>
+    </form>
+
+    <button class="btn btn-success btn-block" type="submit">
+      <!--TODO: Edit project-->
+      Submit
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #deleteProject>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Delete Project {{selectedProject.id}}?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>The project will be deleted, but can be restored with a rollback</p>
+    <button class="btn btn-danger btn-block" type="submit">
+      <!--TODO: Delete project-->
+      Delete
+    </button>
+  </div>
+</ng-template>
 
