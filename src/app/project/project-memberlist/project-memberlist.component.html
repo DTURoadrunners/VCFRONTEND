@@ -1,3 +1,14 @@
-<p>
-  project-memberlist works!
-</p>
+<div class="col-9">
+  <h4 class="text-muted">Project members:</h4>
+  <hr>
+    <div class="media">
+            
+      <p>
+        <span class="text-muted">Project owner:</span>   <a href="#" class="text-info"> Thomas Bech</a> 
+        <br>
+        <span class="text-muted">Members:</span> 
+        <br>
+        <a *ngFor="let member of members" routelink="#" class="member-info"> {{member.name}} <br></a>
+     </p>          
+  </div>
+</div>

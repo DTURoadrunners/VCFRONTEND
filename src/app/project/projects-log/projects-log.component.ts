@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PROJECTLOG } from '../../mock/mock-projectLog';
 
 @Component({
   selector: 'app-projects-log',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsLogComponent implements OnInit {
 
+  logdata = PROJECTLOG;
+  totalItems = this.logdata.length;
+  currentPage = 1;
+  smallnumPages = 0;
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.logdata.length)
+  }
+ 
+  setPage(pageNo: number): void {
+    this.currentPage = pageNo;
   }
 
 }
