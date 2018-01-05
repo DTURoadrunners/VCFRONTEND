@@ -41,6 +41,7 @@ import { ProjectsLogComponent } from './project/projects-log/projects-log.compon
 import { MyprofileComponent } from './profile/myprofile/myprofile.component';
 import { DocumenttableComponent } from './componenttype/documents/documenttable/documenttable.component';
 import { PagerService } from './service/pager.service';
+import { ComponentService } from './service/component.service';
 
 
 
@@ -84,7 +85,7 @@ import { PagerService } from './service/pager.service';
     PaginationModule.forRoot()
   ],
   exports: [BsDropdownModule],
-  providers: [AuthService, AuthGuard, CnAuthService, PagerService],
+  providers: [AuthService, AuthGuard, CnAuthService, PagerService, ComponentService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
