@@ -1,8 +1,16 @@
 <div class="container">
-  <div class="row cardview">
-      <div class="card-deck">
 
-        <div class="card" (click)="cardClick()" *ngFor="let project of projects">
+  <div class="row">
+      <button type="button" class="btn btn-primary pull-right">Primary</button>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="row">
+      
+      <div class="card-deck">
+      
+        <div class="card" (click)=cardClick(project.id) *ngFor="let project of projects" >
           <img class="card-img-top" src="http://lorempizza.com/300/400"><!--TODO get project image-->
           <div class="card-body">
             <h5 class="card-title">{{project.name}}</h5>
@@ -12,8 +20,15 @@
             <small class="text-muted">Last updated: 5 mins ago</small><!--TODO get timestamp-->
           </div>
         </div>
-
-      </div>
+     
+      
+ </div>
   </div>
+
+      
+
+
+
+  
 </div>
 

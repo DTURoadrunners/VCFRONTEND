@@ -15,8 +15,8 @@ export class MyprojectsComponent implements OnInit {
   ngOnInit() {
   }
 
-  cardClick() {
-    this.router.navigate(["/project"]);
+  cardClick(id: number) {
+    this.router.navigate(["/project/"+id]);
   }
 
 }
