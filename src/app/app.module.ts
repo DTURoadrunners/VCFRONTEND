@@ -95,11 +95,7 @@ import { ComponentService } from './service/component.service';
     BreadcrumbsModule
   ],
   exports: [BsDropdownModule],
-<<<<<<< HEAD
   providers: [AuthService, AuthGuard, CnAuthService, PagerService, BreadcrumpService, ProjectService],
-=======
-  providers: [AuthService, AuthGuard, CnAuthService, PagerService, ComponentService],
->>>>>>> b4ddeb664e48a51cd9be3bd9690189b519139701
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
