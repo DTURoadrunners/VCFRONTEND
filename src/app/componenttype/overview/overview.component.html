@@ -1,22 +1,49 @@
 <div class="col-9">
+  <button type="button" class="btn pull-right" (click)="openModal(editOverview)">Edit Overview</button>
   <h4 class="text-muted">Overview:</h4>
   <hr>
         <div class="media">
             
             <p>
-                <span class="text-muted">created by:</span>   <a href="#" class="text-info"> Thomas Bech</a> 
+                <!--Owner?-->
+                <span class="text-muted">Created by:</span>   <a href="#" class="text-info"> Someone</a> 
                 <br>
-                <span class="badge badge-primary">Wheel</span>
+                <!--Category-->
+                <span class="badge badge-primary">{{componenttype.category}}</span>
                 <br>
-                <br>
-                <span class="text-muted">storage: 200 boxes</span> 
+                <!--Storage-->
+                <span class="text-muted">Storage: {{componenttype.storage}}</span> 
             </p>
-          
-              
-          
         </div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum consectetur aliquid quod in, tempore facere assumenda. Quibusdam iste ab eligendi doloremque assumenda, officia quia consequatur molestias sed. Deserunt, ullam culpa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, expedita quaerat consequuntur dolorum at, vitae voluptate saepe cum beatae modi provident nulla omnis impedit velit animi exercitationem repellendus, sed illum!</p>
+    <!--Description-->
+    <p>{{componenttype.description}}</p>
 </div>
+
+<ng-template #editOverview>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Overview</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-control" [formGroup]="overviewForm" (ngSubmit)="onSubmit()">
+      <label>Name</label>
+      <input type="text" class="form-control" formControlName="name" value={{componenttype.name}} tooltip="Name of the componenttype" required>
+      <label>Descripton (Optional)</label>
+      <textarea type="text" class="form-control" formControlName="description" value={{componenttype.description}} tooltip="A description of the componenttype"></textarea>
+      <label>Category (Optional)</label>
+      <input type="text" class="form-control" formControlName="category" value={{componenttype.category}} tooltip="The category that the componenttype belongs to">
+      <label>Storage</label>
+      <input type="number" min="0" class="form-control" formControlName="storage" value={{componenttype.storage}} tooltip="The number of components in storage" required>
+    </form>
+
+    <button class="btn btn-success btn-block" type="submit">
+      <!--TODO: Edit component-->
+      Submit
+    </button>
+  </div>
+</ng-template>
 
 
 
@@ -25,6 +52,4 @@
     description
     category
     storage
-
-
 -->
