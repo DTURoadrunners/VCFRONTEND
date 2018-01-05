@@ -32,10 +32,10 @@
   </div>
   <div class="modal-body">
     <form class="form-control" [formGroup]="componentForm" (ngSubmit)="onVerifyCN()">
-      <label>Status</label>
-      <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" tooltip="Current status of the component" required autofocus></textarea>
+      <label>Status (Optional)</label>
+      <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" tooltip="Current status of the component" autofocus></textarea>
       <label>Comment (Optional)</label>
-      <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" tooltip="Any other comments about the component"></textarea>
+      <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" tooltip="Comments about the component"></textarea>
     </form>
 
     <button class="btn btn-success btn-block" type="submit"> <!--TODO: Create component-->

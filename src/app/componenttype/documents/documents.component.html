@@ -1,4 +1,7 @@
 <div class="col-9">
+  <button type="button" class="btn btn-success pull-right" (click)="openModal(uploadDocument)">Upload Document</button>
+  <h4 class="text-muted">Documents:</h4>
+  <hr>
 <!--
     <table class="table table-striped">
         <thead>
@@ -152,3 +155,20 @@
 
     
 </div>
+
+<ng-template #uploadDocument>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Upload Document</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label>Select a file to upload:</label>
+    <br>
+    <input type="file" class="uploadBtn">
+    <button class="btn btn-success btn-block" type="submit">
+      Upload
+    </button>
+  </div>
+</ng-template>
