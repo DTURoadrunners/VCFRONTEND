@@ -43,13 +43,9 @@ import { ProjectsLogComponent } from './project/projects-log/projects-log.compon
 import { MyprofileComponent } from './profile/myprofile/myprofile.component';
 import { DocumenttableComponent } from './componenttype/documents/documenttable/documenttable.component';
 import { PagerService } from './service/pager.service';
-<<<<<<< HEAD
 import { BreadcrumpComponent } from './app-navbar/breadcrump/breadcrump.component';
 import { BreadcrumpService } from './service/breadcrump.service';
 import { ProjectService } from './service/project.service';
-=======
-import { ComponentService } from './service/component.service';
->>>>>>> b4ddeb664e48a51cd9be3bd9690189b519139701
 
 
 
