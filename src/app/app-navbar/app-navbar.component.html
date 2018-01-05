@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light rounded mainnav" *ngIf="isLoggedIn$ | async"> 
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded mainnav fixed-top" *ngIf="isLoggedIn$ | async"> 
   <a class="navbar-brand" id="logo" routerLink="/myprojects"><img src="assets/dtu_logo.png" alt=""></a>
   <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed">
     <span class="navbar-toggler-icon"></span>
