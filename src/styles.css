@@ -1,2 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+    min-height: 75rem !important;
+    padding-top: 5.5rem !important;
+  }
