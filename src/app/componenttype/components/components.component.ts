@@ -11,7 +11,6 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
   styleUrls: ['./components.component.css']
 })
 export class ComponentsComponent implements OnInit {
-  alerts: any = [];
   components = COMPONENTS;
   modalRef: BsModalRef;
   componentForm: FormGroup; //call it with [formGroup]="componentForm" in the HTML
@@ -24,8 +23,8 @@ export class ComponentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.componentForm = this.fb.group({
-      status: ['', Validators.required],
-      comment: ['', Validators.required],
+      status: [''], //Optional
+      comment: [''], //Optional
     });
   }
 
