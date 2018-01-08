@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CnAuthService } from "../../service/cn-auth.service";
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { CampusnetUser } from "../../models/CampusnetUser";
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,8 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  cnVerified: boolean = false;
+  cnUser: CampusnetUser;
+  cnVerified: boolean;
   CNForm: FormGroup; //call it with [formGroup]="CNForm" in the HTML
   passwordForm: FormGroup; //call it with [formGroup]="passwordForm" in the HTML
 
@@ -35,7 +37,8 @@ export class RegisterComponent implements OnInit {
 
   onVerifyCN() {
     if (this.CNForm.valid) {
-      if (this.cnAuth.verify(this.CNForm.value.username, this.CNForm.value.password)) {
+      this.cnUser = this.cnAuth.verify(this.CNForm.value.username, this.CNForm.value.password);
+      if (this.cnUser != null) {
         this.cnVerified = true;
       }
       else {

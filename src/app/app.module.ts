@@ -49,7 +49,6 @@ import { ProjectService } from './service/project.service';
 import { ComponentService } from './service/component.service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

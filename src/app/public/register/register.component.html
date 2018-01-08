@@ -1,6 +1,6 @@
 <div class="row register">
   <div class="col-md-4 offset-md-4">
-    <div *ngIf="cnVerified;then changePassword else verify">
+    <div *ngIf="cnVerified; then changePassword else verify">
     </div>
   </div>
 </div>
@@ -28,9 +28,11 @@
     <img class="profile-img" src="assets/dtu_logo.png"
          alt="">
     <form class="form-signin" [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
-      <input type="text" class="form-control form-top" value="s154174" readonly />
-      <input type="text" class="form-control form-middle" value="s154174@student.dtu.dk" readonly />
-      <input type="text" class="form-control form-bottom" value="diploming." readonly />
+      <input type="text" class="form-control form-top" value={{cnUser.id}} readonly />
+      <input type="text" class="form-control form-middle" value={{cnUser.name}} readonly />
+      <input type="text" class="form-control form-middle" value={{cnUser.email}} readonly />
+      <input type="text" class="form-control form-middle" value={{cnUser.phone}} readonly />
+      <input type="text" class="form-control form-bottom" value={{cnUser.studyline}} readonly />
       <input type="password" class="form-control form-top" placeholder="New Password" formControlName="newPassword" required autofocus>
       <input type="password" class="form-control form-bottom" placeholder="Repeat Password" formControlName="repeatNewPassword" required>
 
