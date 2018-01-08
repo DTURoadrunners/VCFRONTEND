@@ -23,6 +23,7 @@ export class ProjectOverviewComponent implements OnInit {
 
   ngOnInit() {
     this.getProject();
+    
   }
 
 

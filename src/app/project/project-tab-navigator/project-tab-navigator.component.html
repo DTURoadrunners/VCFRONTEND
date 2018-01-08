@@ -12,7 +12,7 @@
         </li>
   
         <li class="nav-item">
-          <button (click)=selectComponents() type="button" class="btn  btn-light btn-sm btn-block" [class.btn-outline-secondary]="components == true"><i class="fa fa-file-text" aria-hidden="true"></i>  Components</button>
+          <button (click)=selectComponenttype() type="button" class="btn  btn-light btn-sm btn-block" [class.btn-outline-secondary]="componenttype == true"><i class="fa fa-file-text" aria-hidden="true"></i>  Componenttype</button>
         </li>
 
         <li class="nav-item">
@@ -25,7 +25,7 @@
 
     <main role="main" class="col-sm-6 ml-sm-auto col-md-10 pt-3">
 
-        <breadcrumb [allowBootstrap]="true"></breadcrumb>
+       
         
 
       <h2 class="text-muted">{{project.name}}</h2> <!--TODO: get componenttype name-->
@@ -38,11 +38,11 @@
           <app-project-memberlist></app-project-memberlist>
         </section>
 
-      <section *ngIf="components">
-        <app-project-components></app-project-components>
+      <section *ngIf="componenttype">
+        <app-project-componenttype></app-project-componenttype>
       </section>
 
-      <section class="row" *ngIf="log">
+      <section *ngIf="log">
           <app-projects-log></app-projects-log>
       </section>
   

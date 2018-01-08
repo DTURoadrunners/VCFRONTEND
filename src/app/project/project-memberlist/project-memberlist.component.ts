@@ -13,6 +13,7 @@ export class ProjectMemberlistComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+   
   }
 
 }

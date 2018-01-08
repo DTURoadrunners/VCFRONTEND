@@ -37,7 +37,6 @@ import { LogComponent } from './componenttype/log/log.component';
 import { ComponentsComponent } from './componenttype/components/components.component';
 import { ProjectTabNavigatorComponent } from './project/project-tab-navigator/project-tab-navigator.component';
 import { ProjectOverviewComponent } from './project/project-overview/project-overview.component';
-import { ProjectComponentsComponent } from './project/project-components/project-components.component';
 import { ProjectMemberlistComponent } from './project/project-memberlist/project-memberlist.component';
 import { ProjectsLogComponent } from './project/projects-log/projects-log.component';
 import { MyprofileComponent } from './profile/myprofile/myprofile.component';
@@ -46,6 +45,9 @@ import { PagerService } from './service/pager.service';
 import { BreadcrumpComponent } from './app-navbar/breadcrump/breadcrump.component';
 import { BreadcrumpService } from './service/breadcrump.service';
 import { ProjectService } from './service/project.service';
+import { ComponenttypeService } from './service/componenttype.service';
+import { ProjectComponenttypeComponent } from './project/project-componenttype/project-componenttype.component';
+import { SearchPipe } from './pipe/search.pipe';
 
 
 
@@ -66,12 +68,13 @@ import { ProjectService } from './service/project.service';
     ComponentsComponent,
     ProjectTabNavigatorComponent,
     ProjectOverviewComponent,
-    ProjectComponentsComponent,
     ProjectMemberlistComponent,
     ProjectsLogComponent,
     MyprofileComponent,
     DocumenttableComponent,
-    BreadcrumpComponent
+    BreadcrumpComponent,
+    ProjectComponenttypeComponent,
+    SearchPipe
 
   ],
   imports: [
@@ -91,7 +94,7 @@ import { ProjectService } from './service/project.service';
     BreadcrumbsModule
   ],
   exports: [BsDropdownModule],
-  providers: [AuthService, AuthGuard, CnAuthService, PagerService, BreadcrumpService, ProjectService],
+  providers: [AuthService, AuthGuard, CnAuthService, PagerService, BreadcrumpService, ProjectService, ComponenttypeService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
