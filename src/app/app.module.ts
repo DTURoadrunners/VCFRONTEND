@@ -48,6 +48,7 @@ import { ProjectService } from './service/project.service';
 import { ComponenttypeService } from './service/componenttype.service';
 import { ProjectComponenttypeComponent } from './project/project-componenttype/project-componenttype.component';
 import { SearchPipe } from './pipe/search.pipe';
+import { ComponentService } from "./service/component.service";
 
 
 @NgModule({
@@ -93,7 +94,7 @@ import { SearchPipe } from './pipe/search.pipe';
     BreadcrumbsModule
   ],
   exports: [BsDropdownModule],
-  providers: [AuthService, AuthGuard, CnAuthService, PagerService, BreadcrumpService, ProjectService, ComponenttypeService],
+  providers: [AuthService, AuthGuard, CnAuthService, PagerService, BreadcrumpService, ProjectService, ComponenttypeService, ComponentService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
