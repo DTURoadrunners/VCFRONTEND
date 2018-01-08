@@ -1,0 +1,25 @@
+<div class="col-9">
+
+       
+    <div class="input-group input-group-lg search_bar">
+        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+        <input type="text" class="form-control" placeholder="search..." aria-describedby="sizing-addon1" [(ngModel)]="searchText">
+    </div>
+
+
+
+    <div class="list-group">
+
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" 
+            *ngFor="let data of componenttypes | search : searchText"
+            routerLink="/project/{{projectid}}/componentype/{{data.id}}">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{data.name }}</h5>
+                <small class="text-muted"><span class="badge badge-secondary">{{data.category}}</span> </small>
+                
+            </div>
+            <p class="mb-1">{{data.description |  slice:0:180}}..</p>
+            <small class="text-muted">storage: {{data.storage}}</small>
+        </a>
+    </div>
+</div>

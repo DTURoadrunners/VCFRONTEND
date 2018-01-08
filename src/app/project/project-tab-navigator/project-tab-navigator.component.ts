@@ -15,7 +15,7 @@ export class ProjectTabNavigatorComponent implements OnInit {
   @Input() project: Project;
 
   overview: boolean = true;
-  components: boolean = false;
+  componenttype: boolean = false;
   memberlist: boolean = false;
   log: boolean = false;
 
@@ -29,19 +29,19 @@ export class ProjectTabNavigatorComponent implements OnInit {
     this.getProject();
   }
   selectOverview(): void {
-    this.overview = true; this.components = false; this.memberlist = false; this.log = false;
+    this.overview = true; this.componenttype = false; this.memberlist = false; this.log = false;
   }
 
-  selectComponents(): void {
-    this.overview = false; this.components = true; this.memberlist = false; this.log = false;
+  selectComponenttype(): void {
+    this.overview = false; this.componenttype = true; this.memberlist = false; this.log = false;
   }
 
   selectMemberlist(): void {
-    this.overview = false; this.components = false; this.memberlist = true; this.log = false;
+    this.overview = false; this.componenttype = false; this.memberlist = true; this.log = false;
   }
 
   selectLog(): void {
-    this.overview = false; this.components = false; this.memberlist = false; this.log = true;
+    this.overview = false; this.componenttype = false; this.memberlist = false; this.log = true;
   }
 
   getProject(): void{
