@@ -25,22 +25,22 @@
 
 <ng-template #newComponent>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">New Component</h4>
+    <h4 class="modal-title pull-left">New Component2</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <form class="form-control" [formGroup]="componentForm" (ngSubmit)="onVerifyCN()">
+    <form class="form-control" [formGroup]="componentForm" (ngSubmit)="onSubmit()">
       <label>Status (Optional)</label>
       <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" tooltip="Current status of the component" autofocus></textarea>
       <label>Comment (Optional)</label>
       <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" tooltip="Comments about the component"></textarea>
-    </form>
 
-    <button class="btn btn-success btn-block" type="submit"> <!--TODO: Create component-->
-      Create
-    </button>
+      <button class="btn btn-success btn-block" type="submit">
+        Create
+      </button>
+    </form>
   </div>
 </ng-template>
 
@@ -52,7 +52,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form class="form-control" [formGroup]="componentForm" (ngSubmit)="onVerifyCN()">
+    <form class="form-control" [formGroup]="componentForm" (ngSubmit)="onEditComponent()">
       <label>Status</label>
       <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" value={{selectedComponent.status}} tooltip="Current status of the component" required></textarea>
       <label>Comment</label>
@@ -75,7 +75,7 @@
   </div>
   <div class="modal-body">
     <p>The component will be deleted, but can be restored with a rollback</p>
-    <button class="btn btn-danger btn-block" type="submit">
+    <button class="btn btn-danger btn-block" type="submit" (click)="onDeleteComponent()">
       <!--TODO: Delete component-->
       Delete
     </button>
