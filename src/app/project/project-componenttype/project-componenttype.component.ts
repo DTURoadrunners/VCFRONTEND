@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-import { Componenttype } from '../../models/componentType';
+import { Componenttypes } from '../../models/componentTypes';
 import { ComponenttypeService }  from '../../service/componenttype.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { ComponenttypeService }  from '../../service/componenttype.service';
 })
 export class ProjectComponenttypeComponent implements OnInit {
 
-  componenttypes: Componenttype[];
+  componenttypes: Componenttypes[];
   projectid: string; // url params are always strings
 
   constructor(
