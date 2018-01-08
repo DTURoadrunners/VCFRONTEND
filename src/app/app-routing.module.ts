@@ -8,7 +8,7 @@ import { LoginComponent } from './public/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './public/register/register.component';
 import { OverviewComponent } from './componenttype/overview/overview.component';
-import { MyprojectsComponent } from './project/myprojects/myprojects.component';
+import { MyprojectsComponent } from './myprojects/myprojects.component';
 import { AboutComponent } from './public/about/about.component';
 import { TabNavigatorComponent } from './componenttype/tab-navigator/tab-navigator.component';
 import { ProjectTabNavigatorComponent } from './project/project-tab-navigator/project-tab-navigator.component';

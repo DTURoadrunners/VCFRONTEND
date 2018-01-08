@@ -1,8 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from "@angular/router";
-import { Project } from '../../models/project';
-import { ProjectService } from '../../service/project.service';
-import { PROJECTS } from "./../../mock/mock-projects";
+import { Project } from '../models/project';
+import { ProjectService } from '../service/project.service';
+import { PROJECTS } from "./../mock/mock-projects";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -51,10 +51,6 @@ export class MyprojectsComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-
-  /**
-   *  
-   */
   onSubmit() {
     if (this.projectForm.valid) {
       this.projectService.createProject(  

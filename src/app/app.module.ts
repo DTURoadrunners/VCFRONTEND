@@ -29,7 +29,7 @@ import { CnAuthService } from './service/cn-auth.service';
 
 import { OverviewComponent } from './componenttype/overview/overview.component';
 
-import { MyprojectsComponent } from './project/myprojects/myprojects.component';
+import { MyprojectsComponent } from './myprojects/myprojects.component';
 import { AboutComponent } from './public/about/about.component';
 import { TabNavigatorComponent } from './componenttype/tab-navigator/tab-navigator.component';
 import { DocumentsComponent } from './componenttype/documents/documents.component';
