@@ -45,13 +45,9 @@ import { PagerService } from './service/pager.service';
 import { BreadcrumpComponent } from './app-navbar/breadcrump/breadcrump.component';
 import { BreadcrumpService } from './service/breadcrump.service';
 import { ProjectService } from './service/project.service';
-<<<<<<< HEAD
 import { ComponenttypeService } from './service/componenttype.service';
 import { ProjectComponenttypeComponent } from './project/project-componenttype/project-componenttype.component';
 import { SearchPipe } from './pipe/search.pipe';
-=======
-import { ComponentService } from './service/component.service';
->>>>>>> e0d3ed2242cb913368b38ca280ae3c82ea8318cf
 
 
 
