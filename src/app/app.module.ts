@@ -46,6 +46,7 @@ import { PagerService } from './service/pager.service';
 import { BreadcrumpComponent } from './app-navbar/breadcrump/breadcrump.component';
 import { BreadcrumpService } from './service/breadcrump.service';
 import { ProjectService } from './service/project.service';
+import { ComponentService } from './service/component.service';
 
 
 
@@ -91,7 +92,7 @@ import { ProjectService } from './service/project.service';
     BreadcrumbsModule
   ],
   exports: [BsDropdownModule],
-  providers: [AuthService, AuthGuard, CnAuthService, PagerService, BreadcrumpService, ProjectService],
+  providers: [AuthService, AuthGuard, CnAuthService, PagerService, BreadcrumpService, ProjectService, ComponentService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }

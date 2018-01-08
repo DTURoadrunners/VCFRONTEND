@@ -14,15 +14,17 @@ export class ComponentService {
   }
 
   public getAll(componenttypeId: number): Observable<_Component[]> {
-    var components: _Component[];
+    var components: _Component[] = new Array<_Component>();
     for (var i = 0; i < COMPONENTS.length; i++){
-      components.push(COMPONENTS.find(component => component.id === componenttypeId));
+      if (COMPONENTS[i].componenttypeId == componenttypeId) {
+        components.push(COMPONENTS[i]);
+      }
     }
     return of(components);
   }
 
   public create(componenttypeId: number, status: string, comment: string): Observable<_Component[]> {
-    var component = { id: COMPONENTS.length, componenttypeId: componenttypeId, status: status, comment: comment, timestamp: new Date(Date.now()) };
+    var component = { id: COMPONENTS.length+1, componenttypeId: componenttypeId, status: status, comment: comment, timestamp: new Date(Date.now()) };
     COMPONENTS.push(component);
     return of(COMPONENTS);
   }
@@ -35,9 +37,10 @@ export class ComponentService {
   }
 
   public delete(id: number, componenttypeId: number): Observable<_Component[]> {
-    delete COMPONENTS[
-      COMPONENTS.findIndex(component => component.id === id && component.componenttypeId === componenttypeId)
-    ];
+    var index = COMPONENTS.findIndex(component => component.id === id && component.componenttypeId === componenttypeId);
+    if (index > -1){
+      COMPONENTS.splice(index, 1);
+    }
     return of(COMPONENTS);
   }
 }

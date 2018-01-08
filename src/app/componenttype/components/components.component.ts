@@ -38,37 +38,40 @@ export class ComponentsComponent implements OnInit {
   }
 
   getComponents(componentTypeId: number) {
-    this.componentService.getAll(1).subscribe(components => this.components = components);
+    this.componentService.getAll(1).subscribe(components => this.components = components); //TODO Get componenttype id from url
   }
   
-  onSubmit() {
-    console.log("CREATING COMPONENT");
+  onCreateComponent() {
     if (this.componentForm.valid) {
       this.componentService.create(
-        this.selectedComponent.componenttypeId,
+        1, //TODO Get componenttype id from url
         this.componentForm.value.status,
         this.componentForm.value.comment)
         .subscribe(components => this.components = components); //Assign retrieved data to variable
-      console.log(this.components.length);
+      this.modalRef.hide();
     }
   }
 
   onUpdateComponent() {
-    this.componentService.update(
-      this.selectedComponent.id,
-      this.selectedComponent.componenttypeId,
-      this.componentForm.value.status,
-      this.componentForm.value.comment)
-      .subscribe(components => this.components = components); //Assign retrieved data to variable
-    console.log(this.components.length);
+    if (this.componentForm.valid) {
+      this.componentService.update(
+        this.selectedComponent.id,
+        this.selectedComponent.componenttypeId,
+        this.componentForm.value.status,
+        this.componentForm.value.comment)
+        .subscribe(components => this.components = components); //Assign retrieved data to variable
+      this.modalRef.hide();
+    }
   }
 
-  onDeleteComponent() {
-    this.componentService.delete(
-      this.selectedComponent.id,
-      this.selectedComponent.componenttypeId)
-      .subscribe(components => this.components = components); //Assign retrieved data to variable
-    console.log(this.components.length);
+    onDeleteComponent() {
+      if (this.componentForm.valid) {
+        this.componentService.delete(
+          this.selectedComponent.id,
+          this.selectedComponent.componenttypeId)
+          .subscribe(components => this.components = components); //Assign retrieved data to variable
+        this.modalRef.hide();
+      }
   }
 
 }
