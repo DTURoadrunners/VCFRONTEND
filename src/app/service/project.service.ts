@@ -14,8 +14,8 @@ export class ProjectService {
   
   constructor() { }
 
-  getProject() {
-
+  getProject(id: number): Observable<Project> {
+    return of(PROJECTS.find(project => project.id === id));
   }
 
   getProjects(): Observable<Project[]>{
