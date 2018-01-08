@@ -12,6 +12,8 @@ import { ModalModule } from 'ngx-bootstrap/modal'; // load bootstrap modal
 import { TooltipModule } from 'ngx-bootstrap/tooltip'; // load bootstrap tooltop
 import { PaginationModule } from 'ngx-bootstrap/pagination'; // load bootstrap pagination
 
+import { BreadcrumbsModule } from "ng2-breadcrumbs"; // load breadcrumps
+
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // load to work with angularForms
 import { AppComponent } from './app.component';
@@ -41,7 +43,9 @@ import { ProjectsLogComponent } from './project/projects-log/projects-log.compon
 import { MyprofileComponent } from './profile/myprofile/myprofile.component';
 import { DocumenttableComponent } from './componenttype/documents/documenttable/documenttable.component';
 import { PagerService } from './service/pager.service';
-import { ComponentService } from './service/component.service';
+import { BreadcrumpComponent } from './app-navbar/breadcrump/breadcrump.component';
+import { BreadcrumpService } from './service/breadcrump.service';
+import { ProjectService } from './service/project.service';
 
 
 
@@ -66,7 +70,8 @@ import { ComponentService } from './service/component.service';
     ProjectMemberlistComponent,
     ProjectsLogComponent,
     MyprofileComponent,
-    DocumenttableComponent
+    DocumenttableComponent,
+    BreadcrumpComponent
 
   ],
   imports: [
@@ -82,10 +87,11 @@ import { ComponentService } from './service/component.service';
     AccordionModule.forRoot(),
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    BreadcrumbsModule
   ],
   exports: [BsDropdownModule],
-  providers: [AuthService, AuthGuard, CnAuthService, PagerService, ComponentService],
+  providers: [AuthService, AuthGuard, CnAuthService, PagerService, BreadcrumpService, ProjectService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }

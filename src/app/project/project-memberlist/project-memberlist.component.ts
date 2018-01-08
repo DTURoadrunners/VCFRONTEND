@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MEMBERS } from "./../../mock/mock-members";
+
 
 @Component({
   selector: 'app-project-memberlist',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-memberlist.component.css']
 })
 export class ProjectMemberlistComponent implements OnInit {
+  members = MEMBERS;
 
   constructor() { }
 

@@ -1,8 +1,17 @@
 <div class="container">
-  <div class="row cardview">
-      <div class="card-deck">
 
-        <div class="card" (click)="cardClick()" *ngFor="let project of projects">
+  <div class="row">
+      <button type="button" class="btn btn-primary pull-right" (click)="openModal(editProject)">Nyt project</button>
+      
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="row">
+      
+      <div class="card-deck">
+      
+        <div class="card" (click)=cardClick(project.id) *ngFor="let project of projects" >
           <img class="card-img-top" src="http://lorempizza.com/300/400"><!--TODO get project image-->
           <div class="card-body">
             <h5 class="card-title">{{project.name}}</h5>
@@ -12,8 +21,31 @@
             <small class="text-muted">Last updated: 5 mins ago</small><!--TODO get timestamp-->
           </div>
         </div>
-
-      </div>
-  </div>
+     
+      
+ </div>
+</div>  
 </div>
+
+<ng-template #editProject>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Create Project</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-control no-boarder" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <label>Title</label>
+      <input type="text" class="form-control" placeholder="Title..." formControlName="title"  tooltip="Title of the project" required />
+      <label>Description</label>
+      <textarea type="text" class="form-control" rows="6" placeholder="Description..." formControlName="description"  tooltip="Description of the project"></textarea>
+      <br>
+      <button class="btn  btn-primary btn-block" type="submit"> submit </button>
+    </form>
+
+    
+  
+  </div>
+</ng-template>
 

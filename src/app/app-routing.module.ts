@@ -22,11 +22,26 @@ const routes: Routes = [
   { path: 'link', component: LinkComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'componentype/overview', component: TabNavigatorComponent },
-  { path: 'myprojects', component : MyprojectsComponent },
+  { 
+    path: 'componentype/overview', 
+    component: TabNavigatorComponent,
+    data: {
+      breadcrumb: 'component'
+    }
+  },  
+  { 
+    path: 'myprojects', 
+    component : MyprojectsComponent, 
+  },
   { path: 'about', component : AboutComponent },
   { path: 'profile', component: MyprofileComponent },
-  { path: 'project', component : ProjectTabNavigatorComponent }
+  { 
+    path: 'project/:id', 
+    component : ProjectTabNavigatorComponent,
+    data: {
+      breadcrumb: 'project'
+    } 
+  }
 ];
 
 @NgModule({

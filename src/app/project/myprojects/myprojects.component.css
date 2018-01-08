@@ -1,9 +1,10 @@
 .card{
-    margin-left: 10px;
-    margin-right: 10px;
     cursor: pointer;
+   
+  
 }
 
-.cardview{
-    margin-top: 25px;
+
+.no-boarder{
+    border: none !important;
 }

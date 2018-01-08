@@ -24,7 +24,11 @@
     </nav>
 
     <main role="main" class="col-sm-6 ml-sm-auto col-md-10 pt-3">
-      <h2 class="text-muted">Lorem Ipsum</h2> <!--TODO: get componenttype name-->
+
+        <breadcrumb [allowBootstrap]="true"></breadcrumb>
+        
+
+      <h2 class="text-muted">{{project.name}}</h2> <!--TODO: get componenttype name-->
 
       <section class="row" *ngIf="overview">
           <app-project-overview></app-project-overview>  
