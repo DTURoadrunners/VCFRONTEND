@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { 
-    path: 'componentype/overview', 
+    path: 'project/:projectid/componentype/:componentypeid', 
     component: TabNavigatorComponent,
     data: {
       breadcrumb: 'component'
