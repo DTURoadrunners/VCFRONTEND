@@ -45,6 +45,9 @@ export class ProjectComponenttypeComponent implements OnInit {
     private route: ActivatedRoute,
     private modalService: BsModalService // modal service from bootstrap
   ) {
+    /**
+     * init the form inside the constructor 
+     */
     this.formCompnenttype = this.fb.group({
       name:         ['', Validators.required],
       description:  ['', Validators.required],
@@ -72,7 +75,10 @@ export class ProjectComponenttypeComponent implements OnInit {
     this.getCategories();
   }
 
-
+  /**
+   * create category from the categoryService 
+   * subcribe on the observerable object
+   */
   createCategory(): void{
     this.categoryService.createCategory(this.formCompnenttype.value.category).subscribe(categories => this.categories = categories);
     console.log(this.categories);
@@ -95,14 +101,14 @@ export class ProjectComponenttypeComponent implements OnInit {
   }
 
   /**
-   * 
+   * subscribe to the categories from the categoryService
    */
   getCategories(): void{
     this.categoryService.getCategories().subscribe(categories => this.categories = categories);
   }
 
   /**
-   * 
+   * is being called in the form on the submit, it will create componenttypes from the componenttypeService
    */
   createComponenttype(): void{
     if(this.formCompnenttype.valid){
