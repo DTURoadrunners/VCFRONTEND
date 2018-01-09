@@ -52,6 +52,7 @@ import { ComponentService } from "./service/component.service";
 import { CategoryService } from './service/category.service';
 import { DocumentService } from './service/document.service';
 import { ByteConverterPipe } from './pipe/byte-converter.pipe';
+import { LogService } from './service/log.service';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { ByteConverterPipe } from './pipe/byte-converter.pipe';
     ComponenttypeService,
     ComponentService,
     CategoryService,
-    DocumentService],
+    DocumentService,
+    LogService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }

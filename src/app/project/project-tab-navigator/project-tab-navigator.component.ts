@@ -2,8 +2,13 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+// project
 import { Project } from '../../models/project';
 import { ProjectService } from '../../service/project.service';
+
+// project log
+import { ProjectLog } from '../../models/log/project-log';
+import { LogService } from '../../service/log.service';
 
 @Component({
   selector: 'app-project-tab-navigator',
@@ -13,6 +18,7 @@ import { ProjectService } from '../../service/project.service';
 export class ProjectTabNavigatorComponent implements OnInit {
 
   @Input() project: Project;
+  projectLog: ProjectLog[];
 
   overview: boolean = true;
   componenttype: boolean = false;
@@ -21,12 +27,14 @@ export class ProjectTabNavigatorComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private logService: LogService,
     private projectService: ProjectService,
     private location: Location
   ) { }
 
   ngOnInit() {
     this.getProject();
+    this.getLatestLog();
   }
   selectOverview(): void {
     this.overview = true; this.componenttype = false; this.memberlist = false; this.log = false;
@@ -47,6 +55,10 @@ export class ProjectTabNavigatorComponent implements OnInit {
   getProject(): void{
     const id = +this.route.snapshot.paramMap.get('id');
     this.projectService.getProject(id).subscribe(project => this.project = project);
+  }
+
+  getLatestLog(): void{
+    this.logService.getLatestProjectLog().subscribe(projectLog => this.projectLog = projectLog);
   }
 
 }
