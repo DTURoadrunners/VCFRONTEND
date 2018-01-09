@@ -5,6 +5,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ComponentService } from './../../service/component.service'
 import { _Component } from "../../models/component";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-components',
@@ -20,7 +21,8 @@ export class ComponentsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,         // inject the formbuilder
     private modalService: BsModalService,
-    private componentService: ComponentService
+    private componentService: ComponentService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class ComponentsComponent implements OnInit {
   onCreateComponent() {
     if (this.componentForm.valid) {
       this.componentService.create(
-        1, //TODO Get componenttype id from url
+        Number.parseInt(this.route.snapshot.paramMap.get('id')), //Get id from url
         this.componentForm.value.status,
         this.componentForm.value.comment)
         .subscribe(components => this.components = components); //Assign retrieved data to variable

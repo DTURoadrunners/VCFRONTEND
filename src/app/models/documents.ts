@@ -1,7 +1,8 @@
 export class Documents {
-    name: string;
-    date: Date;
-    size: string;
-    isFolder: boolean;  
-    documents: Documents[];
+  id: number;
+  componenttypeId: number;
+  name: string;
+  size: number;
+  type: string;
+  date: Date;
 }

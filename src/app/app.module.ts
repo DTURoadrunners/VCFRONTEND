@@ -41,7 +41,6 @@ import { ProjectOverviewComponent } from './project/project-overview/project-ove
 import { ProjectMemberlistComponent } from './project/project-memberlist/project-memberlist.component';
 import { ProjectsLogComponent } from './project/projects-log/projects-log.component';
 import { MyprofileComponent } from './profile/myprofile/myprofile.component';
-import { DocumenttableComponent } from './componenttype/documents/documenttable/documenttable.component';
 import { PagerService } from './service/pager.service';
 import { BreadcrumpComponent } from './app-navbar/breadcrump/breadcrump.component';
 import { BreadcrumpService } from './service/breadcrump.service';
@@ -51,6 +50,8 @@ import { ProjectComponenttypeComponent } from './project/project-componenttype/p
 import { SearchPipe } from './pipe/search.pipe';
 import { ComponentService } from "./service/component.service";
 import { CategoryService } from './service/category.service';
+import { DocumentService } from './service/document.service';
+import { ByteConverterPipe } from './pipe/byte-converter.pipe';
 
 
 @NgModule({
@@ -73,10 +74,10 @@ import { CategoryService } from './service/category.service';
     ProjectMemberlistComponent,
     ProjectsLogComponent,
     MyprofileComponent,
-    DocumenttableComponent,
     BreadcrumpComponent,
     ProjectComponenttypeComponent,
-    SearchPipe
+    SearchPipe,
+    ByteConverterPipe
 
   ],
   imports: [
@@ -106,7 +107,8 @@ import { CategoryService } from './service/category.service';
     ProjectService,
     ComponenttypeService,
     ComponentService,
-    CategoryService],
+    CategoryService,
+    DocumentService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
