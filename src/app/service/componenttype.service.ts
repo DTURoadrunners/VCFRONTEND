@@ -5,7 +5,7 @@ import { of } from 'rxjs/observable/of';
 
 // import mock and model
 import { COMPONENTTYPES } from '../mock/mock-componenttypes';
-import { Componenttype } from '../models/componentType';
+import { Componenttypes } from '../models/componentTypes';
 
 @Injectable()
 export class ComponenttypeService {
@@ -13,11 +13,11 @@ export class ComponenttypeService {
 
   constructor() { }
 
-  getComponenttype(id: number):  Observable<Componenttype>{
+  getComponenttype(id: number):  Observable<Componenttypes>{
     return of(COMPONENTTYPES.find(componenttype => componenttype.id === id));
   }
 
-  getComponenttypes(): Observable<Componenttype[]>{
+  getComponenttypes(): Observable<Componenttypes[]>{
     return of(COMPONENTTYPES);
   }
 

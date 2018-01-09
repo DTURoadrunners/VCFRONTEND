@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { Componenttypes } from '../../models/componenttypes';
+import { ComponenttypeService } from '../../service/componenttype.service';
+
+
 
 @Component({
   selector: 'app-tab-navigator',
@@ -6,15 +13,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab-navigator.component.css']
 })
 export class TabNavigatorComponent implements OnInit {
+
+
+  @Input() componenttype: Componenttypes;
+
+
   overview: boolean = true;
   components: boolean = false;
   documents: boolean = false;
   log: boolean = false;
 
-  constructor() {
+  constructor(
+    private route: ActivatedRoute,
+    private componenttypeService: ComponenttypeService,
+    private location: Location
+  ) {
   }
 
   ngOnInit() {
+    this.getComponenttype();
   }
 
 
@@ -33,4 +50,13 @@ export class TabNavigatorComponent implements OnInit {
   selectLog(): void {
     this.overview = false; this.components = false; this.documents = false; this.log = true;
   }
+
+  
+  getComponenttype(): void{
+    const id = +this.route.snapshot.paramMap.get('componentypeid');
+    this.componenttypeService.getComponenttype(id).subscribe(componenttype=> this.componenttype = componenttype);
+  }
+
+
+  
 }

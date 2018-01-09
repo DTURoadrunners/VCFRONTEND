@@ -1,9 +1,13 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { COMPONENTTYPES } from './../../mock/mock-componenttypes';
+
+
+import { Componenttypes } from '../../models/componenttypes';
+
 
 @Component({
   selector: 'app-overview',
@@ -11,10 +15,14 @@ import { COMPONENTTYPES } from './../../mock/mock-componenttypes';
   styleUrls: ['./overview.component.css']
 })
 export class OverviewComponent implements OnInit {
+
+  @Input('model') componenttype: Componenttypes;
+
   alerts: any = [];
-  componenttype = COMPONENTTYPES[0];
   modalRef: BsModalRef;
   componentForm: FormGroup; //call it with [formGroup]="componentForm" in the HTML
+
+
 
   constructor(
     private fb: FormBuilder, // inject the formbuilder
@@ -28,6 +36,7 @@ export class OverviewComponent implements OnInit {
       category: [''], //Optional
       storage: [0, Validators.required],
     });
+   
   }
 
   openModal(template: TemplateRef<any>, component: Component) {

@@ -4,7 +4,6 @@ import { Location } from '@angular/common';
 
 
 import { Project } from '../../models/project';
-import { ProjectService } from '../../service/project.service';
 
 @Component({
   selector: 'app-project-overview',
@@ -13,23 +12,14 @@ import { ProjectService } from '../../service/project.service';
 })
 export class ProjectOverviewComponent implements OnInit {
 
-  @Input() project: Project;
+  @Input('model') project: Project;
 
   constructor(
-    private route: ActivatedRoute,
-    private projectService: ProjectService,
-    private location: Location
   ) { }
 
   ngOnInit() {
-    this.getProject();
+    console.log(this.project);
     
-  }
-
-
-  getProject(): void{
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.projectService.getProject(id).subscribe(project => this.project = project);
   }
 
 }

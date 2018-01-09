@@ -31,7 +31,7 @@
       <h2 class="text-muted">{{project.name}}</h2> <!--TODO: get componenttype name-->
 
       <section class="row" *ngIf="overview">
-          <app-project-overview></app-project-overview>  
+          <app-project-overview [model]="project"></app-project-overview>  
       </section> 
       
       <section class="row" *ngIf="memberlist">

@@ -27,10 +27,10 @@
 
        
 
-      <h2 class="text-muted">Lorem Ipsum</h2> <!--TODO: get componenttype name-->
+      <h2 class="text-muted">{{componenttype.name}}</h2> <!--TODO: get componenttype name-->
 
       <section class="row" *ngIf="overview">
-        <app-overview>
+        <app-overview [model]="componenttype">
         </app-overview>
       </section>
 
