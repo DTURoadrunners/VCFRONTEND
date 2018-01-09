@@ -49,6 +49,7 @@ import { ComponenttypeService } from './service/componenttype.service';
 import { ProjectComponenttypeComponent } from './project/project-componenttype/project-componenttype.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { ComponentService } from "./service/component.service";
+import { DocumentService } from './service/document.service';
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import { ComponentService } from "./service/component.service";
     BreadcrumpService,
     ProjectService,
     ComponenttypeService,
-    ComponentService],
+    ComponentService,
+    DocumentService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }

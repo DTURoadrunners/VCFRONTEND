@@ -2,158 +2,8 @@
   <button type="button" class="btn btn-success pull-right" (click)="openModal(uploadDocument)">Upload Document</button>
   <h4 class="text-muted">Documents:</h4>
   <hr>
-<!--
-    <table class="table table-striped">
-        <thead>
-          <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Date Modified</th>
-              <th>Size</th>
-              <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-            <td>
-              <span style="margin-left:0px"></span>
-              <i class="fa fa-chevron-down text-muted" aria-hidden="true"></i>
-              <i class="fa fa-folder-open" aria-hidden="true"></i> 
-              folder 1
-            </td>
-            <td>1 december 2017</td>
-            <td></td>
-            <td>Folder</td>
-          </tr>
-          <tr>
-              <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-              <td>
-                <span style="margin-left:16px"></span>
-                <i class="fa fa-chevron-down text-muted" aria-hidden="true"></i>
-                <i class="fa fa-folder-open" aria-hidden="true"></i> 
-                folder 2
-              </td>
-              <td>1 december 2017</td>
-              <td></td>
-              <td>Folder</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                <td>
-                  <span style="margin-left:32px"></span>
-                  <i class="fa fa-chevron-down text-muted" aria-hidden="true"></i>
-                  <i class="fa fa-folder-open" aria-hidden="true"></i> 
-                  folder 3
-                </td>
-                <td>1 december 2017</td>
-                <td></td>
-                <td>Folder</td>
-              </tr>
 
-              <tr>
-                  <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                  <td>
-                    <span style="margin-left:48px"></span>
-                   
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                    <a href="" class="text-info"> example file</a> 
-                  </td>
-                  <td>1 december 2017</td>
-                  <td>56 KB</td>
-                  <td>math.mb</td>
-                </tr>
-
-              <tr>
-                  <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                  <td>
-                    <span style="margin-left:0px"></span>
-                    <i class="fa fa-chevron-right text-muted " aria-hidden="true"></i>
-                    <i class="fa fa-folder" aria-hidden="true"></i>
-                    folder 4
-                  </td>
-                  <td>1 december 2017</td>
-                  <td></td>
-                  <td>Folder</td>
-                </tr>
-        </tbody>
-      </table>
-
-
-      <br>
-      <div class="clearfix"></div>
-    -->  
-    <!--
-    <table class="table table-striped">
-        <thead>
-          <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Date Modified</th>
-              <th>Size</th>
-              <th>Type</th>
-          </tr>
-        </thead>
-        <tr *ngFor="let item of documents">
-            <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-            <td>
-              <span style="margin-left:0px"></span>
-              <i *ngIf="item.isFolder" class="fa fa-chevron-down text-muted" aria-hidden="true"></i>
-              <i *ngIf="item.isFolder"  class="fa fa-folder-open" aria-hidden="true"></i> 
-              <i *ngIf="!item.isFolder"  class="fa fa-file" aria-hidden="true"></i> 
-              
-                <span *ngIf="item.isFolder"> {{ item.name }}</span>
-                <a *ngIf="!item.isFolder" href="" class="text-info"> {{ item.name }}</a> 
-              
-              
-             
-            </td>
-            <td>{{ item.date | date: 'mediumDate'}}</td>
-            <td> <span *ngIf="!item.isFolder" >{{item.size}}</span> </td>
-            <td>
-                <span *ngIf="item.isFolder" >Folder</span> 
-                <span *ngIf="!item.isFolder" >File</span> 
-            </td>
-           
-          </tr>
-          
-         
-      </tbody>
-    </table>
-
-  -->
-<!--
-  <table class="table table-striped">
-      <thead>
-        <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Date Modified</th>
-            <th>Size</th>
-            <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-              <td>
-                <span style="margin-left:0px"></span>
-                <i class="fa fa-chevron-down text-muted" aria-hidden="true"></i>
-                <i class="fa fa-folder-open" aria-hidden="true"></i> 
-                folder 1
-              </td>
-              <td>1 december 2017</td>
-              <td></td>
-              <td>Folder</td>
-            </tr>
-        <app-documenttable [documents]="mydocuments"></app-documenttable>
-      </tbody>
-  </table>
-
--->
   <app-documenttable [documents]="mydocuments"></app-documenttable>
-
-    
 </div>
 
 <ng-template #uploadDocument>
@@ -164,11 +14,31 @@
     </button>
   </div>
   <div class="modal-body">
+    Create Folder: <input type="checkbox" [(ngModel)]="checkboxIsFolder">
+    <div  *ngIf="checkboxIsFolder; then folderTemplate else documentTemplate "></div>
+  </div>
+</ng-template>
+
+<ng-template #documentTemplate>
+  <form class="form-control" [formGroup]="documentForm" (ngSubmit)="onUploadDocument()">
+    <label>Title</label>
+    <input type="text" class="form-control" placeholder="Title..." formControlName="title" tooltip="The filename displayed" autofocus required>
     <label>Select a file to upload:</label>
     <br>
-    <input type="file" class="uploadBtn">
+    <input type="file" class="uploadBtn" formControlName="file" tooltip="The file to be uploaded">
+
     <button class="btn btn-success btn-block" type="submit">
       Upload
     </button>
-  </div>
+  </form>
+</ng-template>
+
+<ng-template #folderTemplate>
+  <form class="form-control" [formGroup]="folderForm" (ngSubmit)="onCreateFolder()">
+    <label>Title</label>
+    <input type="text" class="form-control" placeholder="Title..." formControlName="title" tooltip="The name of the folder" autofocus required>
+    <button class="btn btn-success btn-block" type="submit">
+      Create
+    </button>
+  </form>
 </ng-template>

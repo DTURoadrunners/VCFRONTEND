@@ -24,7 +24,12 @@ export class ComponentService {
   }
 
   public create(componenttypeId: number, status: string, comment: string): Observable<_Component[]> {
-    var component = { id: COMPONENTS.length+1, componenttypeId: componenttypeId, status: status, comment: comment, timestamp: new Date(Date.now()) };
+    var component = {
+      id: COMPONENTS.length + 1,
+      componenttypeId: componenttypeId,
+      status: status, comment: comment,
+      timestamp: new Date(Date.now())
+    };
     COMPONENTS.push(component);
     return of(COMPONENTS);
   }
