@@ -3,7 +3,31 @@
   <h4 class="text-muted">Documents:</h4>
   <hr>
 
-  <app-documenttable [documents]="mydocuments"></app-documenttable>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Date Modified</th>
+        <th>Size</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let document of mydocuments">
+        <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
+        <td>
+          <i class="fa fa-file" aria-hidden="true"></i>
+          <a href="" class="text-info"> {{document.name}}</a><!--Link to url with file id-->
+        </td>
+        <td>{{document.date | date: 'mediumDate'}}</td>
+        <td>{{document.size | byteConverter}}</td>
+        <td>{{document.type}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
 </div>
 
 <ng-template #uploadDocument>
@@ -14,31 +38,16 @@
     </button>
   </div>
   <div class="modal-body">
-    Create Folder: <input type="checkbox" [(ngModel)]="checkboxIsFolder">
-    <div  *ngIf="checkboxIsFolder; then folderTemplate else documentTemplate "></div>
+    <form class="form-control" [formGroup]="documentForm" (ngSubmit)="onUploadDocument()">
+      <label>Title</label>
+      <input type="text" class="form-control" placeholder="Title..." formControlName="title" tooltip="The displayed filename" autofocus required>
+      <label>Select a file to upload:</label>
+      <br>
+      <input type="file" class="uploadBtn" formControlName="file" tooltip="The file to be uploaded">
+
+      <button class="btn btn-success btn-block" type="submit">
+        Upload
+      </button>
+    </form>
   </div>
-</ng-template>
-
-<ng-template #documentTemplate>
-  <form class="form-control" [formGroup]="documentForm" (ngSubmit)="onUploadDocument()">
-    <label>Title</label>
-    <input type="text" class="form-control" placeholder="Title..." formControlName="title" tooltip="The filename displayed" autofocus required>
-    <label>Select a file to upload:</label>
-    <br>
-    <input type="file" class="uploadBtn" formControlName="file" tooltip="The file to be uploaded">
-
-    <button class="btn btn-success btn-block" type="submit">
-      Upload
-    </button>
-  </form>
-</ng-template>
-
-<ng-template #folderTemplate>
-  <form class="form-control" [formGroup]="folderForm" (ngSubmit)="onCreateFolder()">
-    <label>Title</label>
-    <input type="text" class="form-control" placeholder="Title..." formControlName="title" tooltip="The name of the folder" autofocus required>
-    <button class="btn btn-success btn-block" type="submit">
-      Create
-    </button>
-  </form>
 </ng-template>

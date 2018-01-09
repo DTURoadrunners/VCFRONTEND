@@ -15,7 +15,6 @@ export class DocumentsComponent implements OnInit {
 
   modalRef: BsModalRef;
   documentForm: FormGroup;
-  folderForm: FormGroup;
 
   mydocuments = DOCUMENTS;
 
@@ -31,9 +30,6 @@ export class DocumentsComponent implements OnInit {
       title: ['', Validators.required],
       file: ['', Validators.required]
     });
-    this.folderForm = this.fb.group({
-      title: ['', Validators.required],
-    });
   }
 
   openModal(template: TemplateRef<any>) {
@@ -45,23 +41,7 @@ export class DocumentsComponent implements OnInit {
       this.documentService.createDocument(
         1,
         this.documentForm.value.title,
-        this.documentForm.value.file,
-        false,
-        null
-      )
-        .subscribe(documents => this.mydocuments = documents); //Assign retrieved data to variable
-      this.modalRef.hide();
-    }
-  }
-  
-  onCreateFolder() {
-    if (this.folderForm.valid) {
-      this.documentService.createDocument(
-        1,
-        this.folderForm.value.title,
-        null,
-        true,
-        null
+        this.documentForm.value.file
       )
         .subscribe(documents => this.mydocuments = documents); //Assign retrieved data to variable
       this.modalRef.hide();

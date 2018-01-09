@@ -50,6 +50,7 @@ import { ProjectComponenttypeComponent } from './project/project-componenttype/p
 import { SearchPipe } from './pipe/search.pipe';
 import { ComponentService } from "./service/component.service";
 import { DocumentService } from './service/document.service';
+import { ByteConverterPipe } from './pipe/byte-converter.pipe';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { DocumentService } from './service/document.service';
     DocumenttableComponent,
     BreadcrumpComponent,
     ProjectComponenttypeComponent,
-    SearchPipe
+    SearchPipe,
+    ByteConverterPipe
 
   ],
   imports: [
