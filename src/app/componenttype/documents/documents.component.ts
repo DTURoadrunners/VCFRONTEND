@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DOCUMENTS } from '../../mock/mock-documents'; 
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { DocumentService } from './../../service/document.service'
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -21,7 +22,8 @@ export class DocumentsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,         // inject the formbuilder
     private modalService: BsModalService,
-    private documentService: DocumentService
+    private documentService: DocumentService,
+    private route: ActivatedRoute,
   ) { 
   }
 
@@ -39,7 +41,7 @@ export class DocumentsComponent implements OnInit {
   onUploadComponent() {
     if (this.documentForm.valid) {
       this.documentService.createDocument(
-        1,
+        Number.parseInt(this.route.snapshot.paramMap.get('id')), //Get id from url
         this.documentForm.value.title,
         this.documentForm.value.file
       )
