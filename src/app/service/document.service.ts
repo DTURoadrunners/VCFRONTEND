@@ -54,7 +54,7 @@ export class DocumentService {
     return of(DOCUMENTS);
   }
 
-  downloadDocument(documentId : number) {
-
+  downloadFile(documentId : number) {
+    //TODO: Implement
   }
 }

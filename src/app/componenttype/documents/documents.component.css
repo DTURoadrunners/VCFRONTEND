@@ -1,3 +1,7 @@
 .uploadBtn {
   padding-bottom: 10px;
 }
+
+.text-info {
+  cursor: pointer;
+}

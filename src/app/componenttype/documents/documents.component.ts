@@ -47,4 +47,8 @@ export class DocumentsComponent implements OnInit {
       this.modalRef.hide();
     }
   }
+
+  onDownloadFile(documentId: number) {
+    this.documentService.downloadFile(documentId);
+  }
 }

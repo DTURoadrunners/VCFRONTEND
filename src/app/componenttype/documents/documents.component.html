@@ -18,7 +18,7 @@
         <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
         <td>
           <i class="fa fa-file" aria-hidden="true"></i>
-          <a href="" class="text-info"> {{document.name}}</a><!--Link to url with file id-->
+          <a class="text-info" (click)="onDownloadFile(document.id)"> {{document.name}}</a>
         </td>
         <td>{{document.date | date: 'mediumDate'}}</td>
         <td>{{document.size | byteConverter}}</td>
