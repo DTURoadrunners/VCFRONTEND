@@ -21,5 +21,16 @@ export class ComponenttypeService {
     return of(COMPONENTTYPES);
   }
 
+  createComponenttype(name: string, description: string, category: string, storage: number): Observable<Componenttypes[]>{
+    var componenttype = {
+      id: COMPONENTTYPES.length+1,
+      name: name,
+      description: description,
+      category: category,
+      storage: storage
+    };
 
+    COMPONENTTYPES.push(componenttype);
+    return of(COMPONENTTYPES); 
+  }
 }
