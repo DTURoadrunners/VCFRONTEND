@@ -1,146 +1,33 @@
 <h5 class="text-muted">Log:</h5>
 <hr>
-<table class="table table-hover">
+<table class="table table-hover cursor-pointer">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Submitter</th>
-      <th scope="col">Timestamp</th>
-      <th scope="col">Comment</th>
-      <th scope="col">Event</th>
-      <th scope="col">Project</th>
+        <th scope="col">#</th>
+        <th scope="col">Submitter</th>
+        <th scope="col">Timestamp</th>
+        <th scope="col">Comment</th>
+        <th scope="col">Event</th>
     </tr>
   </thead>
   <tbody>
 
-    <tr>
-      <th scope="row">1</th>
-      <td>Sebastian Champ</td>
-      <td>21 januar 2017 - 23:40</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-info">Rollback</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Mark Otto</td>
-      <td>24 december 2017 - 13:30</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-danger">Deleted</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>John Doe</td>
-      <td>22 december 2017 - 09:00</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-success">Created</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Sebastian Champ</td>
-      <td>21 januar 2017 - 23:40</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-info">Rollback</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Mark Otto</td>
-      <td>24 december 2017 - 13:30</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-danger">Deleted</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>John Doe</td>
-      <td>22 december 2017 - 09:00</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-success">Created</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>Sebastian Champ</td>
-      <td>21 januar 2017 - 23:40</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-info">Rollback</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td>Mark Otto</td>
-      <td>24 december 2017 - 13:30</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-danger">Deleted</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">9</th>
-      <td>John Doe</td>
-      <td>22 december 2017 - 09:00</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-success">Created</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">10</th>
-      <td>Sebastian Champ</td>
-      <td>21 januar 2017 - 23:40</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-info">Rollback</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">11</th>
-      <td>John Doe</td>
-      <td>22 december 2017 - 09:00</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-success">Created</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">12</th>
-      <td>Sebastian Champ</td>
-      <td>21 januar 2017 - 23:40</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-info">Rollback</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">13</th>
-      <td>John Doe</td>
-      <td>22 december 2017 - 09:00</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-success">Created</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">14</th>
-      <td>Sebastian Champ</td>
-      <td>21 januar 2017 - 23:40</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-info">Rollback</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">15</th>
-      <td>John Doe</td>
-      <td>22 december 2017 - 09:00</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-success">Created</span></td>
-      <td>Økobil</td>
-    </tr>
-    <tr>
-      <th scope="row">16</th>
-      <td>Sebastian Champ</td>
-      <td>21 januar 2017 - 23:40</td>
-      <td>This is a comment</td>
-      <td><span class="badge badge-info">Rollback</span></td>
-      <td>Økobil</td>
-    </tr>
+      <tr *ngFor="let data of logdata" >
+          <th scope="row" (click)="openModal(logmodal, data)">{{data.id}}</th>
+          <td (click)="openModal(logmodal, data)">{{data.submitter}}</td>
+          <td (click)="openModal(logmodal, data)">{{data.timestamp  | date: 'mediumDate'}}</td>
+          <td (click)="openModal(logmodal, data)">{{data.comment | stringlength: 50}}</td>
+          <td (click)="openModal(logmodal, data)">
+            <span class="badge badge-success" *ngIf="data.logtype=='created'">Created</span>
+            <span class="badge badge-danger" *ngIf="data.logtype=='deleted'">Deleted</span>
+            <span class="badge badge-info" *ngIf="data.logtype=='rollback'">Rollback</span>
+            <span class="badge badge-primary" *ngIf="data.logtype=='updated'">Updated</span>
+          </td>
+        </tr>
   </tbody>
 </table>
 
+
+<ng-template #logmodal>
+    <logmodal [log]="selectedProjectLog" [logModal]="modalRef"></logmodal>
+  </ng-template>

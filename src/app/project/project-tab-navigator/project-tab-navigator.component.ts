@@ -28,7 +28,7 @@ export class ProjectTabNavigatorComponent implements OnInit {
   componenttype: boolean = false;
   memberlist: boolean = false;
   log: boolean = false;
-  selectedProject: Project;
+  selectedProjectLog: ProjectLog;
 
   constructor(
     private route: ActivatedRoute,
@@ -66,9 +66,9 @@ export class ProjectTabNavigatorComponent implements OnInit {
     this.logService.getLatestProjectLog().subscribe(projectLog => this.projectLog = projectLog);
   }
 
-  openModal(template: TemplateRef<any>, projectlog: Project) {
+  openModal(template: TemplateRef<any>, projectlog: ProjectLog) {
     this.modalRef = this.modalService.show(template);
-    this.selectedProject = projectlog;
+    this.selectedProjectLog = projectlog;
   }
 
 }

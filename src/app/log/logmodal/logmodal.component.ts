@@ -22,7 +22,7 @@ export class LogmodalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+
   }
 
   hideChildModal(): void {

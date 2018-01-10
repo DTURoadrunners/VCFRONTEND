@@ -30,11 +30,11 @@
 
       <h2 class="text-muted">{{project.name}}</h2> <!--TODO: get componenttype name-->
 
-      <section class="row" *ngIf="overview">
+      <section  *ngIf="overview">
           <app-project-overview [model]="project"></app-project-overview>  
       </section> 
       
-      <section class="row" *ngIf="memberlist">
+      <section  *ngIf="memberlist">
           <app-project-memberlist></app-project-memberlist>
         </section>
 
@@ -93,6 +93,6 @@
 </div>
 
 <ng-template #logmodal>
-  <logmodal [log]="selectedProject" [logModal]="modalRef"></logmodal>
+  <logmodal [log]="selectedProjectLog" [logModal]="modalRef"></logmodal>
 </ng-template>
 

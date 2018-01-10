@@ -15,6 +15,10 @@ export class LogService {
     return of(PROJECTLOG.slice(PROJECTLOG.length-7, PROJECTLOG.length));
   }
 
+  getProjectLogs(): Observable<ProjectLog[]>{
+    return of(PROJECTLOG);
+  }
+
   getProjectLog(id: number): Observable<ProjectLog>{
     return of(PROJECTLOG.find(projectlog => projectlog.id === id));
   }
