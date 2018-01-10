@@ -1,9 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Componenttypes } from '../../models/componenttypes';
 import { ComponenttypeService } from '../../service/componenttype.service';
+
+// modal
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 // log
 import { ComponentTypeLog } from '../../models/log/componentTypeLog';
@@ -19,7 +23,9 @@ import { LogService } from '../../service/log.service';
 export class TabNavigatorComponent implements OnInit {
 
   @Input() componenttype: Componenttypes;
-  componentTypeLog: ComponentTypeLog[]
+  componentTypeLog: ComponentTypeLog[];
+  modalRef: BsModalRef;
+  selectedComponentTypeLog: ComponentTypeLog;
 
 
 
@@ -32,7 +38,8 @@ export class TabNavigatorComponent implements OnInit {
     private logService: LogService,
     private route: ActivatedRoute,
     private componenttypeService: ComponenttypeService,
-    private location: Location
+    private location: Location,
+    private modalService: BsModalService
   ) {
   }
 
@@ -67,6 +74,11 @@ export class TabNavigatorComponent implements OnInit {
 
   getComponentTypeLog(): void{
     this.logService.getLatestComponettypeLog().subscribe(componentTypeLog => this.componentTypeLog = componentTypeLog);
+  }
+
+  openModal(template: TemplateRef<any>, projectlog: ComponentTypeLog) {
+    this.modalRef = this.modalService.show(template);
+    this.selectedComponentTypeLog = projectlog;
   }
 
   

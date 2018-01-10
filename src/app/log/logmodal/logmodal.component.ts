@@ -13,7 +13,7 @@ import { LogService } from '../../service/log.service';
 })
 export class LogmodalComponent implements OnInit {
 
-  @Input('log') projectlog: ProjectLog;
+  @Input('log') log: any;
   @Input('logModal') modalRef: BsModalRef;
   modalRefChild: BsModalRef;
 

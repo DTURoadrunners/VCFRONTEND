@@ -5,23 +5,24 @@
               <span  class="pull-left">
                   <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
               </span>
-              {{projectlog.submitter}}
+              {{log.submitter}}
               <br>
-              <span class="badge badge-success" *ngIf="projectlog.logtype=='created'">Created</span>
-              <span class="badge badge-danger" *ngIf="projectlog.logtype=='deleted'">Deleted</span>
-              <span class="badge badge-info" *ngIf="projectlog.logtype=='rollback'">Rollback</span>
-              <span class="badge badge-primary" *ngIf="projectlog.logtype=='updated'">Updated</span>
+              <span class="badge badge-success" *ngIf="log.logtype=='created'">Created</span>
+              <span class="badge badge-danger" *ngIf="log.logtype=='deleted'">Deleted</span>
+              <span class="badge badge-info" *ngIf="log.logtype=='rollback'">Rollback</span>
+              <span class="badge badge-primary" *ngIf="log.logtype=='updated'">Updated</span>
             </h4>
         <button type="button" class="close pull-right" (click)="hideChildModal()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          <span class="text-secondary">{{projectlog.timestamp| date: 'mediumDate'}}</span>
+          <span class="text-secondary">{{log.timestamp| date: 'mediumDate'}}</span>
           <button type="button" class="btn btn-info pull-right btn-sm" (click)="openModal(template)">Rollback to this event</button>
-          <div class="clearfix"></div>       
+          <div class="clearfix"></div>   
+          <span class="text-muted" *ngIf="log.target" >{{log.target}}   </span> 
           <br>
-          {{projectlog.comment}}
+          {{log.comment}}
           <br>
       </div>
     </div>
