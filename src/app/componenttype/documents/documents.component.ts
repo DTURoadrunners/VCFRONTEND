@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { DocumentService } from './../../service/document.service'
 import { ActivatedRoute } from '@angular/router';
 
+ 
 
 
 @Component({

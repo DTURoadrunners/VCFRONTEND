@@ -1,0 +1,23 @@
+.media-meta {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .media .title {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0;
+  }
+  .media .title span {
+      font-size: .8em;
+    }
+
+.media-photo{
+    height: 50px !important;
+    margin-right: 15px !important;
+}
+
+h4{
+    font-size: 1.2rem !important;
+}

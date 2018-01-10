@@ -18,8 +18,7 @@ export class ProjectOverviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.project);
-    
+   
   }
 
 }

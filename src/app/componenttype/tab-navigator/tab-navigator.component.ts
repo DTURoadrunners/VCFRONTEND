@@ -5,6 +5,10 @@ import { Location } from '@angular/common';
 import { Componenttypes } from '../../models/componenttypes';
 import { ComponenttypeService } from '../../service/componenttype.service';
 
+// log
+import { ComponentTypeLog } from '../../models/log/componentTypeLog';
+import { LogService } from '../../service/log.service';
+
 
 
 @Component({
@@ -14,8 +18,9 @@ import { ComponenttypeService } from '../../service/componenttype.service';
 })
 export class TabNavigatorComponent implements OnInit {
 
-
   @Input() componenttype: Componenttypes;
+  componentTypeLog: ComponentTypeLog[]
+
 
 
   overview: boolean = true;
@@ -24,6 +29,7 @@ export class TabNavigatorComponent implements OnInit {
   log: boolean = false;
 
   constructor(
+    private logService: LogService,
     private route: ActivatedRoute,
     private componenttypeService: ComponenttypeService,
     private location: Location
@@ -32,6 +38,7 @@ export class TabNavigatorComponent implements OnInit {
 
   ngOnInit() {
     this.getComponenttype();
+    this.getComponentTypeLog();
   }
 
 
@@ -58,6 +65,9 @@ export class TabNavigatorComponent implements OnInit {
     this.componenttypeService.get(componenttypeId, projectId).subscribe(componenttype => this.componenttype = componenttype);
   }
 
+  getComponentTypeLog(): void{
+    this.logService.getLatestComponettypeLog().subscribe(componentTypeLog => this.componentTypeLog = componentTypeLog);
+  }
 
   
 }

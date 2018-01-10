@@ -53,6 +53,9 @@ import { CategoryService } from './service/category.service';
 import { DocumentService } from './service/document.service';
 import { ByteConverterPipe } from './pipe/byte-converter.pipe';
 import { LogService } from './service/log.service';
+import { StringlengthPipe } from './pipe/stringlength.pipe';
+import { LogmodalComponent } from './log/logmodal/logmodal.component';
+import { TimeagoPipe } from './pipe/timeago.pipe';
 
 
 @NgModule({
@@ -78,7 +81,10 @@ import { LogService } from './service/log.service';
     BreadcrumpComponent,
     ProjectComponenttypeComponent,
     SearchPipe,
-    ByteConverterPipe
+    ByteConverterPipe,
+    StringlengthPipe,
+    LogmodalComponent,
+    TimeagoPipe
 
   ],
   imports: [

@@ -89,12 +89,12 @@ export const PROJECTLOG:  ProjectLog[] = [
     {id: 2, submitter: 'John Doe dad', timestamp: new Date(2017, 1, 3), comment: "This is a comment", logtype: "deleted"},
     {id: 3, submitter: 'John Doe', timestamp: new Date(2017, 1, 3), comment: "This is a comment", logtype: "created"},
     {id: 4, submitter: 'John Doe', timestamp: new Date(2017, 1, 4), comment: "This is a comment", logtype: "created"},
-    {id: 5, submitter: 'John Doe', timestamp: new Date(2017, 1, 5), comment: "This is a comment", logtype: "rollback"},
-    {id: 6, submitter: 'John Doe', timestamp: new Date(2017, 1, 6), comment: "This is a comment", logtype: "updated"},
-    {id: 1, submitter: 'John Doe', timestamp: new Date(2017, 1, 2), comment: "This is a comment", logtype: "created"},
-    {id: 2, submitter: 'John Doe', timestamp: new Date(2017, 1, 3), comment: "This is a comment", logtype: "deleted"},
-    {id: 3, submitter: 'John Doe', timestamp: new Date(2017, 1, 3), comment: "This is a comment", logtype: "created"},
+    {id: 5, submitter: 'John Doe', timestamp: new Date(2018, 1, 5), comment: "This is a comment blabla", logtype: "rollback"},
+    {id: 6, submitter: 'John Doe', timestamp: new Date(2018, 0, 10), comment: "This is a comment blabla", logtype: "updated"},
+    {id: 1, submitter: 'John Doe', timestamp: new Date(2018, 0, 2), comment: "This is a comment", logtype: "created"},
+    {id: 2, submitter: 'John Doe', timestamp: new Date(2017, 4, 3), comment: "This is a comment", logtype: "deleted"},
+    {id: 3, submitter: 'John Doe', timestamp: new Date(2017, 5, 3), comment: "This is a comment", logtype: "created"},
     {id: 4, submitter: 'John Doe', timestamp: new Date(2017, 1, 4), comment: "This is a comment", logtype: "created"},
-    {id: 5, submitter: 'John Doe', timestamp: new Date(2017, 1, 5), comment: "This is a comment", logtype: "rollback"},
-    {id: 6, submitter: 'John Doe dad', timestamp: new Date(2017, 1, 6), comment: "This is a comment", logtype: "updated"}  
+    {id: 5, submitter: 'John Doe', timestamp: new Date(2017, 1, 5), comment: "This is a comment dad ada d", logtype: "rollback"},
+    {id: 6, submitter: 'Thomas Doe', timestamp: new Date(2017, 1, 6), comment: "This is a comment. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis tellus ullamcorper, auctor dui vel, feugiat urna. Sed et lacus diam. Phasellus dictum ipsum nec ante rhoncus fermentum. Vivamus nec neque et est lacinia mattis eu a orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec porttitor elit. Morbi at ullamcorper lorem, nec maximus nunc. Fusce orci lectus, hendrerit nec tincidunt sed, accumsan non elit. Mauris a semper nulla. Phasellus tincidunt aliquet leo, et condimentum metus sagittis et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi at volutpat neque, eget vulputate enim.", logtype: "updated"}  
 ];
