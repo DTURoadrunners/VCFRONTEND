@@ -1,5 +1,7 @@
 <div class="col-9">
-
+    <button type="button" class="btn btn-outline-secondary pull-right" (click)="openModal(template)">New component type</button>
+    <h4 class="text-muted">Component type:</h4>
+    <hr>
        
     <div class="input-group input-group-lg search_bar">
         <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
@@ -23,3 +25,62 @@
         </a>
     </div>
 </div>
+
+
+
+
+<!-- TEMPLATE START -->
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">New Component type</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+          
+
+        <form class="form-control no-boarder" [formGroup]="formCompnenttype" (ngSubmit)="createComponenttype()">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="name" formControlName="name" required autofocus>
+            </div>
+
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea type="text" class="form-control" rows="6" placeholder="Description..." formControlName="description" ></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Storage</label>
+                <input type="number" class="form-control" placeholder="storage" formControlName="storage" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Category</label>
+            <input formControlName="category"
+                [typeahead]="componenttypes"
+                typeaheadOptionField="name"
+                (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                [typeaheadOptionsLimit]="7"
+                [typeaheadMinLength]="0"
+                placeholder="category"
+                class="form-control">
+            </div>
+            
+                <!-- if no categories found -->
+                <div *ngIf="typeaheadNoResults===true">
+                        <button type="button" class="btn btn-outline-dark" (click)="createCategory('da')">Add category</button>
+                </div>
+                <!-- end if no categories found -->
+              
+                <button class="btn btn-lg btn-primary btn-block"  type="submit">Create</button>
+        </form>
+      </div>
+</ng-template>
+
+<!-- TEMPLATE END -->

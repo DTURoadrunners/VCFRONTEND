@@ -11,6 +11,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion'; // load accordion lis
 import { ModalModule } from 'ngx-bootstrap/modal'; // load bootstrap modal
 import { TooltipModule } from 'ngx-bootstrap/tooltip'; // load bootstrap tooltop
 import { PaginationModule } from 'ngx-bootstrap/pagination'; // load bootstrap pagination
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead'; // load bootstrap typehead
 
 import { BreadcrumbsModule } from "ng2-breadcrumbs"; // load breadcrumps
 
@@ -48,8 +49,10 @@ import { ComponenttypeService } from './service/componenttype.service';
 import { ProjectComponenttypeComponent } from './project/project-componenttype/project-componenttype.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { ComponentService } from "./service/component.service";
+import { CategoryService } from './service/category.service';
 import { DocumentService } from './service/document.service';
 import { ByteConverterPipe } from './pipe/byte-converter.pipe';
+import { LogService } from './service/log.service';
 
 
 @NgModule({
@@ -92,6 +95,7 @@ import { ByteConverterPipe } from './pipe/byte-converter.pipe';
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
     PaginationModule.forRoot(),
+    TypeaheadModule.forRoot(),
     BreadcrumbsModule
   ],
   exports: [BsDropdownModule],
@@ -104,7 +108,9 @@ import { ByteConverterPipe } from './pipe/byte-converter.pipe';
     ProjectService,
     ComponenttypeService,
     ComponentService,
-    DocumentService],
+    CategoryService,
+    DocumentService,
+    LogService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }

@@ -1,3 +1,6 @@
 .search_bar{
     margin-bottom: 25px !important;
 }
+.no-boarder{
+    border: none !important;
+}
