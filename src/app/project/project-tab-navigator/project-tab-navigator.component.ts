@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+
+// modal
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 // project
 import { Project } from '../../models/project';
@@ -19,17 +22,19 @@ export class ProjectTabNavigatorComponent implements OnInit {
 
   @Input() project: Project;
   projectLog: ProjectLog[];
+  modalRef: BsModalRef;
 
   overview: boolean = true;
   componenttype: boolean = false;
   memberlist: boolean = false;
   log: boolean = false;
+  selectedProject: Project;
 
   constructor(
     private route: ActivatedRoute,
     private logService: LogService,
     private projectService: ProjectService,
-    private location: Location
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
@@ -59,6 +64,11 @@ export class ProjectTabNavigatorComponent implements OnInit {
 
   getLatestLog(): void{
     this.logService.getLatestProjectLog().subscribe(projectLog => this.projectLog = projectLog);
+  }
+
+  openModal(template: TemplateRef<any>, projectlog: Project) {
+    this.modalRef = this.modalService.show(template);
+    this.selectedProject = projectlog;
   }
 
 }

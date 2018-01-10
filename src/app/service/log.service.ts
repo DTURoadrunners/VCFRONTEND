@@ -12,7 +12,11 @@ export class LogService {
   constructor() { }
 
   getLatestProjectLog(): Observable<ProjectLog[]>{
-    return of(PROJECTLOG.slice(PROJECTLOG.length-5, PROJECTLOG.length));
+    return of(PROJECTLOG.slice(PROJECTLOG.length-7, PROJECTLOG.length));
+  }
+
+  getProjectLog(id: number): Observable<ProjectLog>{
+    return of(PROJECTLOG.find(projectlog => projectlog.id === id));
   }
 
 }
