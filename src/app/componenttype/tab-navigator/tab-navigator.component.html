@@ -29,7 +29,7 @@
 
       <h2 class="text-muted">{{componenttype.name}}</h2> <!--TODO: get componenttype name-->
 
-      <section class="row" *ngIf="overview">
+      <section  *ngIf="overview">
         <app-overview [model]="componenttype">
         </app-overview>
       </section>
@@ -56,97 +56,30 @@
           <tbody>
 
             <!-- row 1 -->
-
-            <tr>
-              <td>
-                <div class="media">
-                  <a href="#" class="pull-left">
-                    <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
-                  </a>
-                  <div class="media-body">
-                    <span class="media-meta pull-right">2 hours ago</span>
-                    <h4 class="title text-info">
-                      Daniel Plaetner-Cancela
-                      <br>
-                      <span class="badge badge-success">Created</span>
-                    </h4>
-                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+            <tr *ngFor="let data of componentTypeLog">
+                <td>
+                  <a (click)="openModal(logmodal, data)">
+                  <div class="media" >
+                    <span  class="pull-left">
+                      <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
+                    </span>
+                    <div class="media-body">
+                      <span class="media-meta pull-right">{{data.timestamp| timeago}}</span>
+                      <h4 class="title text-info">
+                        {{data.submitter}}
+                        <br>
+                        <span class="badge badge-success" *ngIf="data.logtype=='created'">Created</span>
+                        <span class="badge badge-danger" *ngIf="data.logtype=='deleted'">Deleted</span>
+                        <span class="badge badge-info" *ngIf="data.logtype=='rollback'">Rollback</span>
+                        <span class="badge badge-primary" *ngIf="data.logtype=='updated'">Updated</span>
+                      </h4>
+                    
+                      <p class="summary">  <span class="text-muted">{{data.target}} </span> <br> {{data.comment | stringlength: 50}}</p>
+                    </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-
-
-            <!-- end row 1 -->
-            <!-- row 2 -->
-
-            <tr>
-              <td>
-                <div class="media">
-                  <a href="#" class="pull-left">
-                    <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
-                  </a>
-                  <div class="media-body">
-                    <span class="media-meta pull-right">15 hours ago</span>
-                    <h4 class="title text-info">
-                      Thomas Bech
-                      <br>
-                      <span class="badge badge-danger">Delete</span>
-                    </h4>
-                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-
-            <!-- end row 2 -->
-            <!-- row 3 -->
-
-            <tr>
-              <td>
-                <div class="media">
-                  <a href="#" class="pull-left">
-                    <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
-                  </a>
-                  <div class="media-body">
-                    <span class="media-meta pull-right">5 days ago</span>
-                    <h4 class="title text-info">
-                      Sebastian Hjorth
-                      <br>
-                      <span class="badge badge-info">Rollback</span>
-                    </h4>
-                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-
-            <!-- end row 3 -->
-            <!-- row 4 -->
-
-            <tr>
-              <td>
-                <div class="media">
-                  <a href="#" class="pull-left">
-                    <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
-                  </a>
-                  <div class="media-body">
-                    <span class="media-meta pull-right">10 days ago</span>
-                    <h4 class="title text-info">
-                      Rasmus Olsen
-                      <br>
-                      <span class="badge badge-success">Created</span>
-                    </h4>
-                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-
-            <!-- end row 4 -->
+                </a>
+                </td>
+              </tr>
 
 
           </tbody>
