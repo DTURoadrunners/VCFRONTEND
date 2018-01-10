@@ -27,21 +27,20 @@
     </button>
   </div>
   <div class="modal-body">
-    <form class="form-control" [formGroup]="overviewForm" (ngSubmit)="onSubmit()">
+    <form class="form-control" [formGroup]="componenttypeForm" (ngSubmit)="onSubmit()">
       <label>Name</label>
-      <input type="text" class="form-control" formControlName="name" value={{componenttype.name}} tooltip="Name of the componenttype" required>
+      <input type="text" class="form-control" formControlName="title" tooltip="Name of the componenttype" required>
       <label>Descripton (Optional)</label>
-      <textarea type="text" class="form-control" formControlName="description" value={{componenttype.description}} tooltip="A description of the componenttype"></textarea>
+      <textarea type="text" class="form-control" formControlName="description" tooltip="A description of the componenttype"></textarea>
       <label>Category (Optional)</label>
-      <input type="text" class="form-control" formControlName="category" value={{componenttype.category}} tooltip="The category that the componenttype belongs to">
+      <input type="text" class="form-control" formControlName="category" tooltip="The category that the componenttype belongs to">
       <label>Storage</label>
-      <input type="number" min="0" class="form-control" formControlName="storage" value={{componenttype.storage}} tooltip="The number of components in storage" required>
-    </form>
+      <input type="number" min="0" class="form-control" formControlName="storage" tooltip="The number of components in storage" required>
 
-    <button class="btn btn-success btn-block" type="submit">
-      <!--TODO: Edit component-->
-      Submit
-    </button>
+      <button class="btn btn-success btn-block" type="submit">
+        Submit
+      </button>
+    </form>
   </div>
 </ng-template>
 

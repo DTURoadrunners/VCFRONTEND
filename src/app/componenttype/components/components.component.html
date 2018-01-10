@@ -54,11 +54,10 @@
   <div class="modal-body">
     <form class="form-control" [formGroup]="componentForm" (ngSubmit)="onUpdateComponent()">
       <label>Status</label>
-      <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" value={{selectedComponent.status}} tooltip="Current status of the component" required></textarea>
+      <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" tooltip="Current status of the component" required></textarea>
       <label>Comment</label>
-      <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" value={{selectedComponent.comment}} tooltip="Any other comments about the component"></textarea>
+      <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" tooltip="Any other comments about the component"></textarea>
       <button class="btn btn-success btn-block" type="submit">
-        <!--TODO: Edit component-->
         Submit
       </button>
     </form>
@@ -75,7 +74,6 @@
   <div class="modal-body">
     <p>The component will be deleted, but can be restored with a rollback</p>
     <button class="btn btn-danger btn-block" type="submit" (click)="onDeleteComponent()">
-      <!--TODO: Delete component-->
       Delete
     </button>
   </div>

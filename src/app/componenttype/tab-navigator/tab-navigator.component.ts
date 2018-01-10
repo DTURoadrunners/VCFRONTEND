@@ -53,8 +53,9 @@ export class TabNavigatorComponent implements OnInit {
 
   
   getComponenttype(): void{
-    const id = +this.route.snapshot.paramMap.get('componentypeid');
-    this.componenttypeService.getComponenttype(id).subscribe(componenttype=> this.componenttype = componenttype);
+    var componenttypeId = +this.route.snapshot.paramMap.get('componentypeid');
+    var projectId = +this.route.snapshot.paramMap.get('projectid');
+    this.componenttypeService.get(componenttypeId, projectId).subscribe(componenttype => this.componenttype = componenttype);
   }
 
 

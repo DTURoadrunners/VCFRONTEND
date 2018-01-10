@@ -32,8 +32,8 @@ export class DocumentsComponent implements OnInit {
     this.getDocuments(+this.route.snapshot.paramMap.get('componentypeid')); //'+' to parse to number
 
     this.documentForm = this.fb.group({
-      title: ['', Validators.required],
-      file: ['', Validators.required]
+      title: [this.selectedDocument.name, Validators.required],
+      file: ['']
     });
   }
 

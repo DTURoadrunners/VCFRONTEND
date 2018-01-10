@@ -35,7 +35,7 @@ export class ProjectComponenttypeComponent implements OnInit {
   componenttypes: Componenttypes[];
   categories: Category[];
 
-  projectid: string; // url params are always strings
+  projectId: number;
 
   constructor(
     private fb: FormBuilder,         // inject the formbilder
@@ -59,10 +59,9 @@ export class ProjectComponenttypeComponent implements OnInit {
 
 
 
-  ngOnInit() { 
-    this.getComponenttypes(); // call this method to bind all the componenttypes from the start
-    this.projectid = this.route.snapshot.paramMap.get('id') // bind the project id from the route
-    
+  ngOnInit() {
+    this.projectId = +this.route.snapshot.paramMap.get('id') // bind the project id from the route
+    this.getComponenttypes(this.projectId); // call this method to bind all the componenttypes from the start
   }
 
 
@@ -96,8 +95,8 @@ export class ProjectComponenttypeComponent implements OnInit {
   /**
    * get all the componentstypes from the componenttype service. 
    */
-  getComponenttypes(): void {
-    this.componenttypeService.getComponenttypes().subscribe(componenttypes => this.componenttypes = componenttypes);
+  getComponenttypes(projectId: number): void {
+    this.componenttypeService.getAll(projectId).subscribe(componenttypes => this.componenttypes = componenttypes);
   }
 
   /**
@@ -112,7 +111,8 @@ export class ProjectComponenttypeComponent implements OnInit {
    */
   createComponenttype(): void{
     if(this.formCompnenttype.valid){
-      this.componenttypeService.createComponenttype(
+      this.componenttypeService.create(
+        this.projectId,
         this.formCompnenttype.value.name, 
         this.formCompnenttype.value.description, 
         this.formCompnenttype.value.category, 

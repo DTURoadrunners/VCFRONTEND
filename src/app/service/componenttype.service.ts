@@ -17,16 +17,22 @@ export class ComponenttypeService {
    * get the observable object of componenttypes
    * @param id id of the componenttype
    */
-  getComponenttype(id: number):  Observable<Componenttypes>{
-    return of(COMPONENTTYPES.find(componenttype => componenttype.id === id));
+  public get(id: number, projectId: number): Observable<Componenttypes> {
+    return of(COMPONENTTYPES.find(componenttype => componenttype.id == id && componenttype.projectId == projectId));
   }
 
   /**
-   * get a list of all the componenttypes
+   * get a list of all the componenttypes in a project
    * return the observable object
    */
-  getComponenttypes(): Observable<Componenttypes[]>{
-    return of(COMPONENTTYPES);
+  public getAll(projectId: number): Observable<Componenttypes[]> {
+    var componenttypes: Componenttypes[] = new Array<Componenttypes>();
+    for (var i = 0; i < COMPONENTTYPES.length; i++) {
+      if (COMPONENTTYPES[i].projectId == projectId) {
+        componenttypes.push(COMPONENTTYPES[i]);
+      }
+    }
+    return of(componenttypes);
   }
 
   /**
@@ -36,9 +42,10 @@ export class ComponenttypeService {
    * @param category category of the componenttype
    * @param storage storage of the componenttype
    */
-  createComponenttype(name: string, description: string, category: string, storage: number): Observable<Componenttypes[]>{
+  public create(projectId: number, name: string, description: string, category: string, storage: number): Observable<Componenttypes[]> {
     var componenttype = {
-      id: COMPONENTTYPES.length+1,
+      id: COMPONENTTYPES.length + 1,
+      projectId: projectId,
       name: name,
       description: description,
       category: category,
@@ -46,6 +53,22 @@ export class ComponenttypeService {
     };
 
     COMPONENTTYPES.push(componenttype);
-    return of(COMPONENTTYPES); 
+    return of(COMPONENTTYPES);
+  }
+
+  public update(id: number, projectId: number, name: string, description: string, category: string, storage: number): Observable<Componenttypes[]> {
+    COMPONENTTYPES[
+      COMPONENTTYPES.findIndex(componenttype => componenttype.id == id && componenttype.projectId == projectId)
+    ] = { id: id, projectId: projectId, name: name, description: description, category: category, storage: storage };
+    console.log(description);
+    return of(COMPONENTTYPES);
+  }
+
+  public delete(id: number, projectId: number): Observable<Componenttypes[]> {
+    var index = COMPONENTTYPES.findIndex(componenttype => componenttype.id == id && componenttype.projectId == projectId);
+    if (index > -1) {
+      COMPONENTTYPES.splice(index, 1);
+    }
+    return of(COMPONENTTYPES);
   }
 }

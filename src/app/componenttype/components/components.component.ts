@@ -65,6 +65,10 @@ export class ComponentsComponent implements OnInit {
         .subscribe(components => this.components = components); //Assign retrieved data to variable
       this.modalRef.hide();
     }
+    this.componentForm = this.fb.group({
+      status: [''], //Optional
+      comment: [''], //Optional
+    });
   }
 
   onDeleteComponent() {
