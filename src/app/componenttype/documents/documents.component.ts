@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DOCUMENTS } from '../../mock/mock-documents'; 
+import { Documents } from '../../models/documents'; 
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { DocumentService } from './../../service/document.service'
 import { ActivatedRoute } from '@angular/router';
@@ -17,7 +17,8 @@ export class DocumentsComponent implements OnInit {
   modalRef: BsModalRef;
   documentForm: FormGroup;
 
-  mydocuments = DOCUMENTS;
+  documents: Documents[];
+  selectedDocument: Documents;
 
   constructor(
     private fb: FormBuilder,         // inject the formbuilder
@@ -28,24 +29,55 @@ export class DocumentsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getDocuments(+this.route.snapshot.paramMap.get('componentypeid')); //'+' to parse to number
+
     this.documentForm = this.fb.group({
       title: ['', Validators.required],
       file: ['', Validators.required]
     });
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>, document : Documents) {
     this.modalRef = this.modalService.show(template);
+    this.selectedDocument = document;
+  }
+
+  getDocuments(componentTypeId: number) {
+    this.documentService.getAllDocuments(+this.route.snapshot.paramMap.get('componentypeid')) //'+' to parse to number
+      .subscribe(documents => this.documents = documents);
   }
   
-  onUploadComponent() {
+  onUploadDocument() {
     if (this.documentForm.valid) {
       this.documentService.createDocument(
-        Number.parseInt(this.route.snapshot.paramMap.get('id')), //Get id from url
+        +this.route.snapshot.paramMap.get('componentypeid'), //Get id from url, '+' to parse to number
         this.documentForm.value.title,
         this.documentForm.value.file
       )
-        .subscribe(documents => this.mydocuments = documents); //Assign retrieved data to variable
+        .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
+      this.modalRef.hide();
+    }
+  }
+
+  onUpdateDocument() {
+    if (this.documentForm.valid) {
+      this.documentService.updateDocument(
+        this.selectedDocument.id,
+        this.selectedDocument.componenttypeId,
+        this.documentForm.value.title,
+        this.documentForm.value.file
+      )
+        .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
+      this.modalRef.hide();
+    }
+  }
+
+  onDeleteDocument() {
+    if (this.documentForm.valid) {
+      this.documentService.deleteDocument(
+        this.selectedDocument.id,
+        this.selectedDocument.componenttypeId)
+        .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
       this.modalRef.hide();
     }
   }

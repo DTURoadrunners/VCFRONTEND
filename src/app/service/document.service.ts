@@ -11,11 +11,11 @@ export class DocumentService {
 
   constructor() { }
 
-  getDocument(id: number, componenttypeId: number): Observable<Documents> {
+  public getDocument(id: number, componenttypeId: number): Observable<Documents> {
     return of(DOCUMENTS.find(document => document.id === id && document.componenttypeId === componenttypeId));
   }
 
-  getAllDocuments(componenttypeId: number): Observable<Documents[]> {
+  public getAllDocuments(componenttypeId: number): Observable<Documents[]> {
     var documents: Documents[] = new Array<Documents>();
     for (var i = 0; i < DOCUMENTS.length; i++) {
       if (DOCUMENTS[i].componenttypeId == componenttypeId) {
@@ -25,7 +25,7 @@ export class DocumentService {
     return of(documents);
   }
 
-  createDocument(componenttypeId: number, name: string, file: File): Observable<Documents[]> {
+  public createDocument(componenttypeId: number, name: string, file: File): Observable<Documents[]> {
     var document = {
       id: DOCUMENTS.length + 1,
       componenttypeId: componenttypeId,
@@ -39,14 +39,14 @@ export class DocumentService {
     return of(DOCUMENTS);
   }
 
-  updateDocument(id: number, componenttypeId: number, name: string, file: File): Observable<Documents[]> {
+  public updateDocument(id: number, componenttypeId: number, name: string, file: File): Observable<Documents[]> {
     DOCUMENTS[
       DOCUMENTS.findIndex(document => document.id === id && document.componenttypeId === componenttypeId)
     ] = { id: id, componenttypeId: componenttypeId, name: name, date: new Date(Date.now()), size: file.size, type: file.type };
     return of(DOCUMENTS);
   }
 
-  deleteDocument(id: number, componenttypeId: number): Observable<Documents[]> {
+  public deleteDocument(id: number, componenttypeId: number): Observable<Documents[]> {
     var index = DOCUMENTS.findIndex(document => document.id === id && document.componenttypeId === componenttypeId);
     if (index > -1) {
       DOCUMENTS.splice(index, 1);
@@ -54,7 +54,7 @@ export class DocumentService {
     return of(DOCUMENTS);
   }
 
-  downloadFile(documentId : number) {
+  public downloadFile(documentId : number) {
     //TODO: Implement
   }
 }

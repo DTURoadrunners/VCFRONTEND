@@ -1,12 +1,12 @@
 <div class="col-9">
-  <button type="button" class="btn btn-success pull-right" (click)="openModal(uploadDocument)">Upload Document</button>
+  <button type="button" class="btn btn-success pull-right" (click)="openModal(uploadDocument, null)">Upload Document</button>
   <h4 class="text-muted">Documents:</h4>
   <hr>
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th></th>
+        <th></th> <!--Checkbox-->
         <th>Name</th>
         <th>Date Modified</th>
         <th>Size</th>
@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let document of mydocuments">
+      <tr *ngFor="let document of documents">
         <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
         <td>
           <i class="fa fa-file" aria-hidden="true"></i>
@@ -22,12 +22,25 @@
         </td>
         <td>{{document.date | date: 'mediumDate'}}</td>
         <td>{{document.size | byteConverter}}</td>
-        <td>{{document.type}}</td>
+        <td>
+          {{document.type}}
+          <div class="btn-group btn-group-justified pull-right" dropdown>
+            <button dropdownToggle class="btn transparentBtn" type="button" dropdown-toggle>
+              <i class="fa fa-cog" aria-hidden="true"></i><span class="caret"></span>
+            </button>
+            <ul *dropdownMenu class="dropdown-menu dropdown-menu-right noPadding" role="menu">
+              <li role="menuitem">
+                <div class="btn-group btn-group-vertical">
+                  <button class="btn btn-default" (click)="openModal(updateDocument, document)">Update</button>
+                  <button class="btn btn-danger" (click)="openModal(deleteDocument, document)">Delete</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
-
-
 </div>
 
 <ng-template #uploadDocument>
@@ -49,5 +62,42 @@
         Upload
       </button>
     </form>
+  </div>
+</ng-template>
+
+<ng-template #updateDocument>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Update Document: {{selectedDocument.title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-control" [formGroup]="documentForm" (ngSubmit)="onUpdateDocument()">
+      <label>Title</label>
+      <input type="text" class="form-control" placeholder="Title..." formControlName="title" value={{selectedDocument.title}} tooltip="The displayed filename" autofocus required>
+      <label>Select a file to upload:</label>
+      <br>
+      <input type="file" class="uploadBtn" formControlName="file" value={{selectedDocument.file}} tooltip="The file to be uploaded">
+
+      <button class="btn btn-success btn-block" type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #deleteDocument>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Delete Document: {{selectedDocument.title}}?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>The document will be deleted, but can be restored with a rollback</p>
+    <button class="btn btn-danger btn-block" type="submit" (click)="onDeleteDocument()">
+      Delete
+    </button>
   </div>
 </ng-template>

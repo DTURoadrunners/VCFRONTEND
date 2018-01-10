@@ -26,8 +26,8 @@ export class ComponentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getComponents(1);
-    
+    this.getComponents(+this.route.snapshot.paramMap.get('componentypeid')); //using id from url. '+' to parse to number
+
     this.componentForm = this.fb.group({
       status: [''], //Optional
       comment: [''], //Optional
@@ -40,13 +40,14 @@ export class ComponentsComponent implements OnInit {
   }
 
   getComponents(componentTypeId: number) {
-    this.componentService.getAll(1).subscribe(components => this.components = components); //TODO Get componenttype id from url
+    this.componentService.getAll(+this.route.snapshot.paramMap.get('componentypeid')) //'+' to parse to number
+      .subscribe(components => this.components = components);
   }
-  
+
   onCreateComponent() {
     if (this.componentForm.valid) {
       this.componentService.create(
-        Number.parseInt(this.route.snapshot.paramMap.get('id')), //Get id from url
+        +this.route.snapshot.paramMap.get('componentypeid'), //'+' to parse to number
         this.componentForm.value.status,
         this.componentForm.value.comment)
         .subscribe(components => this.components = components); //Assign retrieved data to variable
@@ -66,14 +67,14 @@ export class ComponentsComponent implements OnInit {
     }
   }
 
-    onDeleteComponent() {
-      if (this.componentForm.valid) {
-        this.componentService.delete(
-          this.selectedComponent.id,
-          this.selectedComponent.componenttypeId)
-          .subscribe(components => this.components = components); //Assign retrieved data to variable
-        this.modalRef.hide();
-      }
+  onDeleteComponent() {
+    if (this.componentForm.valid) {
+      this.componentService.delete(
+        this.selectedComponent.id,
+        this.selectedComponent.componenttypeId)
+        .subscribe(components => this.components = components); //Assign retrieved data to variable
+      this.modalRef.hide();
+    }
   }
 
 }

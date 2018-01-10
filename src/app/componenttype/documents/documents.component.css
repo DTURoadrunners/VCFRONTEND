@@ -5,3 +5,13 @@
 .text-info {
   cursor: pointer;
 }
+
+.transparentBtn{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.noPadding{
+  padding: 0px;
+  min-width: 0px;
+}
