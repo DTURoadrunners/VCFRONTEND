@@ -13,9 +13,11 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup; // formbuilder, call it with [formGroup]="form" in the HTML   
   private formSubmitAttempt: boolean;  // submit flag
+  dismissible = true;
 
 
   alerts: any = [];
+    
 
 
   constructor(
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
   
   /**
    * the user submits the values
@@ -40,8 +43,10 @@ export class LoginComponent implements OnInit {
       if (!this.authService.login(this.form.value.userName, this.form.value.password)) {
         this.alerts.push({
           type: 'danger',
-          msg: 'Wrong username or password'
+          msg: `Wrong username or password`,
+          timeout: 5000
         });
+       
       } 
     }
     this.formSubmitAttempt = true;             
