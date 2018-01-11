@@ -1,4 +1,8 @@
 <div class="col-9">
+  <div class="btn-group pull-right">
+    <button type="button" class="btn btn-success" (click)="openModal(addMember)">Add Member</button>
+    <button type="button" class="btn btn-danger" (click)="openModal(removeMember)">Remove Member</button>
+  </div>
   <h4 class="text-muted">Project members:</h4>
   <hr>
     <div class="media">
@@ -12,3 +16,40 @@
      </p>          
   </div>
 </div>
+
+<ng-template #addMember>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Member</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-control" [formGroup]="memberForm" (ngSubmit)="onAddMember()">
+      <label>Student Number / Campusnet ID</label>
+      <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
+      <button class="btn btn-success btn-block" type="submit">
+        Add
+      </button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #removeMember>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Remove Member</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-control" [formGroup]="memberForm" (ngSubmit)="onRemoveMember()">
+      <label>Student Number / Campusnet ID</label>
+      <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
+      <button class="btn btn-danger btn-block" type="submit">
+        Remove
+      </button>
+    </form>
+  </div>
+</ng-template>
+

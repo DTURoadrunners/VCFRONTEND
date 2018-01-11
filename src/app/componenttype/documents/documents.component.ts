@@ -30,7 +30,7 @@ export class DocumentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getDocuments(+this.route.snapshot.paramMap.get('componentypeid'), +this.route.snapshot.paramMap.get('projectid')); //'+' to parse to number
+    this.getDocuments(); //'+' to parse to number
     this.documentForm = this.fb.group({
       file: ['', Validators.required]
     });
@@ -48,8 +48,8 @@ export class DocumentsComponent implements OnInit {
     });
   }
 
-  getDocuments(componentTypeId: number, projectId: number) {
-    this.documentService.getAllDocuments(componentTypeId, projectId) //'+' to parse to number
+  getDocuments() {
+    this.documentService.getAllDocuments(+this.route.snapshot.paramMap.get('componentypeid'), +this.route.snapshot.paramMap.get('projectid')) //'+' to parse to number
       .subscribe(documents => this.documents = documents);
   }
 

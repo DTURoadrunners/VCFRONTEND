@@ -13,8 +13,9 @@ import { AboutComponent } from './public/about/about.component';
 import { TabNavigatorComponent } from './componenttype/tab-navigator/tab-navigator.component';
 import { ProjectTabNavigatorComponent } from './project/project-tab-navigator/project-tab-navigator.component';
 import { MyprofileComponent } from './profile/myprofile/myprofile.component';
-import { ComponentsComponent } from './componenttype/components/components.component'
-import { DocumentsComponent } from './componenttype/documents/documents.component'
+import { ComponentsComponent } from './componenttype/components/components.component';
+import { DocumentsComponent } from './componenttype/documents/documents.component';
+import { ProjectMemberlistComponent } from './project/project-memberlist/project-memberlist.component';
 
 // define the routes here
 // canActivate: [AuthGuard] is used to protect page, can only be activated if the user is authenticated

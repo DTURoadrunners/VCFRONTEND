@@ -26,7 +26,7 @@ export class ComponentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getComponents(+this.route.snapshot.paramMap.get('componentypeid')); //using id from url. '+' to parse to number
+    this.getComponents(); //using id from url. '+' to parse to number
 
     this.componentForm = this.fb.group({
       status: [''], //Optional
@@ -47,7 +47,7 @@ export class ComponentsComponent implements OnInit {
     });
   }
 
-  getComponents(componentTypeId: number) {
+  getComponents() {
     this.componentService.getAll(+this.route.snapshot.paramMap.get('componentypeid'), +this.route.snapshot.paramMap.get('projectid')) //'+' to parse to number
       .subscribe(components => this.components = components);
   }
