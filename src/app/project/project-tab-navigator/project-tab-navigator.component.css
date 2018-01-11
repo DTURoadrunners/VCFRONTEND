@@ -189,7 +189,17 @@
     text-align: left;
   }
 
+.btn-group{
+  display: block !important;
+}
 
+  .btn-dropdown{
+    display: block !important;
+    text-align: right !important;
+  }
 
-  
+.menuitem{
+  width: 100% !important;
+}
+
   

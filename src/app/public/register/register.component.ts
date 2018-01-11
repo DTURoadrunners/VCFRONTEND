@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   cnVerified: boolean;
   CNForm: FormGroup; //call it with [formGroup]="CNForm" in the HTML
   passwordForm: FormGroup; //call it with [formGroup]="passwordForm" in the HTML
+  dismissible = true;
 
   alerts: any = [];
 
@@ -40,11 +41,13 @@ export class RegisterComponent implements OnInit {
       this.cnUser = this.cnAuth.verify(this.CNForm.value.username, this.CNForm.value.password);
       if (this.cnUser != null) {
         this.cnVerified = true;
+        this.alerts = [];
       }
       else {
         this.alerts.push({
           type: 'danger',
-          msg: 'Unable to verify DTU account'
+          msg: `Unable to verify DTU account`,
+          timeout: 5000
         });
       }
     }
@@ -59,11 +62,13 @@ export class RegisterComponent implements OnInit {
   onSubmitPassword() {
     if (this.passwordForm.valid) {
       if (this.validatePassword(this.passwordForm.value.newPassword, this.passwordForm.value.repeatNewPassword)) {
-        if (!this.auth.registerAccount(this.CNForm.value.userName, this.passwordForm.value.newPassword)){
+        if (!this.auth.registerAccount(this.CNForm.value.userName, this.passwordForm.value.newPassword)) {
           this.alerts.push({
             type: 'danger',
             msg: 'Unable to register account'
           });
+        } else { // created account
+          console.log('created account');
         }
       }
       else {

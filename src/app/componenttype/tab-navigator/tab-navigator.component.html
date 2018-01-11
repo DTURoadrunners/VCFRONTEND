@@ -25,6 +25,22 @@
 
     <main role="main" class="ml-sm-auto col-md-10 pt-3">
 
+      <div class="clearfix"></div>
+
+      <div class="showmobile">
+        <div class="btn-group" dropdown>
+            <button dropdownToggle type="button" class="btn btn-secondary btn-block btn-dropdown dropdown-toggle">
+              Componenttype menu<span class="caret"></span>
+            </button>
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
+              <li role="menuitem"><a class="dropdown-item" (click)=selectOverview()><i class="fa fa-object-group" aria-hidden="true"></i>  Overview</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)=selectComponents()><i class="fa fa-file-text" aria-hidden="true"></i>  Components</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)=selectDocuments() ><i class="fa fa-folder-open" aria-hidden="true"></i> Documents</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)=selectLog()><i class="fa fa-area-chart" aria-hidden="true"></i> Log</a>
+              </li>
+            </ul>
+          </div>
+      </div>
        
 
       <h2 class="text-muted">{{componenttype.name}}</h2> <!--TODO: get componenttype name-->
