@@ -25,6 +25,26 @@
 
     <main role="main" class="col-sm-6 ml-sm-auto col-md-10 pt-3">
 
+
+      <div class="clearfix">
+       
+    
+
+          <div class="showmobile">
+              <div class="btn-group" dropdown>
+                  <button dropdownToggle type="button" class="btn btn-secondary btn-block btn-dropdown dropdown-toggle">
+                    Project menu<span class="caret"></span>
+                  </button>
+                  <ul *dropdownMenu class="dropdown-menu" role="menu">
+                    <li role="menuitem"><a class="dropdown-item" (click)=selectOverview()><i class="fa fa-object-group" aria-hidden="true"></i>  Overview</a></li>
+                    <li role="menuitem"><a class="dropdown-item" (click)=selectMemberlist()><i class="fa fa-id-card " aria-hidden="true"></i> Memberlist</a></li>
+                    <li role="menuitem"><a class="dropdown-item" (click)=selectComponenttype()><i class="fa fa-file-text" aria-hidden="true"></i>  Componenttype</a></li>
+                    <li role="menuitem"><a class="dropdown-item" (click)=selectLog()><i class="fa fa-area-chart" aria-hidden="true"></i> Log</a>
+                    </li>
+                  </ul>
+                </div>
+        </div>
+      </div>
        
         
 
