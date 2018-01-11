@@ -25,12 +25,11 @@ export class DocumentService {
     return of(documents);
   }
 
-  public createDocument(componenttypeId: number, name: string, file: File): Observable<Documents[]> {
+  public createDocument(componenttypeId: number, file: File): Observable<Documents[]> {
     var document = {
       id: DOCUMENTS.length + 1,
       componenttypeId: componenttypeId,
-      name: name,
-      file: file,
+      name: file.name,
       date: new Date(Date.now()),
       size: file.size,
       type: file.type
@@ -39,10 +38,19 @@ export class DocumentService {
     return of(DOCUMENTS);
   }
 
-  public updateDocument(id: number, componenttypeId: number, name: string, file: File): Observable<Documents[]> {
+  public updateDocument(id: number, componenttypeId: number, file: File): Observable<Documents[]> {
+    console.log(file.size);
+    var document = {
+      id: id,
+      componenttypeId: componenttypeId,
+      name: file.name,
+      date: new Date(Date.now()),
+      size: file.size,
+      type: file.type
+    };
     DOCUMENTS[
       DOCUMENTS.findIndex(document => document.id === id && document.componenttypeId === componenttypeId)
-    ] = { id: id, componenttypeId: componenttypeId, name: name, date: new Date(Date.now()), size: file.size, type: file.type };
+    ] = document;
     return of(DOCUMENTS);
   }
 

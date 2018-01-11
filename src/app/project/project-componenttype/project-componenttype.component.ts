@@ -27,7 +27,7 @@ import { Console } from '@angular/core/src/console';
 export class ProjectComponenttypeComponent implements OnInit {
   modalRef: BsModalRef; // modal reference
 
-  formCompnenttype: FormGroup; // formbuilder, call it with [formGroup]="form" in the HTML  
+  componenttypeForm: FormGroup; // formbuilder, call it with [formGroup]="form" in the HTML  
   typeaheadNoResults: boolean;
   dataSource: Observable<any>;
 
@@ -48,11 +48,11 @@ export class ProjectComponenttypeComponent implements OnInit {
     /**
      * init the form inside the constructor 
      */
-    this.formCompnenttype = this.fb.group({
+    this.componenttypeForm = this.fb.group({
       name:         ['', Validators.required],
-      description:  ['', Validators.required],
+      description:  [''],
       storage:      ['', Validators.required],
-      category:   ['', Validators.required]
+      category:   ['']
     });
   }
 
@@ -74,12 +74,20 @@ export class ProjectComponenttypeComponent implements OnInit {
     this.getCategories();
   }
 
+  closeModal() {
+    this.modalRef.hide()
+    this.componenttypeForm = this.fb.group({ //Clear the form
+      status: [''],
+      comment: [''],
+    });
+  }
+
   /**
    * create category from the categoryService 
    * subcribe on the observerable object
    */
   createCategory(): void{
-    this.categoryService.createCategory(this.formCompnenttype.value.category).subscribe(categories => this.categories = categories);
+    this.categoryService.createCategory(this.componenttypeForm.value.category).subscribe(categories => this.categories = categories);
     console.log(this.categories);
   }
 
@@ -110,16 +118,16 @@ export class ProjectComponenttypeComponent implements OnInit {
    * is being called in the form on the submit, it will create componenttypes from the componenttypeService
    */
   createComponenttype(): void{
-    if(this.formCompnenttype.valid){
+    if(this.componenttypeForm.valid){
       this.componenttypeService.create(
         this.projectId,
-        this.formCompnenttype.value.name, 
-        this.formCompnenttype.value.description, 
-        this.formCompnenttype.value.category, 
-        this.formCompnenttype.value.storage);
-      this.modalRef.hide();
+        this.componenttypeForm.value.name,
+        this.componenttypeForm.value.description,
+        this.componenttypeForm.value.category,
+        this.componenttypeForm.value.storage)
+        .subscribe(componenttypes => this.componenttypes = componenttypes);
     }
-    
+    this.modalRef.hide();
   }
 
 }

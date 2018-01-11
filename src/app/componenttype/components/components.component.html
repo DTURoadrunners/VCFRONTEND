@@ -26,7 +26,7 @@
 <ng-template #newComponent>
   <div class="modal-header">
     <h4 class="modal-title pull-left">New Component</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -47,16 +47,16 @@
 <ng-template #editComponent>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Edit Component {{selectedComponent.id}}</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <form class="form-control" [formGroup]="componentForm" (ngSubmit)="onUpdateComponent()">
       <label>Status</label>
-      <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" tooltip="Current status of the component" required></textarea>
+      <textarea type="text" class="form-control" placeholder="Status..." formControlName="status" value={{selectedComponent.status}} tooltip="Current status of the component" required></textarea>
       <label>Comment</label>
-      <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" tooltip="Any other comments about the component"></textarea>
+      <textarea type="text" class="form-control" placeholder="Comment..." formControlName="comment" value={{selectedComponent.comment}} tooltip="Any other comments about the component"></textarea>
       <button class="btn btn-success btn-block" type="submit">
         Submit
       </button>
@@ -67,7 +67,7 @@
 <ng-template #deleteComponent>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Delete Component {{selectedComponent.id}}?</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>

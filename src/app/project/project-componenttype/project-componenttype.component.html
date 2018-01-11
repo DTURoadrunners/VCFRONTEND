@@ -26,9 +26,6 @@
     </div>
 </div>
 
-
-
-
 <!-- TEMPLATE START -->
 
 <ng-template #template>
@@ -42,11 +39,11 @@
       <div class="modal-body">
           
 
-        <form class="form-control no-boarder" [formGroup]="formCompnenttype" (ngSubmit)="createComponenttype()">
+        <form class="form-control no-boarder" [formGroup]="componenttypeForm" (ngSubmit)="createComponenttype()">
 
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control" placeholder="name" formControlName="name" required autofocus>
+                <input type="text" class="form-control" placeholder="Name..." formControlName="name" required autofocus>
             </div>
 
 
@@ -57,7 +54,7 @@
             
             <div class="form-group">
                 <label>Storage</label>
-                <input type="number" class="form-control" placeholder="storage" formControlName="storage" required>
+                <input type="number" class="form-control" placeholder="Storage..." formControlName="storage" required>
             </div>
             
             <div class="form-group">
