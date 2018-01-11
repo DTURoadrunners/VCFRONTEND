@@ -1,11 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Documents } from '../../models/documents'; 
+import { Documents } from '../../models/documents';
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { DocumentService } from './../../service/document.service'
 import { ActivatedRoute } from '@angular/router';
 
- 
+
 
 
 @Component({
@@ -26,11 +26,11 @@ export class DocumentsComponent implements OnInit {
     private modalService: BsModalService,
     private documentService: DocumentService,
     private route: ActivatedRoute,
-  ) { 
+  ) {
   }
 
   ngOnInit() {
-    this.getDocuments(+this.route.snapshot.paramMap.get('componentypeid')); //'+' to parse to number
+    this.getDocuments(+this.route.snapshot.paramMap.get('componentypeid'), +this.route.snapshot.paramMap.get('projectid')); //'+' to parse to number
     this.documentForm = this.fb.group({
       file: ['', Validators.required]
     });
@@ -48,15 +48,16 @@ export class DocumentsComponent implements OnInit {
     });
   }
 
-  getDocuments(componentTypeId: number) {
-    this.documentService.getAllDocuments(+this.route.snapshot.paramMap.get('componentypeid')) //'+' to parse to number
+  getDocuments(componentTypeId: number, projectId: number) {
+    this.documentService.getAllDocuments(componentTypeId, projectId) //'+' to parse to number
       .subscribe(documents => this.documents = documents);
   }
-  
+
   onCreateDocument() {
     if (this.documentForm.valid) {
       this.documentService.createDocument(
         +this.route.snapshot.paramMap.get('componentypeid'), //Get id from url, '+' to parse to number
+        +this.route.snapshot.paramMap.get('projectid'),
         this.documentForm.value.file
       )
         .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
@@ -69,6 +70,7 @@ export class DocumentsComponent implements OnInit {
       this.documentService.updateDocument(
         this.selectedDocument.id,
         this.selectedDocument.componenttypeId,
+        this.selectedDocument.projectId,
         this.documentForm.value.file)
         .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
     }
@@ -76,12 +78,11 @@ export class DocumentsComponent implements OnInit {
   }
 
   onDeleteDocument() {
-    if (this.documentForm.valid) {
-      this.documentService.deleteDocument(
-        this.selectedDocument.id,
-        this.selectedDocument.componenttypeId)
-        .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
-    }
+    this.documentService.deleteDocument(
+      this.selectedDocument.id,
+      this.selectedDocument.componenttypeId,
+      this.selectedDocument.projectId)
+      .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
     this.closeModal();
   }
 
