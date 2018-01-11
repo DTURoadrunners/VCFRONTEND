@@ -42,19 +42,19 @@ export class ProjectTabNavigatorComponent implements OnInit {
     this.getLatestLog();
   }
   selectOverview(): void {
-    this.overview = true; this.componenttype = false; this.memberlist = false; this.log = false;
+    this.overview = true; this.componenttype = false; this.memberlist = false; this.log = false; 
   }
 
   selectComponenttype(): void {
-    this.overview = false; this.componenttype = true; this.memberlist = false; this.log = false;
+    this.overview = false; this.componenttype = true; this.memberlist = false; this.log = false; 
   }
 
   selectMemberlist(): void {
-    this.overview = false; this.componenttype = false; this.memberlist = true; this.log = false;
+    this.overview = false; this.componenttype = false; this.memberlist = true; this.log = false; 
   }
 
   selectLog(): void {
-    this.overview = false; this.componenttype = false; this.memberlist = false; this.log = true;
+    this.overview = false; this.componenttype = false; this.memberlist = false; this.log = true; 
   }
 
   getProject(): void{
@@ -65,6 +65,8 @@ export class ProjectTabNavigatorComponent implements OnInit {
   getLatestLog(): void{
     this.logService.getLatestProjectLog().subscribe(projectLog => this.projectLog = projectLog);
   }
+
+  
 
   openModal(template: TemplateRef<any>, projectlog: ProjectLog) {
     this.modalRef = this.modalService.show(template);

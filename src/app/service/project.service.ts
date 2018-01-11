@@ -7,6 +7,12 @@ import { of } from 'rxjs/observable/of';
 import { PROJECTS } from '../mock/mock-projects'; // simulate data from the database
 import { Project } from '../models/project';
 
+  /**
+   * class Project - attributes:
+   * id: number;
+   * name: string;
+   * description: string;
+   */
 
 @Injectable()
 export class ProjectService {
@@ -27,8 +33,9 @@ export class ProjectService {
     return of(PROJECTS);
   }
 
-  updateProject(){
-
+  updateProject(project: Project): Observable<Project>{
+    PROJECTS[PROJECTS.findIndex(p => p.id === project.id)] = project;
+    return of(PROJECTS.find(p => p.id === project.id));
   }
 
   deleteProject(){
