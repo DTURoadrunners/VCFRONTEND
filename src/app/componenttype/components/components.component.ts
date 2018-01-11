@@ -48,7 +48,7 @@ export class ComponentsComponent implements OnInit {
   }
 
   getComponents(componentTypeId: number) {
-    this.componentService.getAll(+this.route.snapshot.paramMap.get('componentypeid')) //'+' to parse to number
+    this.componentService.getAll(+this.route.snapshot.paramMap.get('componentypeid'), +this.route.snapshot.paramMap.get('projectid')) //'+' to parse to number
       .subscribe(components => this.components = components);
   }
 
@@ -56,6 +56,7 @@ export class ComponentsComponent implements OnInit {
     if (this.componentForm.valid) {
       this.componentService.create(
         +this.route.snapshot.paramMap.get('componentypeid'), //'+' to parse to number
+        +this.route.snapshot.paramMap.get('projectid'),
         this.componentForm.value.status,
         this.componentForm.value.comment)
         .subscribe(components => this.components = components); //Assign retrieved data to variable
@@ -68,6 +69,7 @@ export class ComponentsComponent implements OnInit {
       this.componentService.update(
         this.selectedComponent.id,
         this.selectedComponent.componenttypeId,
+        this.selectedComponent.projectId,
         this.componentForm.value.status,
         this.componentForm.value.comment)
         .subscribe(components => this.components = components); //Assign retrieved data to variable
@@ -76,12 +78,11 @@ export class ComponentsComponent implements OnInit {
   }
 
   onDeleteComponent() {
-    if (this.componentForm.valid) {
-      this.componentService.delete(
-        this.selectedComponent.id,
-        this.selectedComponent.componenttypeId)
-        .subscribe(components => this.components = components); //Assign retrieved data to variable
-    }
+    this.componentService.delete(
+      this.selectedComponent.id,
+      this.selectedComponent.componenttypeId,
+      this.selectedComponent.projectId)
+      .subscribe(components => this.components = components); //Assign retrieved data to variable
     this.closeModal();
   }
 }
