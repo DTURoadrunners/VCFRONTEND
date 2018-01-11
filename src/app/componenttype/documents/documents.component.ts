@@ -31,16 +31,21 @@ export class DocumentsComponent implements OnInit {
 
   ngOnInit() {
     this.getDocuments(+this.route.snapshot.paramMap.get('componentypeid')); //'+' to parse to number
-
     this.documentForm = this.fb.group({
-      title: [this.selectedDocument.name, Validators.required],
-      file: ['']
+      file: ['', Validators.required]
     });
   }
 
-  openModal(template: TemplateRef<any>, document : Documents) {
+  openModal(template: TemplateRef<any>, document: Documents) {
     this.modalRef = this.modalService.show(template);
     this.selectedDocument = document;
+  }
+
+  closeModal() {
+    this.modalRef.hide()
+    this.documentForm = this.fb.group({ //Clear the form
+      file: ['', Validators.required]
+    });
   }
 
   getDocuments(componentTypeId: number) {
@@ -48,16 +53,15 @@ export class DocumentsComponent implements OnInit {
       .subscribe(documents => this.documents = documents);
   }
   
-  onUploadDocument() {
+  onCreateDocument() {
     if (this.documentForm.valid) {
       this.documentService.createDocument(
         +this.route.snapshot.paramMap.get('componentypeid'), //Get id from url, '+' to parse to number
-        this.documentForm.value.title,
         this.documentForm.value.file
       )
         .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
-      this.modalRef.hide();
     }
+    this.closeModal();
   }
 
   onUpdateDocument() {
@@ -65,12 +69,10 @@ export class DocumentsComponent implements OnInit {
       this.documentService.updateDocument(
         this.selectedDocument.id,
         this.selectedDocument.componenttypeId,
-        this.documentForm.value.title,
-        this.documentForm.value.file
-      )
+        this.documentForm.value.file)
         .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
-      this.modalRef.hide();
     }
+    this.closeModal();
   }
 
   onDeleteDocument() {
@@ -79,8 +81,8 @@ export class DocumentsComponent implements OnInit {
         this.selectedDocument.id,
         this.selectedDocument.componenttypeId)
         .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
-      this.modalRef.hide();
     }
+    this.closeModal();
   }
 
   onDownloadFile(documentId: number) {

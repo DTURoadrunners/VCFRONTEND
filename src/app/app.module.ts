@@ -56,6 +56,7 @@ import { LogService } from './service/log.service';
 import { StringlengthPipe } from './pipe/stringlength.pipe';
 import { LogmodalComponent } from './log/logmodal/logmodal.component';
 import { TimeagoPipe } from './pipe/timeago.pipe';
+import { MemberService } from './service/member.service';
 
 
 @NgModule({
@@ -116,7 +117,8 @@ import { TimeagoPipe } from './pipe/timeago.pipe';
     ComponentService,
     CategoryService,
     DocumentService,
-    LogService],
+    LogService,
+    MemberService],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }

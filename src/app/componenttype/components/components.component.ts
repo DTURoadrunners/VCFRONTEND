@@ -39,6 +39,14 @@ export class ComponentsComponent implements OnInit {
     this.selectedComponent = component;
   }
 
+  closeModal() {
+    this.modalRef.hide()
+    this.componentForm = this.fb.group({ //Clear the form
+      status: [''],
+      comment: [''],
+    });
+  }
+
   getComponents(componentTypeId: number) {
     this.componentService.getAll(+this.route.snapshot.paramMap.get('componentypeid')) //'+' to parse to number
       .subscribe(components => this.components = components);
@@ -51,8 +59,8 @@ export class ComponentsComponent implements OnInit {
         this.componentForm.value.status,
         this.componentForm.value.comment)
         .subscribe(components => this.components = components); //Assign retrieved data to variable
-      this.modalRef.hide();
     }
+    this.closeModal();
   }
 
   onUpdateComponent() {
@@ -63,12 +71,8 @@ export class ComponentsComponent implements OnInit {
         this.componentForm.value.status,
         this.componentForm.value.comment)
         .subscribe(components => this.components = components); //Assign retrieved data to variable
-      this.modalRef.hide();
     }
-    this.componentForm = this.fb.group({
-      status: [''], //Optional
-      comment: [''], //Optional
-    });
+    this.closeModal();
   }
 
   onDeleteComponent() {
@@ -77,8 +81,7 @@ export class ComponentsComponent implements OnInit {
         this.selectedComponent.id,
         this.selectedComponent.componenttypeId)
         .subscribe(components => this.components = components); //Assign retrieved data to variable
-      this.modalRef.hide();
     }
+    this.closeModal();
   }
-
 }

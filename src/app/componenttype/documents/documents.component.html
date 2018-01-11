@@ -46,17 +46,15 @@
 <ng-template #uploadDocument>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Upload Document</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <form class="form-control" [formGroup]="documentForm" (ngSubmit)="onUploadDocument()">
-      <label>Title</label>
-      <input type="text" class="form-control" placeholder="Title..." formControlName="title" tooltip="The displayed filename" autofocus required>
       <label>Select a file to upload:</label>
       <br>
-      <input type="file" class="uploadBtn" formControlName="file" tooltip="The file to be uploaded">
+      <input type="file" class="uploadBtn" formControlName="file" tooltip="The file to be uploaded" required>
 
       <button class="btn btn-success btn-block" type="submit">
         Upload
@@ -67,18 +65,16 @@
 
 <ng-template #updateDocument>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Update Document: {{selectedDocument.title}}</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <h4 class="modal-title pull-left">Update Document: {{selectedDocument.name}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <form class="form-control" [formGroup]="documentForm" (ngSubmit)="onUpdateDocument()">
-      <label>Title</label>
-      <input type="text" class="form-control" placeholder="Title..." formControlName="title" value={{selectedDocument.title}} tooltip="The displayed filename" autofocus required>
       <label>Select a file to upload:</label>
       <br>
-      <input type="file" class="uploadBtn" formControlName="file" value={{selectedDocument.file}} tooltip="The file to be uploaded">
+      <input type="file" class="uploadBtn" formControlName="file" tooltip="The file to be uploaded" required>
 
       <button class="btn btn-success btn-block" type="submit">
         Submit
@@ -89,8 +85,8 @@
 
 <ng-template #deleteDocument>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Delete Document: {{selectedDocument.title}}?</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <h4 class="modal-title pull-left">Delete Document: {{selectedDocument.name}}?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
