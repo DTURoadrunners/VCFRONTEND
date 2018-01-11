@@ -1,6 +1,6 @@
 <h4 class="text-muted">Log:</h4>
-<hr>
-<table class="table table-hover">
+
+<table class="table table-hover cursor-pointer">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -13,12 +13,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of logdata">
-      <th scope="row">{{data.id}}</th>
-      <td>{{data.submitter}}</td>
-      <td>{{data.timestamp  | date: 'mediumDate'}}</td>
-      <td>{{data.comment}}</td>
-      <td>{{data.target}}</td>
-      <td>
+      <th scope="row" (click)="openModal(logmodal, data)">{{data.id}}</th>
+      <td (click)="openModal(logmodal, data)">{{data.submitter}}</td>
+      <td (click)="openModal(logmodal, data)">{{data.timestamp  | date: 'mediumDate'}}</td>
+      <td (click)="openModal(logmodal, data)">{{data.comment}}</td>
+      <td (click)="openModal(logmodal, data)">{{data.target}}</td>
+      <td (click)="openModal(logmodal, data)">
         <span class="badge badge-success" *ngIf="data.logtype=='created'">Created</span>
         <span class="badge badge-danger" *ngIf="data.logtype=='deleted'">Deleted</span>
         <span class="badge badge-info" *ngIf="data.logtype=='rollback'">Rollback</span>
@@ -33,3 +33,7 @@
     <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination-sm"
                 previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
 </div>
+
+<ng-template #logmodal>
+  <logmodal [log]="selectedComponentTypeLog" [logModal]="modalRef"></logmodal>
+</ng-template>
