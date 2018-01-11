@@ -1,12 +1,48 @@
 <div class="col-9">
+        <button type="button" class="btn btn-outline-secondary pull-right" (click)="openModal(template)">Update project</button>
+        <h4 class="text-muted">Project: overview:</h4>
   <hr>
         <div class="media">
             
             <p>
                 <span class="text-muted">created by:</span>   <a href="#" class="text-info"> Thomas Bech</a> 
                 <br>
-            </p>            
-          
+            </p>      
         </div>
     <p>{{project.description}}</p>
 </div>
+
+
+
+<!-- TEMPLATE START -->
+
+<ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Update project</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <div class="modal-body">
+              
+    
+            <form class="form-control no-boarder">
+    
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="project.name"  placeholder="{{project.name}}" [ngModelOptions]="{standalone: true}" required autofocus>
+                </div>
+    
+    
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="text" class="form-control" rows="6"  [(ngModel)]="project.description"  [ngModelOptions]="{standalone: true}" placeholder="{{project.description}}" ></textarea>
+                </div>
+                
+                    <button class="btn btn-lg btn-primary btn-block" (click)="updateProject()" type="submit">Update</button>
+            </form>
+          </div>
+    </ng-template>
+    
+    <!-- TEMPLATE END -->

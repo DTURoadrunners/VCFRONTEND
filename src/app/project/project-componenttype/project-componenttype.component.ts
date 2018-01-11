@@ -31,7 +31,6 @@ export class ProjectComponenttypeComponent implements OnInit {
   typeaheadNoResults: boolean;
   dataSource: Observable<any>;
 
-
   componenttypes: Componenttypes[];
   categories: Category[];
 
