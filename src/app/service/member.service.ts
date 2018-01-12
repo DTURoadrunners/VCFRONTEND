@@ -11,33 +11,35 @@ export class MemberService {
 
   constructor() { }
 
-  getMember(id: number): Observable<Member> {
-    return of(MEMBERS.find(member => member.id === id));
+  get(memberId: string): Observable<Member> {
+    return of(MEMBERS.find(member => member.id === memberId));
   }
 
-  getMembers(): Observable<Member[]>{
-    return of(MEMBERS);
+  getAll(projectId: number): Observable<Member[]>{
+    var members: Member[] = new Array<Member>();
+    for (var i = 0; i < MEMBERS.length; i++) {
+      if (MEMBERS[i].projects.includes(projectId)) {
+        members.push(MEMBERS[i]);
+      }
+    }
+    return of(members);
   }
 
-  addMember(member: Member): Observable<Member[]> {
-    MEMBERS.push(member);
-    return of(MEMBERS);
+  add(memberId: string, projectId: number): Observable<Member[]> { //TODO: Handle error when nonexisting user is given
+    var newMember: Member;
+    this.get(memberId).subscribe(member => newMember = member);
+    newMember.projects.push(projectId);
+    return this.getAll(projectId);
   }
 
-  addMemberToProject(){
-
-  }
-
-  removeMemberFromProject(){
-
-  }
-
-  updateMember(){
-
-  }
-
-  deleteMember(){
-    
+  remove(memberId: string, projectId: number): Observable<Member[]> {
+    var newMember: Member;
+    this.get(memberId).subscribe(member => newMember = member);
+    var index = newMember.projects.indexOf(projectId);
+    if (index > -1) {
+      newMember.projects.splice(index, 1);
+    }
+    return this.getAll(projectId);
   }
 
 }
