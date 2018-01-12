@@ -17,9 +17,11 @@ export class DocumentsComponent implements OnInit {
 
   modalRef: BsModalRef;
   documentForm: FormGroup;
+  checkboxForm: FormGroup;
 
   documents: Documents[];
   selectedDocument: Documents;
+  checkedDocuments = {};
 
   constructor(
     private fb: FormBuilder,         // inject the formbuilder
@@ -31,6 +33,11 @@ export class DocumentsComponent implements OnInit {
 
   ngOnInit() {
     this.getDocuments(); //'+' to parse to number
+
+    this.checkboxForm = this.fb.group({
+      value: [false, Validators.required]
+    });
+
     this.documentForm = this.fb.group({
       file: ['', Validators.required]
     });
@@ -88,5 +95,14 @@ export class DocumentsComponent implements OnInit {
 
   onDownloadFile(documentId: number) {
     this.documentService.downloadFile(documentId);
+  }
+
+  onDownloadChecked() { //TODO: Download as zip
+    for (let document in this.checkedDocuments) {
+      //console.log(document);
+      console.log(this.checkedDocuments[1]);
+      console.log(this.checkedDocuments[2]);
+      //this.documentService.downloadFile(this.checkedDocuments[i]);
+    }
   }
 }

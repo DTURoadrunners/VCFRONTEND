@@ -66,5 +66,6 @@ export class DocumentService {
 
   public downloadFile(documentId : number) {
     //TODO: Implement
+    console.log("Download: " + documentId);
   }
 }

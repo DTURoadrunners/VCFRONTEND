@@ -3,45 +3,54 @@
   <h4 class="text-muted">Documents:</h4>
   <hr>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th></th> <!--Checkbox-->
-        <th>Name</th>
-        <th>Date Modified</th>
-        <th>Size</th>
-        <th>Type</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let document of documents">
-        <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-        <td>
-          <i class="fa fa-file" aria-hidden="true"></i>
-          <a class="text-info" (click)="onDownloadFile(document.id)"> {{document.name}}</a>
-        </td>
-        <td>{{document.date | date: 'mediumDate'}}</td>
-        <td>{{document.size | byteConverter}}</td>
-        <td>
-          {{document.type}}
-          <div class="btn-group btn-group-justified pull-right" dropdown>
-            <button dropdownToggle class="btn transparentBtn" type="button" dropdown-toggle>
-              <i class="fa fa-cog" aria-hidden="true"></i><span class="caret"></span>
-            </button>
-            <ul *dropdownMenu class="dropdown-menu dropdown-menu-right noPadding" role="menu">
-              <li role="menuitem">
-                <div class="btn-group btn-group-vertical">
-                  <button class="btn btn-default" (click)="openModal(updateDocument, document)">Update</button>
-                  <button class="btn btn-danger" (click)="openModal(deleteDocument, document)">Delete</button>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <form #f="ngForm" novalidate>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th> <!--Checkbox-->
+          <th>Name</th>
+          <th>Date Modified</th>
+          <th>Size</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let document of documents">
+          <td>
+            <input type="checkbox" aria-label="Checkbox for following text input" [value]="document.id" (change)="checkedDocuments[$event.target.getAttribute('value')]=$event.target.checked">
+          </td>
+          <td>
+            <i class="fa fa-file" aria-hidden="true"></i>
+            <a class="text-info" (click)="onDownloadFile(document.id)"> {{document.name}}</a>
+          </td>
+          <td>{{document.date | date: 'mediumDate'}}</td>
+          <td>{{document.size | byteConverter}}</td>
+          <td>
+            {{document.type}}
+            <div class="btn-group btn-group-justified pull-right" dropdown>
+              <button dropdownToggle class="btn transparentBtn" type="button" dropdown-toggle>
+                <i class="fa fa-cog" aria-hidden="true"></i><span class="caret"></span>
+              </button>
+              <ul *dropdownMenu class="dropdown-menu dropdown-menu-right noPadding" role="menu">
+                <li role="menuitem">
+                  <div class="btn-group btn-group-vertical">
+                    <button class="btn btn-info">Show logs</button>
+                    <button class="btn btn-default" (click)="openModal(updateDocument, document)">Update</button>
+                    <button class="btn btn-danger" (click)="openModal(deleteDocument, document)">Delete</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="onDownloadChecked()">
+      Download Selected
+    </button>
+  </form>
 </div>
+
 
 <ng-template #uploadDocument>
   <div class="modal-header">
