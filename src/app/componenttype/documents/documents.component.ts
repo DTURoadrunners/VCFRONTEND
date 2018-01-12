@@ -98,11 +98,12 @@ export class DocumentsComponent implements OnInit {
   }
 
   onDownloadChecked() { //TODO: Download as zip
+    console.log(this.checkedDocuments);
     for (let document in this.checkedDocuments) {
-      //console.log(document);
-      console.log(this.checkedDocuments[1]);
-      console.log(this.checkedDocuments[2]);
-      //this.documentService.downloadFile(this.checkedDocuments[i]);
+      if(this.checkedDocuments[document]){
+        this.documentService.downloadFile(this.checkedDocuments[document]);
+      }
+     
     }
   }
 }
