@@ -48,19 +48,19 @@ export class ProjectMemberlistComponent implements OnInit {
       .subscribe(members => this.members = members);
   }
 
-  onAddMember(memberId: string) {
+  onAddMember() {
     if (this.memberForm.valid) {
       this.memberService.add(
-        memberId,
+        this.memberForm.value.memberId,
         +this.route.snapshot.paramMap.get('id'))
         .subscribe(members => this.members = members); //Assign retrieved data to variable
     }
     this.closeModal();
   }
 
-  onRemoveMember(memberId: string) {
+  onRemoveMember() {
     this.memberService.remove(
-      memberId,
+      this.memberForm.value.memberId,
       +this.route.snapshot.paramMap.get('id'))
       .subscribe(members => this.members = members); //Assign retrieved data to variable
     this.closeModal();

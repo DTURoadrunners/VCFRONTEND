@@ -11,8 +11,8 @@ export class MemberService {
 
   constructor() { }
 
-  get(memberId: string, projectId: number): Observable<Member> {
-    return of(MEMBERS.find(member => member.id === memberId && member.projects.includes(projectId)));
+  get(memberId: string): Observable<Member> {
+    return of(MEMBERS.find(member => member.id === memberId));
   }
 
   getAll(projectId: number): Observable<Member[]>{
@@ -27,19 +27,19 @@ export class MemberService {
 
   add(memberId: string, projectId: number): Observable<Member[]> { //TODO: Handle error when nonexisting user is given
     var newMember: Member;
-    this.get(memberId, projectId).subscribe(member => newMember = member);
+    this.get(memberId).subscribe(member => newMember = member);
     newMember.projects.push(projectId);
-    return of(MEMBERS);
+    return this.getAll(projectId);
   }
 
-  remove(memberId: string, projectId: number) {
+  remove(memberId: string, projectId: number): Observable<Member[]> {
     var newMember: Member;
-    this.get(memberId, projectId).subscribe(member => newMember = member);
+    this.get(memberId).subscribe(member => newMember = member);
     var index = newMember.projects.indexOf(projectId);
     if (index > -1) {
-      MEMBERS.splice(index, 1);
+      newMember.projects.splice(index, 1);
     }
-    return of(MEMBERS);
+    return this.getAll(projectId);
   }
 
 }
