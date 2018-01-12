@@ -57,6 +57,7 @@ import { StringlengthPipe } from './pipe/stringlength.pipe';
 import { LogmodalComponent } from './log/logmodal/logmodal.component';
 import { TimeagoPipe } from './pipe/timeago.pipe';
 import { MemberService } from './service/member.service';
+import { SearchMemberPipe } from './pipe/search-member.pipe';
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import { MemberService } from './service/member.service';
     ByteConverterPipe,
     StringlengthPipe,
     LogmodalComponent,
-    TimeagoPipe
+    TimeagoPipe,
+    SearchMemberPipe
 
   ],
   imports: [
