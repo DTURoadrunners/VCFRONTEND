@@ -42,12 +42,20 @@
     </button>
   </div>
   <div class="modal-body">
-    <form class="form-control" [formGroup]="memberForm" (ngSubmit)="onAddMember()">
-      <label>Student Number / Campusnet ID</label>
-      <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
-      <button class="btn btn-success btn-block" type="submit">
-        Add
-      </button>
+    <form class="form-control no-boarder" [formGroup]="memberForm" (ngSubmit)="onAddMember()">
+      <div class="form-group" [ngClass]="{'invalid':!memberForm.controls['memberId'].valid && memberForm.controls['memberId'].touched }">
+     
+        <label>Student Number / Campusnet ID</label>
+        <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
+      </div>
+      
+      <button 
+      class="btn btn-primary btn-block" 
+      type="submit" 
+      [disabled]="!memberForm.valid" 
+      [ngClass]="{'btn-secondary':!memberForm.valid}"> 
+      subaddmit 
+    </button>
     </form>
   </div>
 </ng-template>
@@ -60,11 +68,17 @@
     </button>
   </div>
   <div class="modal-body">
-    <form class="form-control" [formGroup]="memberForm" (ngSubmit)="onRemoveMember()">
-      <label>Student Number / Campusnet ID</label>
-      <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
-      <button class="btn btn-danger btn-block" type="submit">
-        Remove
+    <form class="form-control no-boarder" [formGroup]="memberForm" (ngSubmit)="onRemoveMember()">
+      <div class="form-group" [ngClass]="{'invalid':!memberForm.controls['memberId'].valid && memberForm.controls['memberId'].touched }">
+        <label>Student Number / Campusnet ID</label>
+        <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
+      </div>
+      <button 
+        class="btn btn-primary btn-block" 
+        type="submit" 
+        [disabled]="!memberForm.valid" 
+        [ngClass]="{'btn-secondary':!memberForm.valid}"> 
+        subaddmit 
       </button>
     </form>
   </div>

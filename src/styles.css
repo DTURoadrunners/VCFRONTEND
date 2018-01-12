@@ -23,3 +23,7 @@ body {
 .invalid textarea{
     border-color: #dc3545 !important;
 }
+
+.no-boarder{
+    border: none !important;
+}
