@@ -14,7 +14,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class MyprojectsComponent implements OnInit {
   projects: Project[];
   modalRef: BsModalRef;
-  projectForm: FormGroup; //call it with [formGroup]="componentForm" in the HTML
+  projectForm: FormGroup; //call it with [formGroup]="projectForm" in the HTML
   private formSubmitAttempt: boolean;  // submit flag
 
 
@@ -27,8 +27,8 @@ export class MyprojectsComponent implements OnInit {
   ngOnInit() {
     this.getProjects();
     this.projectForm = this.fb.group({
-      title: ['', Validators.required], //Optional
-      description: ['', Validators.required], //Optional
+      title: ['', Validators.required], // Required
+      description: ['', Validators.required], // Required
     });
   }
   
@@ -54,7 +54,7 @@ export class MyprojectsComponent implements OnInit {
   onSubmit() {
     if (this.projectForm.valid) {
       this.projectService.createProject(  
-        { id: Math.floor(Math.random() * 1000) + 1  , 
+        { id: Math.floor(Math.random() * 1000) + 1, // TODO don't create random ID  
           name: this.projectForm.value.title, 
           description: this.projectForm.value.description }
         ).subscribe(projects => this.projects = projects);
@@ -64,4 +64,5 @@ export class MyprojectsComponent implements OnInit {
    
     this.formSubmitAttempt = true;             
   }
+  
 }
