@@ -10,11 +10,28 @@
       <p>
         <span class="text-muted">Project owner:</span>   <a href="#" class="text-info"> Thomas Bech</a> 
         <br>
-        <span class="text-muted">Members:</span> 
-        <br>
-        <a *ngFor="let member of members" routelink="#" class="member-info"> {{member.name}} <br></a>
+       
      </p>          
   </div>
+
+  <div class="input-group input-group-lg search_bar">
+      <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+      <input type="text" class="form-control" placeholder="search members..." aria-describedby="sizing-addon1" [(ngModel)]="searchText">
+  </div>
+  
+  <div class="list-group">
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" 
+      *ngFor="let member of members | searchMember : searchText">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{member.name }}</h5>
+            <small class="text-muted"><span class="badge badge-secondary">{{member.studyline}}</span> </small>
+            
+        </div>
+        <p class="mb-1"><i class="fa fa-id-badge" aria-hidden="true"></i> {{member.id}}</p>
+        <small class="text-muted"><i class="fa fa-phone" aria-hidden="true"></i> {{member.phone}} <br>  <i class="fa fa-envelope" aria-hidden="true"></i> {{member.email}}</small>
+      </a>
+  </div>
+  
 </div>
 
 <ng-template #addMember>
@@ -25,12 +42,20 @@
     </button>
   </div>
   <div class="modal-body">
-    <form class="form-control" [formGroup]="memberForm" (ngSubmit)="onAddMember()">
-      <label>Student Number / Campusnet ID</label>
-      <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
-      <button class="btn btn-success btn-block" type="submit">
-        Add
-      </button>
+    <form class="form-control no-boarder" [formGroup]="memberForm" (ngSubmit)="onAddMember()">
+      <div class="form-group" [ngClass]="{'invalid':!memberForm.controls['memberId'].valid && memberForm.controls['memberId'].touched }">
+     
+        <label>Student Number / Campusnet ID</label>
+        <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
+      </div>
+      
+      <button 
+      class="btn btn-primary btn-block" 
+      type="submit" 
+      [disabled]="!memberForm.valid" 
+      [ngClass]="{'btn-secondary':!memberForm.valid}"> 
+      subaddmit 
+    </button>
     </form>
   </div>
 </ng-template>
@@ -43,11 +68,17 @@
     </button>
   </div>
   <div class="modal-body">
-    <form class="form-control" [formGroup]="memberForm" (ngSubmit)="onRemoveMember()">
-      <label>Student Number / Campusnet ID</label>
-      <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
-      <button class="btn btn-danger btn-block" type="submit">
-        Remove
+    <form class="form-control no-boarder" [formGroup]="memberForm" (ngSubmit)="onRemoveMember()">
+      <div class="form-group" [ngClass]="{'invalid':!memberForm.controls['memberId'].valid && memberForm.controls['memberId'].touched }">
+        <label>Student Number / Campusnet ID</label>
+        <textarea type="text" class="form-control" placeholder="ID..." formControlName="memberId" tooltip="Student number or campusnet ID for non-students"></textarea>
+      </div>
+      <button 
+        class="btn btn-primary btn-block" 
+        type="submit" 
+        [disabled]="!memberForm.valid" 
+        [ngClass]="{'btn-secondary':!memberForm.valid}"> 
+        subaddmit 
       </button>
     </form>
   </div>

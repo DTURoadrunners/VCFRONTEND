@@ -15,3 +15,15 @@ body {
         display: block;
     }
 }
+
+.invalid input{
+    border-color: #dc3545 !important;
+}
+
+.invalid textarea{
+    border-color: #dc3545 !important;
+}
+
+.no-boarder{
+    border: none !important;
+}

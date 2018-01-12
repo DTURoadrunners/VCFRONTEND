@@ -36,12 +36,24 @@
   </div>
   <div class="modal-body">
     <form class="form-control no-boarder" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-      <label>Title</label>
-      <input type="text" class="form-control" placeholder="Title..." formControlName="title"  tooltip="Title of the project" required />
-      <label>Description</label>
-      <textarea type="text" class="form-control" rows="6" placeholder="Description..." formControlName="description"  tooltip="Description of the project"></textarea>
+        <div class="form-group" [ngClass]="{'invalid':!projectForm.controls['title'].valid && projectForm.controls['title'].touched }">
+            <label>Title</label>
+            <input type="text" class="form-control" placeholder="Title..." [formControl]="projectForm.controls['title']"  tooltip="Title of the project"    />
+        </div>
+
+        <div class="form-group" [ngClass]="{'invalid':!projectForm.controls['description'].valid && projectForm.controls['description'].touched }">
+            <label>Description</label>
+            <textarea type="text" class="form-control" rows="6" placeholder="Description..." formControlName="description"  tooltip="Description of the project"></textarea>
+        </div>
+      
       <br>
-      <button class="btn  btn-primary btn-block" type="submit"> submit </button>
+      <button 
+        class="btn btn-primary btn-block" 
+        type="submit" 
+        [disabled]="!projectForm.valid" 
+        [ngClass]="{'btn-secondary':!projectForm.valid}"> 
+        submit 
+      </button>
     </form>
 
   </div>

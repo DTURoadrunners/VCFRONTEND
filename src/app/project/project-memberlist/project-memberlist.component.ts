@@ -4,6 +4,7 @@ import { Member } from "../../models/member";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { MemberService } from "../../service/member.service";
 import { ActivatedRoute } from '@angular/router';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -50,10 +51,17 @@ export class ProjectMemberlistComponent implements OnInit {
 
   onAddMember() {
     if (this.memberForm.valid) {
-      this.memberService.add(
-        this.memberForm.value.memberId,
-        +this.route.snapshot.paramMap.get('id'))
-        .subscribe(members => this.members = members); //Assign retrieved data to variable
+      let members = this.memberForm.value.memberId;
+      members = members.split(","); 
+      for(let member of members){
+        this.memberService.add(
+          member.trim(),
+          +this.route.snapshot.paramMap.get('id'))
+          .subscribe(members => this.members = members); //Assign retrieved data to variable
+      }
+      /*
+      
+        */
     }
     this.closeModal();
   }
