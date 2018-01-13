@@ -1,6 +1,6 @@
-import { ComponentTypeLog } from '../models/log/componentTypeLog';
+import { LogEntry } from '../models/LogEntry';
 
-export const COMPONENTTYPELOG:  ComponentTypeLog[] = [
+export const COMPONENTTYPELOG:  LogEntry[] = [
     {id: 1, submitter: 'John Doe', timestamp: new Date(2017, 1, 2), comment: "This is a comment", target: 'Component 1', logtype: "created"},
     {id: 2, submitter: 'John Doe', timestamp: new Date(2017, 1, 3), comment: "This is a comment", target: 'Component 2', logtype: "deleted"},
     {id: 3, submitter: 'John Doe', timestamp: new Date(2017, 1, 3), comment: "This is a comment", target: 'Component 1', logtype: "created"},

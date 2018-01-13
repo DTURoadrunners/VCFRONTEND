@@ -10,7 +10,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 // log
-import { ComponentTypeLog } from '../../models/log/componentTypeLog';
+import { LogEntry } from '../../models/LogEntry';
 import { LogService } from '../../service/log.service';
 
 
@@ -23,9 +23,9 @@ import { LogService } from '../../service/log.service';
 export class TabNavigatorComponent implements OnInit {
 
   @Input() componenttype: Componenttypes;
-  componentTypeLog: ComponentTypeLog[];
+  componentTypeLog: LogEntry[];
   modalRef: BsModalRef;
-  selectedComponentTypeLog: ComponentTypeLog;
+  selectedComponentTypeLog: LogEntry;
 
 
 
@@ -76,7 +76,7 @@ export class TabNavigatorComponent implements OnInit {
     this.logService.getLatestComponettypeLog().subscribe(componentTypeLog => this.componentTypeLog = componentTypeLog);
   }
 
-  openModal(template: TemplateRef<any>, projectlog: ComponentTypeLog) {
+  openModal(template: TemplateRef<any>, projectlog: LogEntry) {
     this.modalRef = this.modalService.show(template);
     this.selectedComponentTypeLog = projectlog;
   }

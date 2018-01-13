@@ -6,7 +6,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 // log
-import { ComponentTypeLog } from '../../models/log/componentTypeLog'; 
+import { LogEntry } from '../../models/LogEntry'; 
 import { LogService } from '../../service/log.service'; 
 
 @Component({
@@ -21,7 +21,7 @@ export class LogComponent implements OnInit {
   currentPage = 1;
   smallnumPages = 0;
   modalRef: BsModalRef;
-  selectedComponentTypeLog: ComponentTypeLog;
+  selectedLogEntry: LogEntry;
 
   constructor(
     private modalService: BsModalService,
@@ -38,9 +38,9 @@ export class LogComponent implements OnInit {
     this.currentPage = pageNo;
   }
 
-  openModal(template: TemplateRef<any>, componentTypeLog: ComponentTypeLog) {
+  openModal(template: TemplateRef<any>, logEntry: LogEntry) {
     this.modalRef = this.modalService.show(template);
-    this.selectedComponentTypeLog = componentTypeLog;
+    this.selectedLogEntry = logEntry;
   }
 
 }

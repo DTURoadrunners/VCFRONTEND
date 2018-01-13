@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { COMPONENTTYPELOG } from '../mock/mock-componTypeLog';
-import { ComponentTypeLog } from '../models/log/componentTypeLog';
+import { LogEntry } from '../models/LogEntry';
 
 
 @Injectable()
@@ -11,7 +11,7 @@ export class PagerService {
 
   constructor() { }
 
-  getLogs() : ComponentTypeLog[] {
+  getLogs(): LogEntry[] {
     return COMPONENTTYPELOG;
   }
 

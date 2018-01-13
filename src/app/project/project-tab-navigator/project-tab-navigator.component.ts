@@ -10,7 +10,7 @@ import { Project } from '../../models/project';
 import { ProjectService } from '../../service/project.service';
 
 // project log
-import { ProjectLog } from '../../models/log/project-log';
+import { LogEntry } from '../../models/LogEntry';
 import { LogService } from '../../service/log.service';
 
 @Component({
@@ -21,14 +21,14 @@ import { LogService } from '../../service/log.service';
 export class ProjectTabNavigatorComponent implements OnInit {
 
   @Input() project: Project;
-  projectLog: ProjectLog[];
+  logEntry: LogEntry[];
   modalRef: BsModalRef;
 
   overview: boolean = true;
   componenttype: boolean = false;
   memberlist: boolean = false;
   log: boolean = false;
-  selectedProjectLog: ProjectLog;
+  selectedLogEntry: LogEntry;
 
   constructor(
     private route: ActivatedRoute,
@@ -63,14 +63,12 @@ export class ProjectTabNavigatorComponent implements OnInit {
   }
 
   getLatestLog(): void{
-    this.logService.getLatestProjectLog().subscribe(projectLog => this.projectLog = projectLog);
+    this.logService.getLatestProjectLog().subscribe(projectLog => this.logEntry = projectLog);
   }
 
-  
-
-  openModal(template: TemplateRef<any>, projectlog: ProjectLog) {
+  openModal(template: TemplateRef<any>, logEntry: LogEntry) {
     this.modalRef = this.modalService.show(template);
-    this.selectedProjectLog = projectlog;
+    this.selectedLogEntry = logEntry;
   }
 
 }

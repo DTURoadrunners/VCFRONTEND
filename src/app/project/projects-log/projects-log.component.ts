@@ -5,7 +5,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 // log
-import { ProjectLog } from '../../models/log/project-log';
+import { LogEntry } from '../../models/LogEntry';
 import { LogService } from '../../service/log.service';
 
 @Component({
@@ -15,9 +15,9 @@ import { LogService } from '../../service/log.service';
 })
 export class ProjectsLogComponent implements OnInit {
 
-  logdata: ProjectLog[];
+  logdata: LogEntry[];
   modalRef: BsModalRef;
-  selectedProjectLog: ProjectLog;
+  selectedLogEntry: LogEntry;
   totalItems: number;
   currentPage = 1;
   smallnumPages = 0;
@@ -39,8 +39,8 @@ export class ProjectsLogComponent implements OnInit {
   getProjectLogs(): void{
     this.logService.getProjectLogs().subscribe(logdata => this.logdata = logdata);
   }
-  openModal(template: TemplateRef<any>, projectlog: ProjectLog) {
+  openModal(template: TemplateRef<any>, logEntry: LogEntry) {
     this.modalRef = this.modalService.show(template);
-    this.selectedProjectLog = projectlog;
+    this.selectedLogEntry = logEntry;
   }
 }
