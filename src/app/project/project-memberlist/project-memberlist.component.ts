@@ -17,6 +17,7 @@ export class ProjectMemberlistComponent implements OnInit {
   members: Member[];
   modalRef: BsModalRef;
   memberForm: FormGroup;
+  alerts: any = [];
 
   constructor(
     private fb: FormBuilder,         // inject the formbuilder
@@ -59,19 +60,19 @@ export class ProjectMemberlistComponent implements OnInit {
           +this.route.snapshot.paramMap.get('id'))
           .subscribe(members => this.members = members); //Assign retrieved data to variable
       }
-      /*
-      
-        */
+      this.closeModal();
     }
-    this.closeModal();
+
   }
 
   onRemoveMember() {
-    this.memberService.remove(
-      this.memberForm.value.memberId,
-      +this.route.snapshot.paramMap.get('id'))
-      .subscribe(members => this.members = members); //Assign retrieved data to variable
-    this.closeModal();
+    if (this.memberForm.valid) {
+      this.memberService.remove(
+        this.memberForm.value.memberId,
+        +this.route.snapshot.paramMap.get('id'))
+        .subscribe(members => this.members = members); //Assign retrieved data to variable
+      this.closeModal();
+    }
   }
 
 }

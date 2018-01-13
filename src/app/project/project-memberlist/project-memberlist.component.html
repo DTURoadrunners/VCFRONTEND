@@ -34,6 +34,12 @@
   </div>
   
 </div>
+<br>
+<div class="offset-lg-2 col-lg-8" *ngFor="let alert of alerts">
+  <alert [type]="alert.type" [dismissible]="dismissible" dismissOnTimeout="5000">
+    <span [innerHtml]="alert.msg"></span>
+  </alert>
+</div>
 
 <ng-template #addMember>
   <div class="modal-header">

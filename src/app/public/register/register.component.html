@@ -11,8 +11,8 @@
     <img class="profile-img" src="assets/dtu_logo.png"
          alt="">
     <form class="form-signin" [formGroup]="CNForm" (ngSubmit)="onVerifyCN()">
-      <input type="text" class="form-control" placeholder="Username" formControlName="username" required autofocus>
-      <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
+      <input type="text" class="form-control form-top" placeholder="Username" formControlName="username" required autofocus>
+      <input type="password" class="form-control form-bottom" placeholder="Password" formControlName="password" required>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Verify
