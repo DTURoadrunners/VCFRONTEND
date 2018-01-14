@@ -58,6 +58,8 @@ import { LogmodalComponent } from './log/logmodal/logmodal.component';
 import { TimeagoPipe } from './pipe/timeago.pipe';
 import { MemberService } from './service/member.service';
 import { SearchMemberPipe } from './pipe/search-member.pipe';
+import { ComponentLogComponent } from './componenttype/components/component-log/component-log.component';
+import { DocumentLogComponent } from './componenttype/documents/document-log/document-log.component';
 
 
 @NgModule({
@@ -87,7 +89,9 @@ import { SearchMemberPipe } from './pipe/search-member.pipe';
     StringlengthPipe,
     LogmodalComponent,
     TimeagoPipe,
-    SearchMemberPipe
+    SearchMemberPipe,
+    ComponentLogComponent,
+    DocumentLogComponent
 
   ],
   imports: [

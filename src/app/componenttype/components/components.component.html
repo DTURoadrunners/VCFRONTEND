@@ -4,7 +4,6 @@
   <h4 class="text-muted">Components:</h4>
   <hr>
   <accordion>
-    <!--Make dynamic with ngFor for each component-->
     <accordion-group heading="Component: {{component.id}}" *ngFor="let component of components">
       <div class="btn-group pull-right">
         <button type="button" class="btn btn-default" (click)="openModal(editComponent, component)">Edit</button>
@@ -17,7 +16,7 @@
         Comment: {{component.comment}}
       </p>
       <br>
-      <button type="button" class="btn btn-info">Component Log</button>
+      <button type="button" class="btn btn-info" (click)="openModal(log, component)">Component Log</button>
       <p class="text-muted pull-right" id="timestamp">Creation date: {{component.timestamp | date:'mediumDate'}}</p>
     </accordion-group>
   </accordion>
@@ -86,3 +85,9 @@
   timestamp
   componentLog
     -->
+
+<ng-template #log>
+  <section>
+    <app-component-log [componentId]="selectedComponent.id"></app-component-log>
+  </section>
+</ng-template>

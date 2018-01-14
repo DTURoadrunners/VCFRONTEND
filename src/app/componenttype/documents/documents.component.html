@@ -34,7 +34,7 @@
               <ul *dropdownMenu class="dropdown-menu dropdown-menu-right noPadding" role="menu">
                 <li role="menuitem">
                   <div class="btn-group btn-group-vertical">
-                    <button class="btn btn-info">Show logs</button>
+                    <button class="btn btn-info" (click)="openModal(log, document)">Show logs</button>
                     <button class="btn btn-default" (click)="openModal(updateDocument, document)">Update</button>
                     <button class="btn btn-danger" (click)="openModal(deleteDocument, document)">Delete</button>
                   </div>
@@ -105,4 +105,10 @@
       Delete
     </button>
   </div>
+</ng-template>
+
+<ng-template #log>
+  <section>
+    <app-document-log [documentId]="selectedDocument.id"></app-document-log>
+  </section>
 </ng-template>

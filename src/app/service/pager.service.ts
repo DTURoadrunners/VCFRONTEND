@@ -7,8 +7,6 @@ import { LogEntry } from '../models/LogEntry';
 @Injectable()
 export class PagerService {
 
-
-
   constructor() { }
 
   getLogs(): LogEntry[] {
