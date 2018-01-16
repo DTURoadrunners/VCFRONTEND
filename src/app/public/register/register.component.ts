@@ -38,16 +38,7 @@ export class RegisterComponent implements OnInit {
 
   onVerifyCN() {
     if (this.CNForm.valid) {
-      this.cnAuth.verify(this.CNForm.value.username, this.CNForm.value.password).subscribe(result => {
-        if (result) {
-          console.log(result);
-        }
-        else {
-          //TODO: Handle error
-          console.log("result was null");
-        }
-      });
-      
+      this.cnUser = this.cnAuth.verify(this.CNForm.value.username, this.CNForm.value.password);
       if (this.cnUser != null) {
         this.cnVerified = true;
         this.alerts = [];

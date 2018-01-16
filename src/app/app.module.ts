@@ -61,8 +61,6 @@ import { SearchMemberPipe } from './pipe/search-member.pipe';
 import { ComponentLogComponent } from './componenttype/components/component-log/component-log.component';
 import { DocumentLogComponent } from './componenttype/documents/document-log/document-log.component';
 
-import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -111,8 +109,7 @@ import { HttpClientModule } from '@angular/common/http';
     TooltipModule.forRoot(),
     PaginationModule.forRoot(),
     TypeaheadModule.forRoot(),
-    BreadcrumbsModule,
-    HttpClientModule
+    BreadcrumbsModule
   ],
   exports: [BsDropdownModule],
   providers: [

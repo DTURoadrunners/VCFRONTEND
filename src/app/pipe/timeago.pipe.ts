@@ -27,30 +27,30 @@ export class TimeagoPipe implements PipeTransform, OnDestroy {
       return null;
     });
     if (seconds < 60) {
-      return Math.floor(seconds) + " seconds ago";
+      return seconds + " seconds ago";
     }
     seconds /= 60; //minutes
     if (seconds < 60){
-      return Math.floor(seconds) + " minutes ago";
+      return seconds + " minutes ago";
     }
     seconds /= 60; //hours
     if (seconds < 24) {
-      return Math.floor(seconds) + " hours ago";
+      return seconds + " hours ago";
     }
     seconds /= 24; //days
     if (seconds < 7){
-      return Math.floor(seconds) + " days ago";
+      return seconds + " days ago";
     }
     seconds /= 7; //weeks
     if (seconds < 4){
-      return Math.floor(seconds) + " weeks ago";
+      return seconds + " weeks ago";
     }
     seconds /= 4; //months
     if (seconds < 12) {
-      return Math.floor(seconds) + " months ago";
+      return seconds + " months ago";
     }
     seconds /= 12; //years
-      return Math.floor(seconds) + " years ago";
+      return seconds + " years ago";
   }
 
   ngOnDestroy(): void {
