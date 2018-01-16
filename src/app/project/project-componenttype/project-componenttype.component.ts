@@ -49,14 +49,11 @@ export class ProjectComponenttypeComponent implements OnInit {
      */
     this.componenttypeForm = this.fb.group({
       name:         ['', Validators.required],
-      description:  ['', Validators.required],
-      storage:      ['', Validators.required],
-      category:   ['', Validators.required]
+      description:  [''],
+      storage:      [0],
+      category:   ['']
     });
   }
-
-
-
 
   ngOnInit() {
     this.projectId = +this.route.snapshot.paramMap.get('id') // bind the project id from the route
