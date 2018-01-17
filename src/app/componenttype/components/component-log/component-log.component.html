@@ -1,4 +1,4 @@
-<div class="modal-header"> <!--TOOD: Fix width of modal-->
+<div class="modal-header">
   <h4 class="modal-title pull-left">Log, Component {{componentId}}</h4>
   <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
     <span aria-hidden="true">&times;</span>
@@ -12,7 +12,6 @@
         <th scope="col">Submitter</th>
         <th scope="col">Timestamp</th>
         <th scope="col">Comment</th>
-        <th scope="col">Target</th>
         <th scope="col">Event</th>
       </tr>
     </thead>
@@ -22,7 +21,6 @@
         <td (click)="openModal(logmodal, data)">{{data.submitter}}</td>
         <td (click)="openModal(logmodal, data)">{{data.timestamp  | date: 'mediumDate'}}</td>
         <td (click)="openModal(logmodal, data)">{{data.comment}}</td>
-        <td (click)="openModal(logmodal, data)">{{data.target}}</td>
         <td (click)="openModal(logmodal, data)">
           <span class="badge badge-success" *ngIf="data.logtype=='created'">Created</span>
           <span class="badge badge-danger" *ngIf="data.logtype=='deleted'">Deleted</span>

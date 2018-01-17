@@ -15,18 +15,18 @@ import { ActivatedRoute } from '@angular/router';
 export class ComponentsComponent implements OnInit {
   components: _Component[];
   modalRef: BsModalRef;
-  componentForm: FormGroup; //call it with [formGroup]="componentForm" in the HTML
+  componentForm: FormGroup;
   selectedComponent: _Component;
 
   constructor(
-    private fb: FormBuilder,         // inject the formbuilder
+    private fb: FormBuilder,
     private modalService: BsModalService,
     private componentService: ComponentService,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.getComponents(); //using id from url. '+' to parse to number
+    this.getComponents();
 
     this.componentForm = this.fb.group({
       status: [''], //Optional
@@ -34,11 +34,18 @@ export class ComponentsComponent implements OnInit {
     });
   }
 
+  /**
+   * open the modal with the corresponding HTML template
+   * @param component the selected component to show in the modal
+   */
   openModal(template: TemplateRef<any>, component: _Component) {
     this.modalRef = this.modalService.show(template);
     this.selectedComponent = component;
   }
 
+  /**
+   * Close the modal and reset the input form
+   */
   closeModal() {
     this.modalRef.hide()
     this.componentForm = this.fb.group({ //Clear the form
@@ -59,7 +66,7 @@ export class ComponentsComponent implements OnInit {
         +this.route.snapshot.paramMap.get('projectid'),
         this.componentForm.value.status,
         this.componentForm.value.comment)
-        .subscribe(components => this.components = components); //Assign retrieved data to variable
+        .subscribe(components => this.components = components);
     }
     this.closeModal();
   }
@@ -72,7 +79,7 @@ export class ComponentsComponent implements OnInit {
         this.selectedComponent.projectId,
         this.componentForm.value.status,
         this.componentForm.value.comment)
-        .subscribe(components => this.components = components); //Assign retrieved data to variable
+        .subscribe(components => this.components = components);
     }
     this.closeModal();
   }
@@ -82,7 +89,7 @@ export class ComponentsComponent implements OnInit {
       this.selectedComponent.id,
       this.selectedComponent.componenttypeId,
       this.selectedComponent.projectId)
-      .subscribe(components => this.components = components); //Assign retrieved data to variable
+      .subscribe(components => this.components = components);
     this.closeModal();
   }
 }

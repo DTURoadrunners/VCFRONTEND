@@ -11,7 +11,7 @@ import { LogService } from "../../../service/log.service";
 })
 export class DocumentLogComponent implements OnInit {
 
-  @Input('documentId') documentId: number;
+  @Input('documentId') documentId: number; //Selected document to open log for
   logData: LogEntry[];
   modalRef: BsModalRef;
   selectedLogEntry: LogEntry;
@@ -25,6 +25,11 @@ export class DocumentLogComponent implements OnInit {
     this.logService.getDocumentLogs(this.documentId).subscribe(documentLogs => this.logData = documentLogs);
   }
 
+  /**
+   * open the modal with the corresponding HTML template
+   * @param template reference to the NG HTML template
+   * @param logEntry the selected logEntry to show in the modal
+   */
   openModal(template: TemplateRef<any>, logEntry: LogEntry) {
     this.modalRef = this.modalService.show(template);
     this.selectedLogEntry = logEntry;
