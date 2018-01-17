@@ -20,15 +20,16 @@ import { LogService } from '../../service/log.service';
 })
 export class ProjectTabNavigatorComponent implements OnInit {
 
-  @Input() project: Project;
+  @Input() project: Project; //Current project
   logEntry: LogEntry[];
   modalRef: BsModalRef;
 
+  //Which tab is visible
   overview: boolean = true;
   componenttype: boolean = false;
   memberlist: boolean = false;
   log: boolean = false;
-  selectedLogEntry: LogEntry;
+  selectedLogEntry: LogEntry; //Assigned when the user clicks on a log entry
 
   constructor(
     private route: ActivatedRoute,
@@ -66,6 +67,11 @@ export class ProjectTabNavigatorComponent implements OnInit {
     this.logService.getLatestProjectLog().subscribe(projectLog => this.logEntry = projectLog);
   }
 
+  /**
+   * open the modal with the corresponding HTML template
+   * @param template reference to the NG HTML template
+   * @param logEntry log entry to be shown in modal
+   */
   openModal(template: TemplateRef<any>, logEntry: LogEntry) {
     this.modalRef = this.modalService.show(template);
     this.selectedLogEntry = logEntry;
