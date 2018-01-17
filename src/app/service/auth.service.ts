@@ -12,7 +12,7 @@ export class AuthService {
   public token: any;
 
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); // Control if the user is logged in or not, with BehaviorSubject
-  private url: string = "http://82.211.194.195:5000/api";
+  private url: string = "http://localhost:54876/api";
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -39,15 +39,12 @@ export class AuthService {
    * @param password  - the users password
    */
   login(userName: String, password: String): Observable<boolean> {
+    console.log("Started login");
     return this.client.post(this.url + "/login", JSON.stringify({ username: userName, password: password }), this.httpOptions)
-      .map((response: Response) => {
-        let token = response.json()
-          .then((text: string) => {
-            localStorage.setItem('token', JSON.parse(text).Token);
-            this.loggedIn.next(true);
-            return true;
-          });
-        return false;
+      .map(response => {
+        localStorage.setItem('token', response.Token);
+        this.loggedIn.next(true);
+        return true;
       });
   }
 

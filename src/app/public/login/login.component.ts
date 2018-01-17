@@ -42,20 +42,22 @@ export class LoginComponent implements OnInit {
    */
   onSubmit() {
     if (this.form.valid) {
-      this.authService.login(this.form.value.userName, this.form.value.password).subscribe(result => {
-        if (result === true) {
-          this.router.navigate(['/myprojects']);
-        }
-        else {
-          this.alerts.push({
-            type: 'danger',
-            msg: `Wrong username or password`,
-            timeout: 5000
-          });
-        }
-      });
+      this.authService.login(this.form.value.userName, this.form.value.password)
+        .subscribe((result: boolean) => {
+          if (result) {
+            this.router.navigate(['/myprojects']);
+          }
+          else {
+            this.alerts.push({
+              type: 'danger',
+              msg: `Wrong username or password`,
+              timeout: 5000
+            });
+          }
+        });
+
+
     }
     this.formSubmitAttempt = true;
   }
-
 }
