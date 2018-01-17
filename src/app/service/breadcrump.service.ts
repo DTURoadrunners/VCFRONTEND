@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IBreadcrumb } from '../models/Ibreadcrumps';
 
+/**
+ * Handles breadcrumbs
+ */
 @Injectable()
 export class BreadcrumpService {
 

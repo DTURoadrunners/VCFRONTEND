@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { CampusnetUser } from './../models/CampusnetUser'
 import { CAMPUSNETUSERS } from './../mock/mock-campusnetUser'
 
+/**
+ * Handles authorization with the Campusnet API
+ */
 @Injectable()
 export class CnAuthService {
 
@@ -9,8 +12,7 @@ export class CnAuthService {
 
   /**
    * Verifies user with the campusnet API
-   * TODO implement API call
-   * @param userName - campusnet username
+   * @param userName - campusnet id (studentnumber)
    * @param password  - campusnet password
    */
   verify(userName: String, password: String): CampusnetUser {

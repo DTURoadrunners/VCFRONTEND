@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { logging } from 'selenium-webdriver';
 
+/**
+ * Handles communication related to user authorization with the API
+ */
 @Injectable()
 export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); // Control if the user is logged in or not, with BehaviorSubject
@@ -43,7 +46,12 @@ export class AuthService {
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
   }
-  
+
+  /**
+   * Register the user with the API
+   * @param userName
+   * @param password
+   */
   registerAccount(userName: String, password: String): boolean {
     if (userName !== '' && password != '') {
       this.router.navigate(['/login']);
