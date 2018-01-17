@@ -21,10 +21,10 @@ export class DocumentsComponent implements OnInit {
 
   documents: Documents[];
   selectedDocument: Documents;
-  checkedDocuments = {};
+  checkedDocuments = {}; //List of checked off documents for download
 
   constructor(
-    private fb: FormBuilder,         // inject the formbuilder
+    private fb: FormBuilder,
     private modalService: BsModalService,
     private documentService: DocumentService,
     private route: ActivatedRoute,
@@ -43,11 +43,19 @@ export class DocumentsComponent implements OnInit {
     });
   }
 
+  /**
+   * open the modal with the corresponding HTML template
+   * @param template reference to the NG HTML template
+   * @param document document to be shown in the modal
+   */
   openModal(template: TemplateRef<any>, document: Documents) {
     this.modalRef = this.modalService.show(template);
     this.selectedDocument = document;
   }
 
+  /**
+   * Close the modal again and reset the form
+   */
   closeModal() {
     this.modalRef.hide()
     this.documentForm = this.fb.group({ //Clear the form
@@ -63,11 +71,11 @@ export class DocumentsComponent implements OnInit {
   onCreateDocument() {
     if (this.documentForm.valid) {
       this.documentService.createDocument(
-        +this.route.snapshot.paramMap.get('componentypeid'), //Get id from url, '+' to parse to number
-        +this.route.snapshot.paramMap.get('projectid'),
+        +this.route.snapshot.paramMap.get('componentypeid'), //+ to correctly cast string to number
+        +this.route.snapshot.paramMap.get('projectid'), //+ to correctly cast string to number
         this.documentForm.value.file
       )
-        .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
+        .subscribe(documents => this.documents = documents);
     }
     this.closeModal();
   }
@@ -79,7 +87,7 @@ export class DocumentsComponent implements OnInit {
         this.selectedDocument.componenttypeId,
         this.selectedDocument.projectId,
         this.documentForm.value.file)
-        .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
+        .subscribe(documents => this.documents = documents);
     }
     this.closeModal();
   }
@@ -89,7 +97,7 @@ export class DocumentsComponent implements OnInit {
       this.selectedDocument.id,
       this.selectedDocument.componenttypeId,
       this.selectedDocument.projectId)
-      .subscribe(documents => this.documents = documents); //Assign retrieved data to variable
+      .subscribe(documents => this.documents = documents);
     this.closeModal();
   }
 
@@ -97,7 +105,7 @@ export class DocumentsComponent implements OnInit {
     this.documentService.downloadFile(documentId);
   }
 
-  onDownloadChecked() { //TODO: Download as zip
+  onDownloadChecked() {
     console.log(this.checkedDocuments);
     for (let document in this.checkedDocuments) {
       if(this.checkedDocuments[document]){

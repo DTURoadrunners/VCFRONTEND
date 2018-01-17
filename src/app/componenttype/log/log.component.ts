@@ -16,10 +16,9 @@ import { LogService } from '../../service/log.service';
 })
 export class LogComponent implements OnInit {
 
-  logdata = COMPONENTTYPELOG;
-  totalItems = this.logdata.length;
+  logdata: LogEntry[];
+  totalItems = this.logdata.length; //Number of logs, used for pages
   currentPage = 1;
-  smallnumPages = 0;
   modalRef: BsModalRef;
   selectedLogEntry: LogEntry;
 
@@ -30,14 +29,17 @@ export class LogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.logService.getComponenttypeLogs().subscribe(logs => this.logdata = logs);
   }
-
   
- 
   setPage(pageNo: number): void {
     this.currentPage = pageNo;
   }
 
+  /**
+   * open the modal with the corresponding HTML template
+   * @param template reference to the NG HTML template
+   */
   openModal(template: TemplateRef<any>, logEntry: LogEntry) {
     this.modalRef = this.modalService.show(template);
     this.selectedLogEntry = logEntry;

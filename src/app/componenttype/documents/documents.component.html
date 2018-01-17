@@ -17,6 +17,7 @@
       <tbody>
         <tr *ngFor="let document of documents">
           <td>
+            <!--When value changes, the button should add itself to the list of checked documents-->
             <input type="checkbox" aria-label="Checkbox for following text input" [value]="document.id" (change)="checkedDocuments[$event.target.getAttribute('value')]=$event.target.checked">
           </td>
           <td>

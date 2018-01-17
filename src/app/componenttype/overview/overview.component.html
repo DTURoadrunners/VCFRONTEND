@@ -5,7 +5,7 @@
         <div class="media">
             
             <p>
-                <!--Owner?-->
+                <!--Owner, (not implemented in backend, and may not be relevant anyways)-->
                 <span class="text-muted">Created by:</span>   <a href="#" class="text-info"> Someone</a> 
                 <br>
                 <!--Category-->
@@ -34,7 +34,7 @@
       <textarea type="text" class="form-control" formControlName="description" tooltip="A description of the componenttype"></textarea>
       <label>Category (Optional)</label>
       <input type="text" class="form-control" formControlName="category" tooltip="The category that the componenttype belongs to">
-      <label>Storage</label>
+      <label>Storage</label> <!--Value is 0 by default, negative values should not be allowed-->
       <input type="number" min="0" class="form-control" formControlName="storage" tooltip="The number of components in storage" required>
 
       <button class="btn btn-success btn-block" type="submit">
@@ -43,12 +43,3 @@
     </form>
   </div>
 </ng-template>
-
-
-
-<!--
-    title
-    description
-    category
-    storage
--->

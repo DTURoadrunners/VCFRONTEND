@@ -22,13 +22,13 @@ import { LogService } from '../../service/log.service';
 })
 export class TabNavigatorComponent implements OnInit {
 
-  @Input() componenttype: Componenttypes;
-  componentTypeLog: LogEntry[];
+  @Input() componenttype: Componenttypes; //Current componenttype
+  componentTypeLog: LogEntry[]; //Log entries for recent activity
   modalRef: BsModalRef;
-  selectedComponentTypeLog: LogEntry;
+  selectedComponentTypeLog: LogEntry; //Is assigned when user clicks on a specific log entry
 
 
-
+  //Which tab is visible
   overview: boolean = true;
   components: boolean = false;
   documents: boolean = false;
@@ -67,8 +67,8 @@ export class TabNavigatorComponent implements OnInit {
 
   
   getComponenttype(): void{
-    var componenttypeId = +this.route.snapshot.paramMap.get('componentypeid');
-    var projectId = +this.route.snapshot.paramMap.get('projectid');
+    var componenttypeId = +this.route.snapshot.paramMap.get('componentypeid'); //+ correctly casts the string to a number
+    var projectId = +this.route.snapshot.paramMap.get('projectid'); //+ correctly casts the string to a number
     this.componenttypeService.get(componenttypeId, projectId).subscribe(componenttype => this.componenttype = componenttype);
   }
 
@@ -76,6 +76,11 @@ export class TabNavigatorComponent implements OnInit {
     this.logService.getLatestComponettypeLog().subscribe(componentTypeLog => this.componentTypeLog = componentTypeLog);
   }
 
+  /**
+   * open the modal with the corresponding HTML template
+   * @param template reference to the NG HTML template
+   * @param projectlog the log entry to show in the modal
+   */
   openModal(template: TemplateRef<any>, projectlog: LogEntry) {
     this.modalRef = this.modalService.show(template);
     this.selectedComponentTypeLog = projectlog;

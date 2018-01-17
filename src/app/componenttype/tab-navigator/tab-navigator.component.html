@@ -2,6 +2,7 @@
   <div class="row">
     <nav class="col-sm-3 col-md-2 d-none d-sm-block navbar-light bg-light sidebar">
 
+      <!--Tab group-->
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
           <button (click)=selectOverview() type="button" class="btn btn-light btn-sm btn-block" [class.btn-outline-secondary]="overview == true"><i class="fa fa-object-group" aria-hidden="true"></i>  Overview</button>
@@ -27,7 +28,7 @@
 
       <div class="clearfix"></div>
 
-      <div class="showmobile">
+      <div class="showmobile"> <!--Special tabs for mobile users, due to limited screen space on mobile platforms-->
         <div class="btn-group" dropdown>
             <button dropdownToggle type="button" class="btn btn-secondary btn-block btn-dropdown dropdown-toggle">
               Componenttype menu<span class="caret"></span>
@@ -43,8 +44,7 @@
       </div>
        
 
-      <h2 class="text-muted">{{componenttype.name}}</h2> <!--TODO: get componenttype name-->
-
+      <h2 class="text-muted">{{componenttype.name}}</h2>
       <section  *ngIf="overview">
         <app-overview [model]="componenttype">
         </app-overview>
@@ -74,7 +74,7 @@
             <!-- row 1 -->
             <tr *ngFor="let data of componentTypeLog">
                 <td>
-                  <a (click)="openModal(logmodal, data)">
+                  <a (click)="openModal(logmodal, data)"> <!--Open log entry-->
                   <div class="media" >
                     <span  class="pull-left">
                       <img src="http://i.pravatar.cc/300" class="media-photo rounded-circle">
@@ -106,7 +106,7 @@
   </div>
 </div>
 
-
+<!--Show log entries for recent activies-->
 <ng-template #logmodal>
     <logmodal [log]="selectedComponentTypeLog" [logModal]="modalRef"></logmodal>
   </ng-template>

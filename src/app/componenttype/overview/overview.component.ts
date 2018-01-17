@@ -14,21 +14,21 @@ import { ComponenttypeService } from '../../service/componenttype.service'
 })
 export class OverviewComponent implements OnInit {
 
-  @Input('model') componenttype: Componenttypes;
-
-  alerts: any = [];
+  @Input('model') componenttype: Componenttypes; //current componenttype
+  
   modalRef: BsModalRef;
-  componenttypeForm: FormGroup; //call it with [formGroup]="componentForm" in the HTML
+  componenttypeForm: FormGroup;
 
 
 
   constructor(
-    private fb: FormBuilder, // inject the formbuilder
+    private fb: FormBuilder,
     private modalService: BsModalService,
     private componenttypeService: ComponenttypeService
   ) { }
 
   ngOnInit() {
+    //Initiate input form
     this.componenttypeForm = this.fb.group({
       title: [this.componenttype.name, Validators.required],
       description: [this.componenttype.description], //Optional
@@ -38,10 +38,17 @@ export class OverviewComponent implements OnInit {
 
   }
 
-  openModal(template: TemplateRef<any>, component: Component) {
+  /**
+   * open the modal with the corresponding HTML template
+   * @param template reference to the NG HTML template
+   */
+  openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 
+  /**
+   * Grab data from input fields and send it to the componenttypeService for edit
+   */
   onSubmit() {
     if (this.componenttypeForm.valid) {
       this.componenttypeService.update(
