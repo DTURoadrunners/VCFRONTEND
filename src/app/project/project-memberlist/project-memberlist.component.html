@@ -35,6 +35,7 @@
   
 </div>
 <br>
+<!--Alert on bad input-->
 <div class="offset-lg-2 col-lg-8" *ngFor="let alert of alerts">
   <alert [type]="alert.type" [dismissible]="dismissible" dismissOnTimeout="5000">
     <span [innerHtml]="alert.msg"></span>

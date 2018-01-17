@@ -9,7 +9,6 @@
     </div>
 
     <div class="list-group">
-
         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" 
             *ngFor="let data of componenttypes | search : searchText"
             routerLink="/project/{{projectId}}/componentype/{{data.id}}">
@@ -54,7 +53,7 @@
                 <label>Storage</label>
                 <input type="number" class="form-control" placeholder="Storage..." formControlName="storage" required>
             </div>
-            
+            <!--Category selector/creator-->
             <div class="form-group" [ngClass]="{'invalid':!componenttypeForm.controls['category'].valid && componenttypeForm.controls['category'].touched }">
                 <label>Category</label>
             <input formControlName="category"

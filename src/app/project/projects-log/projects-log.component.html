@@ -10,7 +10,6 @@
     </tr>
   </thead>
   <tbody>
-
       <tr *ngFor="let data of logdata" >
           <th scope="row" (click)="openModal(logmodal, data)">{{data.id}}</th>
           <td (click)="openModal(logmodal, data)">{{data.submitter}}</td>

@@ -25,33 +25,31 @@ import { Console } from '@angular/core/src/console';
   styleUrls: ['./project-componenttype.component.css']
 })
 export class ProjectComponenttypeComponent implements OnInit {
-  modalRef: BsModalRef; // modal reference
+  modalRef: BsModalRef;
 
-  componenttypeForm: FormGroup; // formbuilder, call it with [formGroup]="form" in the HTML  
-  typeaheadNoResults: boolean;
-  dataSource: Observable<any>;
+  componenttypeForm: FormGroup;
+  typeaheadNoResults: boolean; //Value depends on whether or not a category matches input
 
   componenttypes: Componenttypes[];
   categories: Category[];
 
-  projectId: number;
+  projectId: number; //current project
 
   constructor(
-    private fb: FormBuilder,         // inject the formbilder
+    private fb: FormBuilder,
     private componenttypeService: ComponenttypeService,
     private categoryService: CategoryService,
-    private location: Location,
     private route: ActivatedRoute,
-    private modalService: BsModalService // modal service from bootstrap
+    private modalService: BsModalService
   ) {
     /**
      * init the form inside the constructor 
      */
     this.componenttypeForm = this.fb.group({
       name:         ['', Validators.required],
-      description:  ['', Validators.required],
+      description:  [''], //Optional
       storage:      ['', Validators.required],
-      category:   ['', Validators.required]
+      category:   [''] //Optional
     });
   }
 
@@ -60,7 +58,7 @@ export class ProjectComponenttypeComponent implements OnInit {
 
   ngOnInit() {
     this.projectId = +this.route.snapshot.paramMap.get('id') // bind the project id from the route
-    this.getComponenttypes(this.projectId); // call this method to bind all the componenttypes from the start
+    this.getComponenttypes(this.projectId);
   }
 
 
@@ -73,6 +71,9 @@ export class ProjectComponenttypeComponent implements OnInit {
     this.getCategories();
   }
 
+    /**
+   * Close modal and reset input form
+   */
   closeModal() {
     this.modalRef.hide()
     this.componenttypeForm = this.fb.group({ //Clear the form
