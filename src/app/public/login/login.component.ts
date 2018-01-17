@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+// load angular forms
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+// load authservice, used to call all the methods
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -14,10 +17,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup; // formbuilder, call it with [formGroup]="form" in the HTML   
   private formSubmitAttempt: boolean;  // submit flag
   dismissible = true;
-
-
-  alerts: any = [];
-    
+  alerts: any = []; // hold all the alerts, start empty
 
 
   constructor(
@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    /**
+     * build the form, used to know which inputs fields the whole form has and which one of them are required. Their values are set to empty on load
+     */
     this.form = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
