@@ -18,9 +18,8 @@ export class ProjectsLogComponent implements OnInit {
   logdata: LogEntry[];
   modalRef: BsModalRef;
   selectedLogEntry: LogEntry;
-  totalItems: number;
+  totalItems: number; //Number of logs, used for pagination
   currentPage = 1;
-  smallnumPages = 0;
 
   constructor(
     private logService: LogService,
@@ -39,6 +38,12 @@ export class ProjectsLogComponent implements OnInit {
   getProjectLogs(): void{
     this.logService.getProjectLogs().subscribe(logdata => this.logdata = logdata);
   }
+
+  /**
+   * open the modal with the corresponding HTML template
+   * @param template reference to the NG HTML template
+   * @param logEntry the logEntry to be shown
+   */
   openModal(template: TemplateRef<any>, logEntry: LogEntry) {
     this.modalRef = this.modalService.show(template);
     this.selectedLogEntry = logEntry;
