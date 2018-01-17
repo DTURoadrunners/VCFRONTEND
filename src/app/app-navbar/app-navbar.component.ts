@@ -8,22 +8,31 @@ import { AuthService } from './../service/auth.service';
   styleUrls: ['./app-navbar.component.css']
 })
 export class AppNavbarComponent implements OnInit {
-  isCollapsed: boolean = false;
-  isLoggedIn$: Observable<boolean>;
+  isCollapsed: boolean = false;  // variable for the collapse menu on mobile
+  isLoggedIn$: Observable<boolean>; // observerble variable, will be checked on every "page", to see if the user is logged on
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.isLoggedIn$ = this.authService.isLoggedIn; // getter for the user is logged in
   }
 
-  // coolapse the menu
+  /**
+   * handle the callapse menu, needs to be overloaded to work in the HTML - else it won't recognize the methods 
+   * @param event 
+   */
   collapsed(event: any): void {
     console.log(event);
   }
  
-  // expand the menu
+
+  /**
+   * handle the expand on the menu, needs to be overloaded to work in the HTML - else it won't recognize the methods 
+   * @param event 
+   */
   expanded(event: any): void {
     console.log(event);
   }
