@@ -6,6 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchMemberPipe implements PipeTransform {
 
+  /**
+   * return the items that match the search (members)
+   * @param items  items that needs to be filted
+   * @param searchText  the text that should filter
+   */
   transform(items: any[], searchText: string): any {
     if(!items) {
       return [];
