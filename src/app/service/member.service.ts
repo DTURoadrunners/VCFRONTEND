@@ -6,6 +6,10 @@ import { of } from 'rxjs/observable/of';
 import { MEMBERS } from '../mock/mock-members'; // simulate data from the database
 import { Member } from '../models/member';
 
+
+/**
+ * Handles the members of the system
+ */
 @Injectable()
 export class MemberService {
 
