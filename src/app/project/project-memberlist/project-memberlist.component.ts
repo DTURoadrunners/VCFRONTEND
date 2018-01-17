@@ -17,10 +17,10 @@ export class ProjectMemberlistComponent implements OnInit {
   members: Member[];
   modalRef: BsModalRef;
   memberForm: FormGroup;
-  alerts: any = [];
+  alerts: any = []; //List of alerts, to let them linger for a while
 
   constructor(
-    private fb: FormBuilder,         // inject the formbuilder
+    private fb: FormBuilder,
     private modalService: BsModalService,
     private memberService: MemberService,
     private route: ActivatedRoute,
@@ -34,10 +34,17 @@ export class ProjectMemberlistComponent implements OnInit {
     });
   }
 
+  /**
+   * open the modal with the corresponding HTML template
+   * @param template reference to the NG HTML template
+   */
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 
+  /**
+   * Close the modal and reset input form
+   */
   closeModal() {
     this.modalRef.hide()
     this.memberForm = this.fb.group({ //Clear the form
@@ -57,8 +64,8 @@ export class ProjectMemberlistComponent implements OnInit {
       for(let member of members){
         this.memberService.add(
           member.trim(),
-          +this.route.snapshot.paramMap.get('id'))
-          .subscribe(members => this.members = members); //Assign retrieved data to variable
+          +this.route.snapshot.paramMap.get('id')) //+ to parse the id to a number
+          .subscribe(members => this.members = members);
       }
       this.closeModal();
     }
@@ -69,8 +76,8 @@ export class ProjectMemberlistComponent implements OnInit {
     if (this.memberForm.valid) {
       this.memberService.remove(
         this.memberForm.value.memberId,
-        +this.route.snapshot.paramMap.get('id'))
-        .subscribe(members => this.members = members); //Assign retrieved data to variable
+        +this.route.snapshot.paramMap.get('id')) //+ to parse the id to a number
+        .subscribe(members => this.members = members);
       this.closeModal();
     }
   }

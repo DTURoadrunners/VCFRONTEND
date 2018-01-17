@@ -1,15 +1,14 @@
 <div class="col-9">
-        <button type="button" class="btn btn-outline-secondary pull-right" (click)="openModal(template)">Update project</button>
-        <h4 class="text-muted">Project: overview:</h4>
+  <button type="button" class="btn btn-outline-secondary pull-right" (click)="openModal(template)">Update project</button>
+  <h4 class="text-muted">Project: overview:</h4>
   <hr>
-        <div class="media">
-            
-            <p>
-                <span class="text-muted">created by:</span>   <a href="#" class="text-info"> Thomas Bech</a> 
-                <br>
-            </p>      
-        </div>
-    <p>{{project.description}}</p>
+  <div class="media">
+    <p>
+      <span class="text-muted">created by:</span>   <a href="#" class="text-info"> Thomas Bech</a> <!--May not be relevant, does not exist in backend-->
+      <br>
+    </p>
+  </div>
+  <p>{{project.description}}</p>
 </div>
 
 
@@ -17,37 +16,34 @@
 <!-- TEMPLATE START -->
 
 <ng-template #template>
-        <div class="modal-header">
-            <h4 class="modal-title pull-left">Update project</h4>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          
-          <div class="modal-body">
-              
-    
-            <form class="form-control no-boarder" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    
-                <div class="form-group" [ngClass]="{'invalid':!projectForm.controls['title'].valid && projectForm.controls['title'].touched }">
-                    <label>Name</label>
-                    <input type="text" class="form-control" [(ngModel)]="project.name"   placeholder="{{project.name}}" [formControl]="projectForm.controls['title']" required autofocus>
-                </div>
-    
-    
-                <div class="form-group" [ngClass]="{'invalid':!projectForm.controls['description'].valid && projectForm.controls['description'].touched }">
-                    <label>Description</label>
-                    <textarea type="text" class="form-control" rows="6"  [(ngModel)]="project.description"  placeholder="{{project.description}}" [formControl]="projectForm.controls['description']"></textarea>
-                </div>
-                <button 
-                    class="btn btn-primary btn-block" 
-                    type="submit" 
-                    [disabled]="!projectForm.valid" 
-                    [ngClass]="{'btn-secondary':!projectForm.valid}"> 
-                    submit 
-                </button>
-            </form>
-          </div>
-    </ng-template>
-    
-    <!-- TEMPLATE END -->
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Update project</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <!--Sets button to enabled only if input form is valid-->
+    <form class="form-control no-boarder" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <div class="form-group" [ngClass]="{'invalid':!projectForm.controls['title'].valid && projectForm.controls['title'].touched }">
+        <label>Name</label>
+        <input type="text" class="form-control" [(ngModel)]="project.name" placeholder="{{project.name}}" [formControl]="projectForm.controls['title']" required autofocus>
+      </div>
+
+      <div class="form-group" [ngClass]="{'invalid':!projectForm.controls['description'].valid && projectForm.controls['description'].touched }">
+        <label>Description</label>
+        <textarea type="text" class="form-control" rows="6" [(ngModel)]="project.description" placeholder="{{project.description}}" [formControl]="projectForm.controls['description']"></textarea>
+      </div>
+      <button class="btn btn-primary btn-block"
+              type="submit"
+              [disabled]="!projectForm.valid"
+              [ngClass]="{'btn-secondary':!projectForm.valid}">
+        submit
+      </button>
+    </form>
+  </div>
+</ng-template>
+
+<!-- TEMPLATE END -->

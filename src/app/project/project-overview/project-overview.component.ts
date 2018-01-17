@@ -21,14 +21,14 @@ import { ProjectService } from '../../service/project.service';
 })
 export class ProjectOverviewComponent implements OnInit {
 
-  @Input('model') project: Project;
-  projectForm: FormGroup; //call it with [formGroup]="projectForm" in the HTML
+  @Input('model') project: Project; //Current project
+  projectForm: FormGroup;
   private formSubmitAttempt: boolean;  // submit flag
 
-  modalRef: BsModalRef; // modal reference
+  modalRef: BsModalRef;
 
   constructor(
-    private modalService: BsModalService, // modal service from bootstrap
+    private modalService: BsModalService,
     private projectService: ProjectService,
     private fb: FormBuilder
   ) { }
@@ -52,8 +52,7 @@ export class ProjectOverviewComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
-
-
+  
   onSubmit() {
     this.projectService.updateProject(this.project).subscribe();
     this.modalRef.hide();
