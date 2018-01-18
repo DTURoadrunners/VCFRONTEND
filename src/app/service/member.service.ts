@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { MEMBERS } from '../mock/mock-members'; // simulate data from the database
 import { Member } from '../models/member';
 import { USERS } from "../mock/mock-users";
+import { User } from "../models/user";
 
 
 /**
@@ -20,19 +21,20 @@ export class MemberService {
    * Gets a user by id
    * @param memberId studentid
    */
-  get(id: string): Observable<Member> {
-    return of(MEMBERS.find(member => member.userId === id));
+  get(id: string): Observable<User> {
+    return of(USERS.find(user => user.id == MEMBERS.find(member => member.userId === id).userId));
   }
 
   /**
    * Gets all users related to a project
    * @param projectId
    */
-  getAll(projectId: number): Observable<Member[]>{
-    var members: Member[] = new Array<Member>();
+  getAll(projectId: number): Observable<User[]>{
+    var members: User[] = new Array<User>();
     for (var i = 0; i < MEMBERS.length; i++) {
       if (MEMBERS[i].projectId == projectId) {
-        members.push(MEMBERS[i]);
+        this.get(MEMBERS[i].userId).subscribe(user =>
+          members.push(user));
       }
     }
     return of(members);
@@ -43,7 +45,7 @@ export class MemberService {
    * @param id userId
    * @param projectId
    */
-  add(id: string, projectId: number, role: number): Observable<Member[]> { //TODO: Handle errors
+  add(id: string, projectId: number, role: number): Observable<User[]> { //TODO: Handle errors
     MEMBERS.push(new Member(id, projectId, role));
     USERS.find(user => user.id == id).memberships.push(projectId);
     return this.getAll(projectId);
@@ -54,7 +56,7 @@ export class MemberService {
    * @param id
    * @param projectId
    */
-  remove(id: string, projectId: number): Observable<Member[]> { //TODO: Handle errors
+  remove(id: string, projectId: number): Observable<User[]> { //TODO: Handle errors
     var index = MEMBERS.findIndex(member => member.userId == id)
     if (index > -1) {
       MEMBERS.splice(index, 1);

@@ -13,6 +13,7 @@ import { CampusnetUser } from "../models/CampusnetUser";
 @Injectable()
 export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); // Control if the user is logged in or not, with BehaviorSubject
+  private currentUser: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
   /**
    * getter for loggedIn, also expose the Subject as an Observable. 
@@ -35,8 +36,10 @@ export class AuthService {
    */
   login(userName: String, password: String): boolean{
     if ((userName !== '' && password != '')) {
-      if (USERS.find(user => user.id == userName && user.password == password)) {
+      var user = USERS.find(user => user.id == userName && user.password == password);
+      if (user) {
         this.loggedIn.next(true);
+        this.currentUser.next(user);
         this.router.navigate(['/myprojects']);
         return true;
       }
@@ -51,6 +54,7 @@ export class AuthService {
   logout() {                            
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
+    this.currentUser.next(null);
   }
 
   /**

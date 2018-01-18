@@ -5,6 +5,7 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { MemberService } from "../../service/member.service";
 import { ActivatedRoute } from '@angular/router';
 import { forEach } from '@angular/router/src/utils/collection';
+import { User } from "../../models/user";
 
 
 @Component({
@@ -14,7 +15,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 export class ProjectMemberlistComponent implements OnInit {
 
-  members: Member[];
+  members: User[];
   searchText: string;
   modalRef: BsModalRef;
   memberForm: FormGroup;
@@ -55,7 +56,7 @@ export class ProjectMemberlistComponent implements OnInit {
 
   getMembers() {
     this.memberService.getAll(+this.route.snapshot.paramMap.get('id')) //'+' to parse to number
-      .subscribe(members => this.members = members);
+      .subscribe(result => this.members = result);
   }
 
   onAddMember() {
