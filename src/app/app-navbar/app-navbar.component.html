@@ -22,7 +22,7 @@
     <ul class="navbar-nav ml-auto">
         
       <li class="dropdown" dropdown> <!-- {1} -->
-        <a class="nav-link" dropdownToggle role="button" id="avatar"> <img class="rounded-circle" src="/assets/avatar.jpg" alt="">John Doe <i class="fa fa-caret-down" aria-hidden="true"></i> </a>
+        <a class="nav-link" dropdownToggle role="button" id="avatar"> <img class="rounded-circle" src="/assets/avatar.jpg" alt="">{{user.name}}<i class="fa fa-caret-down" aria-hidden="true"></i> </a>
         <ul *dropdownMenu class="dropdown-menu" role="menu">
           <li role="menuitem"><a class="dropdown-item" routerLink="/profile" >My Profile</a></li>
           <li role="menuitem"><a class="dropdown-item" routerLink="/myprojects">My Projects</a></li>

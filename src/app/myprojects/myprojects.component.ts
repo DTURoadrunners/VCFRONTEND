@@ -13,8 +13,6 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 // load angular forms
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from "../service/auth.service";
-import { User } from "../models/user";
 
 @Component({
   selector: 'app-myprojects',
@@ -26,14 +24,13 @@ export class MyprojectsComponent implements OnInit {
   modalRef: BsModalRef; // reference to the modal
   projectForm: FormGroup; //call it with [formGroup]="projectForm" in the HTML
   private formSubmitAttempt: boolean;  // submit flag
-
+  isAdmin: boolean;
 
   constructor(
     private router: Router, 
     private projectService: ProjectService, 
     private fb: FormBuilder, 
-    private modalService: BsModalService,
-    private authService: AuthService
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
@@ -47,6 +44,7 @@ export class MyprojectsComponent implements OnInit {
       description: ['', Validators.required], // Required
     });
   }
+  
 
   /**
    * navigate the user to the project page according to the id

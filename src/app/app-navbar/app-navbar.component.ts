@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './../service/auth.service';
+import { User } from "../models/user";
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,7 @@ import { AuthService } from './../service/auth.service';
 export class AppNavbarComponent implements OnInit {
   isCollapsed: boolean = false;  // variable for the collapse menu on mobile
   isLoggedIn$: Observable<boolean>; // observerble variable, will be checked on every "page", to see if the user is logged on
+  user: User;
 
   constructor(
     private authService: AuthService
@@ -18,6 +20,9 @@ export class AppNavbarComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn; // getter for the user is logged in
+    this.authService.getCurrentUser.subscribe(user =>
+      this.user = user
+    );
   }
 
   /**
