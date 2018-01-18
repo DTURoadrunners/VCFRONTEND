@@ -6,6 +6,8 @@ import { of } from 'rxjs/observable/of';
 // import mock and model
 import { PROJECTS } from '../mock/mock-projects'; // simulate data from the database
 import { Project } from '../models/project';
+import { User } from "../models/user";
+import { AuthService } from "./auth.service";
 
 /**
  * Handles all the projects
@@ -14,7 +16,9 @@ import { Project } from '../models/project';
 export class ProjectService {
 
   
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   /**
    * return the project model as an observerable object
@@ -28,7 +32,15 @@ export class ProjectService {
    * return all the projects to the user. The API will handle based on the user who is logged in
    */
   getProjects(): Observable<Project[]>{
-    return of(PROJECTS);
+    var projects = new Array<Project>();
+    this.authService.getCurrentUser
+      .subscribe((user: User) => {
+        for (var i = 0; i < user.memberships.length; i++) {
+          this.getProject(user.memberships[i]).subscribe(proj =>
+            projects.push(proj));
+        }
+      });
+    return of(projects);
   }
 
   /**

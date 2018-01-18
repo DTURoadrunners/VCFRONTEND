@@ -13,6 +13,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 // load angular forms
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from "../service/auth.service";
+import { User } from "../models/user";
 
 @Component({
   selector: 'app-myprojects',
@@ -30,7 +32,9 @@ export class MyprojectsComponent implements OnInit {
     private router: Router, 
     private projectService: ProjectService, 
     private fb: FormBuilder, 
-    private modalService: BsModalService) { }
+    private modalService: BsModalService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     this.getProjects(); // load the projects on loading this component

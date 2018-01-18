@@ -23,6 +23,10 @@ export class AuthService {
     return this.loggedIn.asObservable(); 
   }
 
+  get getCurrentUser() {
+    return this.currentUser.asObservable();
+  }
+
   constructor(
     private router: Router
   ) { }
