@@ -65,7 +65,8 @@ export class ProjectMemberlistComponent implements OnInit {
       for(let member of members){
         this.memberService.add(
           member.trim(),
-          +this.route.snapshot.paramMap.get('id')) //+ to parse the id to a number
+          +this.route.snapshot.paramMap.get('id'), //+ to parse the id to a number
+          1)
           .subscribe(members => this.members = members);
       }
       this.closeModal();

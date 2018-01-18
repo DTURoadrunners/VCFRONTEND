@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 // import mock and model
 import { MEMBERS } from '../mock/mock-members'; // simulate data from the database
 import { Member } from '../models/member';
+import { USERS } from "../mock/mock-users";
 
 
 /**
@@ -17,10 +18,10 @@ export class MemberService {
 
   /**
    * Gets a user by id
-   * @param memberId
+   * @param memberId studentid
    */
-  get(memberId: string): Observable<Member> {
-    return of(MEMBERS.find(member => member.id === memberId));
+  get(id: string): Observable<Member> {
+    return of(MEMBERS.find(member => member.userId === id));
   }
 
   /**
@@ -30,7 +31,7 @@ export class MemberService {
   getAll(projectId: number): Observable<Member[]>{
     var members: Member[] = new Array<Member>();
     for (var i = 0; i < MEMBERS.length; i++) {
-      if (MEMBERS[i].projects.includes(projectId)) {
+      if (MEMBERS[i].projectId == projectId) {
         members.push(MEMBERS[i]);
       }
     }
@@ -39,27 +40,28 @@ export class MemberService {
 
   /**
    * Adds a user to a project
-   * @param memberId
+   * @param id userId
    * @param projectId
    */
-  add(memberId: string, projectId: number): Observable<Member[]> { //TODO: Handle errors
-    var newMember: Member;
-    this.get(memberId).subscribe(member => newMember = member);
-    newMember.projects.push(projectId);
+  add(id: string, projectId: number, role: number): Observable<Member[]> { //TODO: Handle errors
+    MEMBERS.push(new Member(id, projectId, role));
+    USERS.find(user => user.id == id).memberships.push(projectId);
     return this.getAll(projectId);
   }
 
   /**
    * Removes a user from a project
-   * @param memberId
+   * @param id
    * @param projectId
    */
-  remove(memberId: string, projectId: number): Observable<Member[]> { //TODO: Handle errors
-    var newMember: Member;
-    this.get(memberId).subscribe(member => newMember = member);
-    var index = newMember.projects.indexOf(projectId);
+  remove(id: string, projectId: number): Observable<Member[]> { //TODO: Handle errors
+    var index = MEMBERS.findIndex(member => member.userId == id)
     if (index > -1) {
-      newMember.projects.splice(index, 1);
+      MEMBERS.splice(index, 1);
+    }
+    index = USERS.find(user => user.id == id).memberships.indexOf(projectId);
+    if (index > -1) {
+      USERS.splice(index, 1);
     }
     return this.getAll(projectId);
   }

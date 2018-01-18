@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { logging } from 'selenium-webdriver';
+import { USERS } from '../mock/mock-users';
+import { User } from "../models/user";
+import { CAMPUSNETUSERS } from "../mock/mock-campusnetUser";
+import { CampusnetUser } from "../models/CampusnetUser";
 
 /**
  * Handles communication related to user authorization with the API
@@ -30,10 +34,12 @@ export class AuthService {
    * @param password  - the users password
    */
   login(userName: String, password: String): boolean{
-    if ((userName !== '' && password!= '' ) && (userName ==='admin' && password === 'pw123')) { 
-      this.loggedIn.next(true);
-      this.router.navigate(['/myprojects']); //TODO homepage
-      return true;
+    if ((userName !== '' && password != '')) {
+      if (USERS.find(user => user.id == userName && user.password == password)) {
+        this.loggedIn.next(true);
+        this.router.navigate(['/myprojects']);
+        return true;
+      }
     } 
     return false;
   }
@@ -52,8 +58,9 @@ export class AuthService {
    * @param userName
    * @param password
    */
-  registerAccount(userName: String, password: String): boolean {
-    if (userName !== '' && password != '') {
+  registerAccount(cnUser: CampusnetUser, password: string): boolean {
+    if (cnUser.id !== '' && cnUser.password != '') {
+      USERS.push(new User(cnUser.id, password, [], cnUser.name, cnUser.email, cnUser.phone, cnUser.studyline))
       this.router.navigate(['/login']);
       return true;
     }

@@ -86,7 +86,7 @@ export class RegisterComponent implements OnInit {
   onSubmitPassword() {
     if (this.passwordForm.valid) {
       if (this.validatePassword(this.passwordForm.value.newPassword, this.passwordForm.value.repeatNewPassword)) {
-        if (!this.auth.registerAccount(this.CNForm.value.userName, this.passwordForm.value.newPassword)) {
+        if (!this.auth.registerAccount(this.cnUser, this.passwordForm.value.newPassword)) {
           this.alerts.push({
             type: 'danger',
             msg: 'Unable to register account'

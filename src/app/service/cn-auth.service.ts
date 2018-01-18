@@ -16,8 +16,9 @@ export class CnAuthService {
    * @param password  - campusnet password
    */
   verify(userName: String, password: String): CampusnetUser {
-    if (userName == 'admin' && password == 'pw123') {
-      return CAMPUSNETUSERS[0];
+    var cnu: CampusnetUser = CAMPUSNETUSERS.find(user => user.id == userName)
+    if (cnu) {
+      return cnu;
     }
     return null;
   }

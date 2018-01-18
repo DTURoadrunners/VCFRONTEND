@@ -1,7 +1,8 @@
 import { CampusnetUser } from '../models/CampusnetUser';
 
 export const CAMPUSNETUSERS: CampusnetUser[] = [
-  { id: "s154174", name: "Thomas Bech Madsen", email: "thomasbm@live.dk", phone: "20768949", studyline: "B.Eng. Softwaretechnology" },
+  new CampusnetUser("s154174", "pw123", "Thomas Bech Madsen", "example@email.com", "xxxxxxxx", "B.Eng. Softwaretechnology"),
+  new CampusnetUser("s154163", "pw123", "Daniel Plaetner", "example@email.com", "xxxxxxxx", "B.Eng. Softwaretechnology")
 ];
 
 
