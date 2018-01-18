@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row">
-      <button type="button" class="btn btn-primary pull-right" (click)="openModal(editProject)">Nyt project</button>
+      <button type="button" class="btn btn-success pull-right" (click)="openModal(newProject)">New project</button>
       
   </div>
 
@@ -27,7 +27,7 @@
 </div>  
 </div>
 
-<ng-template #editProject>
+<ng-template #newProject>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Create Project</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -48,11 +48,11 @@
       
       <br>
       <button 
-        class="btn btn-primary btn-block" 
+        class="btn btn-success btn-block" 
         type="submit" 
         [disabled]="!projectForm.valid" 
         [ngClass]="{'btn-secondary':!projectForm.valid}"> 
-        submit 
+        Create
       </button>
     </form>
 
