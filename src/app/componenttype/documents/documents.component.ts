@@ -105,6 +105,9 @@ export class DocumentsComponent implements OnInit {
     this.documentService.downloadFile(documentId);
   }
 
+
+ 
+
   onDownloadChecked() {
     console.log(this.checkedDocuments);
     for (let document in this.checkedDocuments) {
@@ -114,4 +117,6 @@ export class DocumentsComponent implements OnInit {
      
     }
   }
+
+  
 }

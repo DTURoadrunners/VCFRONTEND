@@ -71,7 +71,7 @@ export class MyprojectsComponent implements OnInit {
    * open the modal with the corresponding HTML template
    * @param template reference to the NG HTML template
    */
-  openModal(template: TemplateRef<any>, project: Project) {
+  openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 

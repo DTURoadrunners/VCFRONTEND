@@ -28,6 +28,7 @@ export class ProjectComponenttypeComponent implements OnInit {
   modalRef: BsModalRef;
 
   componenttypeForm: FormGroup;
+  searchText: string;
   typeaheadNoResults: boolean; //Value depends on whether or not a category matches input
 
   componenttypes: Componenttypes[];

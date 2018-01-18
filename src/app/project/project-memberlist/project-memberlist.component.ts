@@ -15,6 +15,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class ProjectMemberlistComponent implements OnInit {
 
   members: Member[];
+  searchText: string;
   modalRef: BsModalRef;
   memberForm: FormGroup;
   alerts: any = []; //List of alerts, to let them linger for a while

@@ -36,4 +36,8 @@ export class ComponentLogComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
     this.selectedLogEntry = logEntry;
   }
+
+  closeModal(): void {
+    this.modalRef.hide();
+  }
 }
